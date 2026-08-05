@@ -1,0 +1,132 @@
+##########################################################
+                    PBS JOB METADATA                      
+##########################################################
+Job Name:        downsample_20per
+Job ID:          1328023.b06x-pbs01
+Experiment:      experiment01
+Conda Env:       scanpy_env
+Python Script:   downsample.py
+Working Dir:     /omics/odcf/analysis/OE0290_projects/heroes-aya_pools/AG_Thongjuea/Code/10x_multiomics/Selina/project/experiment01/scripts
+Started At:      2026-08-05 17:15:48
+Allocated Cores: 10
+==========================================================
+
+scvi_pools_2026_celltype_annotated.h5ad
+AnnData object with n_obs × n_vars = 481411 × 35929
+    obs: 'pool', 'assignment', 'celltype', 'seurat_clusters', 'Cohort', 'Entity', 'Fusion', 'Episode', 'PID', 'Location', 'barcode_sample', 'n_genes', 'n_genes_by_counts', 'total_counts', 'total_counts_mt', 'pct_counts_mt', '_scvi_batch', '_scvi_labels', 'leiden', 'X', 'final'
+    var: 'n_cells', 'mt', 'n_cells_by_counts', 'mean_counts', 'pct_dropout_by_counts', 'total_counts'
+    uns: '_scvi_manager_uuid', '_scvi_uuid', 'celltype_colors', 'final_colors', 'leiden', 'log1p', 'neighbors', 'umap'
+    obsm: 'X_scVI', 'X_umap', '_scvi_extra_categorical_covs'
+    obsp: 'connectivities', 'distances'
+    layers: 'counts', 'scvi_normalized', None (.X)
+scvi_pools_2026_downsampled_20per.h5ad
+AnnData object with n_obs × n_vars = 96282 × 35929
+    obs: 'pool', 'assignment', 'celltype', 'seurat_clusters', 'Cohort', 'Entity', 'Fusion', 'Episode', 'PID', 'Location', 'barcode_sample', 'n_genes', 'n_genes_by_counts', 'total_counts', 'total_counts_mt', 'pct_counts_mt', '_scvi_batch', '_scvi_labels', 'leiden', 'X', 'final'
+    var: 'n_cells', 'mt', 'n_cells_by_counts', 'mean_counts', 'pct_dropout_by_counts', 'total_counts'
+    uns: '_scvi_manager_uuid', '_scvi_uuid', 'celltype_colors', 'final_colors', 'leiden', 'log1p', 'neighbors', 'umap'
+    obsm: 'X_scVI', 'X_umap', '_scvi_extra_categorical_covs'
+    obsp: 'connectivities', 'distances'
+    layers: 'counts', 'scvi_normalized', None (.X)
+
+==========================================================
+                   EXECUTION SUMMARY                      
+==========================================================
+Finished At:     2026-08-05 17:21:28
+Total Runtime:   0h 5m 40s
+Exit Status:     0 (SUCCESS)
+##########################################################
+##########################################################
+                    PBS JOB METADATA                      
+##########################################################
+Job Name:        downsample_20per
+Job ID:          1328024.b06x-pbs01
+Experiment:      experiment01
+Conda Env:       scanpy_env
+Python Script:   downsample.py
+Project Dir:     /omics/odcf/analysis/OE0290_projects/heroes-aya_pools/AG_Thongjuea/Code/10x_multiomics/Selina/project
+Started At:      2026-08-05 17:50:13
+Allocated Cores: 10
+==========================================================
+
+
+==========================================================
+                   EXECUTION SUMMARY                      
+==========================================================
+Finished At:     2026-08-05 17:50:15
+Total Runtime:   0h 0m 2s
+Exit Status:     2 (FAILED)
+##########################################################
+##########################################################
+                    PBS JOB METADATA                      
+##########################################################
+Job Name:        downsample_20per
+Job ID:          1328025.b06x-pbs01
+Experiment:      experiment01
+Conda Env:       scanpy_env
+Python Script:   04_downsample.py
+Project Dir:     /omics/odcf/analysis/OE0290_projects/heroes-aya_pools/AG_Thongjuea/Code/10x_multiomics/Selina/project
+Started At:      2026-08-05 17:50:49
+Allocated Cores: 10
+==========================================================
+
+scvi_pools_2026_celltype_annotated.h5ad
+AnnData object with n_obs × n_vars = 481411 × 35929
+    obs: 'pool', 'assignment', 'celltype', 'seurat_clusters', 'Cohort', 'Entity', 'Fusion', 'Episode', 'PID', 'Location', 'barcode_sample', 'n_genes', 'n_genes_by_counts', 'total_counts', 'total_counts_mt', 'pct_counts_mt', '_scvi_batch', '_scvi_labels', 'leiden', 'X', 'final'
+    var: 'n_cells', 'mt', 'n_cells_by_counts', 'mean_counts', 'pct_dropout_by_counts', 'total_counts'
+    uns: '_scvi_manager_uuid', '_scvi_uuid', 'celltype_colors', 'final_colors', 'leiden', 'log1p', 'neighbors', 'umap'
+    obsm: 'X_scVI', 'X_umap', '_scvi_extra_categorical_covs'
+    obsp: 'connectivities', 'distances'
+    layers: 'counts', 'scvi_normalized', None (.X)
+scvi_pools_2026_downsampled_20per.h5ad
+AnnData object with n_obs × n_vars = 96282 × 35929
+    obs: 'pool', 'assignment', 'celltype', 'seurat_clusters', 'Cohort', 'Entity', 'Fusion', 'Episode', 'PID', 'Location', 'barcode_sample', 'n_genes', 'n_genes_by_counts', 'total_counts', 'total_counts_mt', 'pct_counts_mt', '_scvi_batch', '_scvi_labels', 'leiden', 'X', 'final'
+    var: 'n_cells', 'mt', 'n_cells_by_counts', 'mean_counts', 'pct_dropout_by_counts', 'total_counts'
+    uns: '_scvi_manager_uuid', '_scvi_uuid', 'celltype_colors', 'final_colors', 'leiden', 'log1p', 'neighbors', 'umap'
+    obsm: 'X_scVI', 'X_umap', '_scvi_extra_categorical_covs'
+    obsp: 'connectivities', 'distances'
+    layers: 'counts', 'scvi_normalized', None (.X)
+
+==========================================================
+                   EXECUTION SUMMARY                      
+==========================================================
+Finished At:     2026-08-05 17:56:40
+Total Runtime:   0h 5m 51s
+Exit Status:     0 (SUCCESS)
+##########################################################
+##########################################################
+                    PBS JOB METADATA                      
+##########################################################
+Job Name:        downsample_20per
+Job ID:          1328034.b06x-pbs01
+Experiment:      experiment01
+Conda Env:       scanpy_env
+Python Script:   04_downsample.py
+Project Dir:     /omics/odcf/analysis/OE0290_projects/heroes-aya_pools/AG_Thongjuea/Code/10x_multiomics/Selina/project
+Started At:      2026-08-05 21:57:58
+Allocated Cores: 10
+==========================================================
+
+scvi_pools_2026_celltype_annotated.h5ad
+AnnData object with n_obs × n_vars = 481411 × 35929
+    obs: 'pool', 'assignment', 'celltype', 'seurat_clusters', 'Cohort', 'Entity', 'Fusion', 'Episode', 'PID', 'Location', 'barcode_sample', 'n_genes', 'n_genes_by_counts', 'total_counts', 'total_counts_mt', 'pct_counts_mt', '_scvi_batch', '_scvi_labels', 'leiden', 'X', 'final'
+    var: 'n_cells', 'mt', 'n_cells_by_counts', 'mean_counts', 'pct_dropout_by_counts', 'total_counts'
+    uns: '_scvi_manager_uuid', '_scvi_uuid', 'celltype_colors', 'final_colors', 'leiden', 'log1p', 'neighbors', 'umap'
+    obsm: 'X_scVI', 'X_umap', '_scvi_extra_categorical_covs'
+    obsp: 'connectivities', 'distances'
+    layers: 'counts', 'scvi_normalized', None (.X)
+scvi_pools_2026_downsampled_20per.h5ad
+AnnData object with n_obs × n_vars = 96282 × 35929
+    obs: 'pool', 'assignment', 'celltype', 'seurat_clusters', 'Cohort', 'Entity', 'Fusion', 'Episode', 'PID', 'Location', 'barcode_sample', 'n_genes', 'n_genes_by_counts', 'total_counts', 'total_counts_mt', 'pct_counts_mt', '_scvi_batch', '_scvi_labels', 'leiden', 'X', 'final'
+    var: 'n_cells', 'mt', 'n_cells_by_counts', 'mean_counts', 'pct_dropout_by_counts', 'total_counts'
+    uns: '_scvi_manager_uuid', '_scvi_uuid', 'celltype_colors', 'final_colors', 'leiden', 'log1p', 'neighbors', 'umap'
+    obsm: 'X_scVI', 'X_umap', '_scvi_extra_categorical_covs'
+    obsp: 'connectivities', 'distances'
+    layers: 'counts', 'scvi_normalized', None (.X)
+
+==========================================================
+                   EXECUTION SUMMARY                      
+==========================================================
+Finished At:     2026-08-05 22:03:41
+Total Runtime:   0h 5m 43s
+Exit Status:     0 (SUCCESS)
+##########################################################

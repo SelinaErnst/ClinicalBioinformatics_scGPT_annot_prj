@@ -1,3 +1,4 @@
 .devcontainer/*
 *.h5ad
 *.log
+*/results/*

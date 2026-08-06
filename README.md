@@ -2,6 +2,16 @@
 |-----|---------|
 |experiment01| Practicing with relevant python packages|
 
+# conda environment
+
+The standard conda environment used is `scanpy_env` as found in `/omics/odcf/analysis/OE0290_projects/heroes-aya_pools/AG_Thongjuea/Code/10x_multiomics/Selina/env`.  
+To update this environment, I'm using the environment.yml file.
+
+```bash
+my_dir='/omics/odcf/analysis/OE0290_projects/heroes-aya_pools/AG_Thongjuea/Code/10x_multiomics/Selina'
+conda env update -f $my_dir/project/environment.yml --prune
+```
+
 # job submission
 
 ### PBS 
@@ -9,8 +19,8 @@
 For the kitz cluster (PBS), I created a bash script that can outomatically run jobs and create log files.  
 To make it even easier to use, it is helpful to write a line to `~/.bashrc`
 
-```
-alias submit-job='/omics/odcf/analysis/OE0290_projects/heroes-aya_pools/AG_Thongjuea/Code/10x_multiomics/Selina/project/job-submission/submit-pbs-job.sh'
+```bash
+alias submit-job='$my_dir/project/job-submission/submit-pbs-job.sh'
 ```
 
 This way, you can use the command `submit-job` to automatically run scripts from specified folders.
@@ -37,5 +47,5 @@ Optional Cluster Resources:
 Here is an example:
 
 ```bash
-submit-job -m 400g -t 02:00:00 -c 10 -n scanpy_env -e experiment01 -j downsample_20per -s 04_downsample.py 
+submit-job -m 250g -t 02:00:00 -c 10 -n scanpy_env -e experiment01 -j downsample_20per -s 04_downsample.py 
 ```

@@ -9,11 +9,12 @@
 |03_practice_scvi.ipynb| |
 |04_downsample.py| downsample the big adata file for easier use |
 
-to run jobs use: 
-```
-submit-job -m 400g -t 02:00:00 -c 10 -n scanpy_env -e experiment01 -j downsample_20per -s 04_downsample.py
-```
 ## anndata
+
+The files storing anndata objects (.h5ad) are pretty big and therefore hard to process. To actually work with them, it is sometimes necessary to work with job submissions. To run jobs on python scripts use: 
+```bash
+submit-job -m 250g -t 02:00:00 -c 10 -n scanpy_env -e experiment01 -j downsample_20per -s 04_downsample.py
+```
 
 ### adata files
 - big adata: `data/scvi_pools_2026_celltype_annotated.h5ad`.  

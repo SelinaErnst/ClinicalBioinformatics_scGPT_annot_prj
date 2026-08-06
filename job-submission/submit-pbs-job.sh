@@ -8,12 +8,12 @@ PRJ_DIR="/omics/odcf/analysis/OE0290_projects/heroes-aya_pools/AG_Thongjuea/Code
 PBS_TEMPLATE="$PRJ_DIR/job-submission/job_submission_pbs.sh"
 DEFAULT_ENV="scanpy_env"
 
-DEFAULT_MEM="250g"
+DEFAULT_MEM="300g"
 DEFAULT_CORES="10"
-DEFAULT_TIME="02:00:00"
+DEFAULT_TIME="03:00:00"
 
 show_help() {
-    echo "Usage: $(basename "$0") -e <experiment> -s <script.py> [-n <env_name>] [-j <job_name>]"
+    echo "Usage: $(basename "$0") -e <experimentXY> -s <script.py> [-n <env_name>] [-j <job_name>]"
     echo ""
     echo "Required Parameters:"
     echo "  -e  Experiment folder name (EXP)"
@@ -68,13 +68,20 @@ done
 # ============================================================================ #
 
 if [[ -z "$exp_val" || -z "$script_val" ]]; then
-    echo "Error: Both -e (experiment) and -s (script) are required."
+    echo "❌ Error: Both -e (experiment) and -s (script) are required."
     show_help
 fi
 
+if [ ! -f "$PBS_TEMPLATE" ]; then
+    echo "❌ Error: PBS Template file not found at:"
+    echo "   $PBS_TEMPLATE"
+    echo "Aborting."
+    exit 1
+fi
+
 if [[ "$script_val" != *.py ]]; then
-    echo "Warning: The script '$script_val' does not end in '.py'. Is this correct?"
-    read -p "Continue anyway? (y/N): " confirm
+    echo "⚠️ Warning: The script '$script_val' does not end in '.py'. Is this correct?"
+    read -p "   Continue anyway? (y/N): " confirm
     [[ "$confirm" != [yY] ]] && exit 1
 fi
 
@@ -82,16 +89,15 @@ EXP_DIR="${prj_dir}/${exp_val}"
 if [ ! -d "$EXP_DIR" ]; then
     echo "Warning: Experiment directory does not exist:"
     echo "$EXP_DIR"
-    read -p "Continue anyway? (y/N): " confirm
-    [[ "$confirm" != [yY] ]] && exit 1
+    echo "Aborting."
+    exit 1
 fi
 
 # ============================================================================ #
 # JOB NAME                                                                     #
 # ============================================================================ #
-# If no job name is specified, strip '.py' from the script filename
+
 if [[ -z "$job_name" ]]; then
-    # Removes the path if a user types folder/script.py, then strips .py
     base_script=$(basename "$script_val")
     job_name="${base_script%.py}"
 fi
@@ -100,17 +106,18 @@ fi
 # SUBMIT JOB                                                                   #
 # ============================================================================ #
 
-echo "🚀 Submitting job '$job_name'..."
+echo "🚀 Submitting job '$job_name'"
 echo "   Resources: Cores=$cores_val | Mem=$mem_val | Time=$time_val"
+echo "📁 Log Directory: $EXP_DIR/logs"
 
-job_id=$(qsub -N "$job_name" \
-     -l mem="$mem_val" \
-     -l nodes=1:ppn="$cores_val" \
-     -l walltime="$time_val" \
-     -v EXP="$exp_val",ENV="$env_val",SCRIPT="$script_val",PRJ_DIR="$prj_dir" \
-     "$PBS_TEMPLATE")
+# job_id=$(qsub -N "$job_name" \
+#      -l mem="$mem_val" \
+#      -l nodes=1:ppn="$cores_val" \
+#      -l walltime="$time_val" \
+#      -v EXP="$exp_val",ENV="$env_val",SCR="$script_val",DIR="$prj_dir",CORES="$cores_val",MEM="$mem_val",TIME="$time_val" \
+#      "$PBS_TEMPLATE")
 
-clean_id=$(echo "$job_id" | grep -oE '^[0-9]+')
+# clean_id=$(echo "$job_id" | grep -oE '^[0-9]+')
 echo "✅ Success! Job ID: $clean_id is now in the queue."
 
 qstat -a -u "$USER"

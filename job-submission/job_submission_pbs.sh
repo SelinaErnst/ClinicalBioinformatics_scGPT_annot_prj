@@ -13,9 +13,14 @@ START_SECONDS=$SECONDS
 # ============================================================================ #
 
 EXP="${EXP:?Error: You must provide the experiment using -v EXP=experimentXY}"
-ENV="${ENV:?Error: You must provide the conda env using -v EXP=env_name}"
 SCR="${SCR:?Error: You must provide a script name using -v SCR=your_script.py}"
-DIR="${DIR:?Errot: You must provide a project directory using -v DIR=/path/to/project}"
+
+[ -z "$ENV" ] && ENV="scanpy_env"
+[ -z "$DIR" ] && DIR="/omics/odcf/analysis/OE0290_projects/heroes-aya_pools/AG_Thongjuea/Code/10x_multiomics/Selina/project"
+
+[ -z "$CORES" ] && CORES=$(grep -E '^#PBS -l nodes=' "$0" | grep -oE 'ppn=[0-9]+' | cut -d= -f2)
+[ -z "$MEM" ]   && MEM=$(grep -E '^#PBS -l mem=' "$0" | cut -d= -f2)
+[ -z "$TIME" ]  && TIME=$(grep -E '^#PBS -l walltime=' "$0" | cut -d= -f2)
 
 # ============================================================================ #
 # DIRECTORIES                                                                  #
@@ -32,20 +37,21 @@ FILE_LOG="${LOG_DIR}/${PBS_JOBNAME}.out"
 # HEADER                                                                       #
 # ============================================================================ #
 
+mkdir "$LOG_DIR"
 {
     echo "##########################################################"
     echo "                    PBS JOB METADATA                      "
     echo "##########################################################"
     echo "Job Name:        ${PBS_JOBNAME}"
     echo "Job ID:          ${PBS_JOBID}"
-    echo "Experiment:      ${EXP}"
-    echo "Conda Env:       ${ENV}"
     echo "Python Script:   ${SCR}"
+    echo "Conda Env:       ${ENV}"
     echo "Project Dir:     ${DIR}"
+    echo "Experiment:      ${EXP}"
     echo "Started At:      ${START_TIME}"
-    echo "Allocated Cores: ${PBS_NUM_PPN:-10}"
-    echo "Requested Mem:   ${PBS_RESC_MEM:-250g}"
-    echo "Requested Time:  ${PBS_RESC_WALLTIME:-02:00:00}"
+    echo "Allocated Cores: ${CORES}"
+    echo "Requested Mem:   ${MEM}"
+    echo "Requested Time:  ${TIME}"
     echo "=========================================================="
     echo ""
 } >> "$FILE_LOG"
@@ -61,7 +67,6 @@ module load Miniconda3/4.5.11
 
 conda activate "$ENV"
 
-mkdir "$LOG_DIR"
 python -u "$SCR" >> "$FILE_LOG" 2> "$FILE_ERR"
 
 # ============================================================================ #

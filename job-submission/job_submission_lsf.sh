@@ -1,12 +1,11 @@
 #!/bin/bash
-#BSUB -J test
-#BSUB -R "rusage[mem=100GB]"
+#BSUB -J test_lsf
+#BSUB -q long
 #BSUB -n 10
-#BSUB -W 2:00
-#BSUB -o out_%J.out
-#BSUB -e out_%J.err
-
+#BSUB -R "rusage[mem=150GB] span[hosts=1]"
+#BSUB -W 02:00
+#BSUB -o test_lsf.out
 source ~/.bashrc
-cd /omics/odcf/analysis/OE0290_projects/heroes-aya_pools/AG_Thongjuea/Code/10x_multiomics/Selina/project/experiment01/scripts/
+cd /omics/odcf/analysis/OE0290_projects/heroes-aya_pools/AG_Thongjuea/Code/10x_multiomics/Selina/project/experiment01-practice/scripts/
 conda activate scanpy_env
-python big_anndata.py
+python 05_test_job.py

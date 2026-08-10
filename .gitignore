@@ -1,3 +1,5 @@
+*.pyc
+
 .devcontainer/*
 *.h5ad
 *.log
@@ -5,3 +7,5 @@
 */logs/*
 *.out
 *.err
+**/.ipynb_checkpoints/*
+*/*/.ipynb_checkpoints/*

@@ -12,7 +12,7 @@ START_SECONDS=$SECONDS
 # PARAMETERS                                                                   #
 # ============================================================================ #
 
-EXP="${EXP:?Error: You must provide the experiment using -v EXP=experimentXY}"
+EXP="${EXP:?Error: You must provide the experiment using -v EXP=experiment}"
 SCR="${SCR:?Error: You must provide a script name using -v SCR=your_script.py}"
 
 [ -z "$ENV" ] && ENV="scanpy_env"
@@ -37,7 +37,7 @@ FILE_LOG="${LOG_DIR}/${PBS_JOBNAME}.out"
 # HEADER                                                                       #
 # ============================================================================ #
 
-mkdir "$LOG_DIR"
+mkdir -p "$LOG_DIR"
 {
     echo "##########################################################"
     echo "                    PBS JOB METADATA                      "

@@ -5,7 +5,7 @@
 # ============================================================================ #
 
 PRJ_DIR="/omics/odcf/analysis/OE0290_projects/heroes-aya_pools/AG_Thongjuea/Code/10x_multiomics/Selina/project"
-PBS_TEMPLATE="$PRJ_DIR/job-submission/job_submission_pbs.sh"
+PBS_TEMPLATE="$PRJ_DIR/job-submission/pbs_submit_job.sh"
 DEFAULT_ENV="scanpy_env"
 
 DEFAULT_MEM="300g"
@@ -112,6 +112,8 @@ if [ "$interactive_mode" = true ]; then
         time_val="${input_time:-$DEFAULT_TIME}"
     fi
 
+    echo ""
+    echo "submit-job -m $mem_val -c $cores_val -t $time_val -n $env_val -e $exp_val -j $job_name -s $script_val -p $prj_dir"
     echo "=========================================================="
 fi
 

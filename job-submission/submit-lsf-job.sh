@@ -5,7 +5,6 @@
 # ============================================================================ #
 
 PRJ_DIR="/omics/odcf/analysis/OE0290_projects/heroes-aya_pools/AG_Thongjuea/Code/10x_multiomics/Selina/project"
-LSF_TEMPLATE="$PRJ_DIR/job-submission/job_submission_lsf_tmp.sh"
 DEFAULT_ENV="scanpy_env"
 
 DEFAULT_MEM="150GB"
@@ -111,7 +110,8 @@ if [ "$interactive_mode" = true ]; then
         read -p "⏳ Enter Walltime [$DEFAULT_TIME]: " input_time
         time_val="${input_time:-$DEFAULT_TIME}"
     fi
-
+    echo ""
+    echo "submit-job -e $exp_val -s $script_val -n $env_val -j $job_name -m $mem_val -c $cores_val -t $time_val -p $prj_dir"
     echo "=========================================================="
 fi
 
@@ -158,7 +158,8 @@ fi
 # ---------------------------------------------------------------------------- #
 
 EXP_DIR="${prj_dir}/${exp_val}"
-LOG_DIR="${EXP_DIR}/logs"
+JOB_DIR="${EXP_DIR}/jobs"
+LOG_DIR="${JOB_DIR}/logs"
 SCR_DIR="${EXP_DIR}/scripts"
 
 if [ ! -d "$EXP_DIR" ]; then
@@ -194,8 +195,9 @@ fi
 # ============================================================================ #
 
 mkdir -p "$LOG_DIR"
+SUBMIT_SCRIPT="$JOB_DIR/lsf_submit_$job_name.sh"
 
-cat << EOF > "$LSF_TEMPLATE"
+cat << EOF > "$SUBMIT_SCRIPT"
 #!/bin/bash
 #BSUB -J $job_name
 #BSUB -q long
@@ -203,12 +205,12 @@ cat << EOF > "$LSF_TEMPLATE"
 #BSUB -R "rusage[mem=$mem_val] span[hosts=1]"
 #BSUB -W $time_val
 #BSUB -o $LOG_DIR/${job_name}.out
+#BSUB -e $LOG_DIR/${job_name}.err
 START_TIME=\$(date +%s)
 source ~/.bashrc
 cd $SCR_DIR
 conda activate $env_val
 python $script_val
-rm -f $LSF_TEMPLATE
 END_TIME=\$(date +%s)
 DURATION=\$((\$END_TIME - \$START_TIME))
 printf "\n"; printf "%.0s#" {1..58}; printf "\n"
@@ -216,11 +218,33 @@ printf "⏱️ Total Runtime: %02d:%02d:%02d\n" \$((\$DURATION/3600)) \$((\$DURA
 printf "%.0s#" {1..58}; printf "\n\n"
 EOF
 
-echo "🚀 Submitting job '$job_name'"
-echo "   Resources: Cores=$cores_val | Mem=$mem_val | Time=$time_val"
+# ============================================================================ #
+# FINAL PRE-FLIGHT VERIFICATION PROMPT                                         #
+# ============================================================================ #
 
-chmod +x $LSF_TEMPLATE
-submit_output=$(bsub < $LSF_TEMPLATE)
+echo ""
+echo "📋 Ready to submit job '$job_name' with configurations:"
+echo "   - Cores:    $cores_val"
+echo "   - Memory:   $mem_val"
+echo "   - Time:     $time_val"
+echo "   - Script:   $SUBMIT_SCRIPT"
+echo ""
+
+read -p "🚀 Proceed with submission to the cluster queue? (y/N): " run_confirm
+
+if [[ "$run_confirm" != [yY] && "$run_confirm" != [yY][eE][sS] ]]; then
+    echo "🛑 Submission aborted by user. The cluster queue was not contacted."
+    echo "💾 The generated script has been saved for manual modification at:"
+    echo "   $SUBMIT_SCRIPT"
+    exit 0
+fi
+
+# ============================================================================ #
+# EXECUTE SUBMISSION                                                           #
+# ============================================================================ #
+
+chmod +x $SUBMIT_SCRIPT
+submit_output=$(bsub < $SUBMIT_SCRIPT)
 
 clean_id=$(echo "$submit_output" | grep -oE 'Job <[0-9]+>' | grep -oE '[0-9]+')
 
@@ -228,3 +252,20 @@ echo "✅ Success! Job ID: $clean_id is now in the queue."
 echo 
 echo "📁 Log Directory: $LOG_DIR"
 echo "📄 Log File: $job_name.out"
+
+
+# ============================================================================ #
+# KEEP SCRIPT PROMPT                                                           #
+# ============================================================================ #
+
+echo ""
+# Ask user if they want to retain the file before we construct the pathways
+read -p "❓ Delete the generated submission script file? (y/N): " del_confirm
+
+
+# Evaluate retention decision
+if [[ "$del_confirm" == [yY] || "$del_confirm" == [yY][eE][sS] ]]; then
+    rm -f "$SUBMIT_SCRIPT"
+else
+    echo "📄 Saved Submission File: ${SUBMIT_SCRIPT}"
+fi

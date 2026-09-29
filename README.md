@@ -1,10 +1,9 @@
 |Folder | Comments|
 |-----|---------|
-|experiment01-practice| Practicing with relevant python packages|
-|experiment02-PBMC| Preparing PBMC3k dataset for further analysis|
-|experiment03-scGPT| scGPT repository and tutorials|
-|experiment04-annotation| annotation of datasets with scGPT|
-
+|[experiment01-practice](experiment01-practice/README.md)| Practicing with relevant python packages|
+|[experiment02-PBMC](experiment02-PBMC/README.md)| Preparing PBMC3k dataset for further analysis|
+|[experiment03-scGPT](experiment03-scGPT/README.md)| scGPT repository and tutorials|
+|[experiment04-annotation](experiment04-annotation/README.md)| annotation of datasets with scGPT|
 
 # conda environments
 

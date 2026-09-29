@@ -24,31 +24,3 @@ The conda environment used for scGPT analysis is called `scgpt_env` and is locat
 # adata
 
 I work with scRNA-seq data. 
-
-### 1. Preprocessing
-
-```python
-adata.var["mt"] = adata.var_names.str.startswith("MT-")
-scanpy.pp.calculate_qc_metrics(
-    adata, qc_vars=["mt"], inplace=True, log1p=False
-
-scanpy.pp.normalize_total(adata,target_sum=1e4)
-scanpy.pp.log1p(adata)
-scanpy.pp.highly_variable_genes(adata,flavor='seurat',n_bins=20,n_top_genes=None)
-```
-
-### 2. Dimensionionality Reduction
-
-```python
-scanpy.tl.pca(adata)
-scanpy.pp.neighbors(adata, n_neighbors=15, use_rep='X_PCA')
-scanpy.tl.umap(adata)
-```
-
-### 3. Clustering
-
-```python
-scanpy.tl.leiden(adata)
-```
-
-[single-cell best practices](https://www.sc-best-practices.org/preprocessing_visualization/normalization.html)

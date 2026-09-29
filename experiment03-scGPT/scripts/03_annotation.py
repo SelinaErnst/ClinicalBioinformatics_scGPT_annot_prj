@@ -2,52 +2,58 @@ import copy
 import gc
 import json
 import os
-from pathlib import Path
+
+# from . import asyn
+import pickle
 import shutil
 import sys
 import time
 import traceback
-from typing import List, Tuple, Dict, Union, Optional
 import warnings
+from pathlib import Path
+from typing import Dict, List, Optional, Tuple, Union
+
+import matplotlib.pyplot as plt
+import numpy as np
 import pandas as pd
-# from . import asyn
-import pickle
-import torch
-from anndata import AnnData
 import scanpy as sc
 import scvi
 import seaborn as sns
-import numpy as np
+import torch
 import wandb
+from anndata import AnnData
 from scipy.sparse import issparse
-import matplotlib.pyplot as plt
+from sklearn.metrics import (
+    adjusted_rand_score,
+    confusion_matrix,
+    normalized_mutual_info_score,
+)
+from sklearn.model_selection import train_test_split
 from torch import nn
 from torch.nn import functional as F
-from torch.utils.data import Dataset, DataLoader
-from sklearn.model_selection import train_test_split
-from sklearn.metrics import adjusted_rand_score, normalized_mutual_info_score
-from torchtext.vocab import Vocab
+from torch.utils.data import DataLoader, Dataset
 from torchtext._torchtext import (
     Vocab as VocabPybind,
 )
-from sklearn.metrics import confusion_matrix
+from torchtext.vocab import Vocab
 
 sys.path.insert(0, "../")
 import scgpt as scg
-from scgpt.model import TransformerModel, AdversarialDiscriminator
-from scgpt.tokenizer import tokenize_and_pad_batch, random_mask_value
+from scgpt import SubsetsBatchSampler
 from scgpt.loss import (
+    criterion_neg_log_bernoulli,
     masked_mse_loss,
     masked_relative_error,
-    criterion_neg_log_bernoulli,
 )
-from scgpt.tokenizer.gene_tokenizer import GeneVocab
+from scgpt.model import AdversarialDiscriminator, TransformerModel
 from scgpt.preprocess import Preprocessor
-from scgpt import SubsetsBatchSampler
-from scgpt.utils import set_seed, category_str2int, eval_scib_metrics
+from scgpt.tokenizer import random_mask_value, tokenize_and_pad_batch
+from scgpt.tokenizer.gene_tokenizer import GeneVocab
+from scgpt.utils import category_str2int, eval_scib_metrics, set_seed
 
-import utils
-workspace,experiment=utils.workspace()
+import myutils
+
+workspace,experiment=myutils.workspace()
 experiment = workspace / "experiment03-scGPT"
 
 sc.set_figure_params(figsize=(6, 6))
@@ -70,7 +76,7 @@ hyperparameter_defaults = dict(
     ecs_thres=0.0, # Elastic cell similarity objective, 0.0 to 1.0, 0.0 to disable
     dab_weight=0.0,
     lr=1e-4,
-    batch_size=64, # ! SELINA
+    batch_size=32, # ! SELINA
     layer_size=128,
     nlayers=4,  # number of nn.TransformerEncoderLayer in nn.TransformerEncoder
     nhead=4,  # number of heads in nn.MultiheadAttention
@@ -479,14 +485,14 @@ device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
 ntokens = len(vocab)  # size of vocabulary
 
 # ! SELINA ------------------------------------------------------------------- #
-from helper.save_config import experiment_config
+
 logger.info(f"CUDA: {torch.cuda.is_available()}")
 logger.info(f"TORCH DEVICE: {device}")
 logger.info(f"CONFIG: {config}")
 logger.info(f"PyTorch CPU threads: {torch.get_num_threads()}")
 logger.info(f"PyTorch interop threads: {torch.get_num_interop_threads()}")
 
-experiment_config(
+myutils.experiment_config(
     path=save_dir/'args.json',
 
     seed=config.seed,
@@ -611,7 +617,7 @@ if config.load_model is not None:
         model_dict.update(pretrained_dict)
         model.load_state_dict(model_dict)
 
-pre_freeze_param_count = sum(dict((p.data_ptr(), p.numel()) for p in model.parameters() if p.requires_grad).values())
+pre_freeze_param_count = sum({p.data_ptr(): p.numel() for p in model.parameters() if p.requires_grad}.values())
 
 # Freeze all pre-decoder weights
 for name, para in model.named_parameters():
@@ -622,7 +628,7 @@ for name, para in model.named_parameters():
         print(f"freezing weights for: {name}")
         para.requires_grad = False
 
-post_freeze_param_count = sum(dict((p.data_ptr(), p.numel()) for p in model.parameters() if p.requires_grad).values())
+post_freeze_param_count = sum({p.data_ptr(): p.numel() for p in model.parameters() if p.requires_grad}.values())
 
 logger.info(f"Total Pre freeze Params {(pre_freeze_param_count )}")
 logger.info(f"Total Post freeze Params {(post_freeze_param_count )}")
@@ -693,7 +699,6 @@ def train(model: nn.Module, loader: DataLoader) -> None:
 
     num_batches = len(loader)
     for batch, batch_data in enumerate(loader):
-        print(f"GOT BATCH {batch}", flush=True, end=", ") # ! SELINA
 
         input_gene_ids = batch_data["gene_ids"].to(device)
         input_values = batch_data["values"].to(device)
@@ -1076,7 +1081,7 @@ def test(model: nn.Module, adata: DataLoader) -> float:
     )
 
     # compute accuracy, precision, recall, f1
-    from sklearn.metrics import accuracy_score, precision_score, recall_score, f1_score
+    from sklearn.metrics import accuracy_score, f1_score, precision_score, recall_score
 
     accuracy = accuracy_score(celltypes_labels, predictions)
     precision = precision_score(celltypes_labels, predictions, average="macro")
@@ -1135,9 +1140,8 @@ results["test/cell_umap"] = wandb.Image(
 wandb.log(results)
 
 
-from sklearn.metrics import confusion_matrix
 celltypes = list(celltypes)
-for i in set([id2type[p] for p in predictions]):
+for i in {id2type[p] for p in predictions}:
     if i not in celltypes:
         celltypes.remove(i)
 cm = confusion_matrix(labels, predictions)
@@ -1150,7 +1154,7 @@ plt.savefig(save_dir / "confusion_matrix.png", dpi=300)
 
 results["test/confusion_matrix"] = wandb.Image(
     str(save_dir / "confusion_matrix.png"),
-    caption=f"confusion matrix",
+    caption="confusion matrix",
 )
 
 torch.save(best_model.state_dict(), save_dir / "model.pt")

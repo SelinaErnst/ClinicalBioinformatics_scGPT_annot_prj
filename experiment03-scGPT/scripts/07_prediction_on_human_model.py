@@ -9,7 +9,6 @@ import numpy as np
 from anndata import AnnData
 import anndata as ad
 import scanpy as sc
-import utils
 import pickle
 import json
 from scipy.sparse import issparse
@@ -29,11 +28,13 @@ from scgpt.tokenizer import tokenize_and_pad_batch, random_mask_value
 
 import wandb
 
+import myutils
+
 # ============================================================================ #
 # PATHS                                                                        #
 # ============================================================================ #
 
-workspace,experiment=utils.workspace()
+workspace,experiment=myutils.workspace()
 experiment = workspace / "experiment03-scGPT"
 
 model_dir = experiment / "scGPT/save/scGPT_human"

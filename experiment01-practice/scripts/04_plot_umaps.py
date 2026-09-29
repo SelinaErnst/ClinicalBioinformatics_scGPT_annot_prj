@@ -1,8 +1,8 @@
 import sys
 
-import utils
+import myutils
 
-workspace,experiment=utils.workspace()
+workspace,experiment=myutils.workspace()
 
 sys.path = [p for p in sys.path if "positron-python" not in p]
 import anndata as ad

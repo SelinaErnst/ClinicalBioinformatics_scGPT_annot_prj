@@ -9,7 +9,7 @@ import numpy as np
 from anndata import AnnData
 import anndata as ad
 import scanpy as sc
-import utils
+import myutils
 import json
 from scipy.sparse import issparse
 from typing import List, Tuple, Dict, Union, Optional
@@ -32,7 +32,7 @@ import wandb
 # PATHS                                                                        #
 # ============================================================================ #
 
-workspace,experiment=utils.workspace()
+workspace,experiment=myutils.workspace()
 experiment = workspace / "experiment03-scGPT"
 
 run = 'ms-Sep03-14-24'

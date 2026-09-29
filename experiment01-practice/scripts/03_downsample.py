@@ -6,9 +6,9 @@ import matplotlib.pyplot as plt
 import numpy as np
 import pandas as pd
 
-import utils
+import myutils
 
-workspace,experiment=utils.workspace()
+workspace,experiment=myutils.workspace()
 
 # workspace = next(p for p in Path.cwd().resolve().parents if p.name.lower() == "selina")/"project"
 # experiment = next(p for p in Path(__file__).resolve().parents if "experiment" in p.name.lower())

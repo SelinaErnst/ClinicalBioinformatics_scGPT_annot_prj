@@ -4,99 +4,100 @@
 
 import os
 import warnings
+
 warnings.filterwarnings('ignore')
-import numpy as np
-from anndata import AnnData
-import anndata as ad
-import scanpy as sc
-import utils
-import pickle
 import json
-from scipy.sparse import issparse
-from typing import List, Tuple, Dict, Union, Optional
+import pickle
 import time
+from typing import Dict
 
-import torch
-from torch import nn
-from torch.utils.data import Dataset, DataLoader
-
+import matplotlib.pyplot as plt
+import numpy as np
+import pandas as pd
+import scanpy as sc
 import scgpt as scg
+import seaborn as sns
+import torch
+import wandb
 from scgpt.model import TransformerModel
+from scgpt.preprocess import Preprocessor
+from scgpt.tokenizer import random_mask_value, tokenize_and_pad_batch
 from scgpt.tokenizer.gene_tokenizer import GeneVocab
 from scgpt.utils import set_seed
-from scgpt.preprocess import Preprocessor
-from scgpt.tokenizer import tokenize_and_pad_batch, random_mask_value
+from scipy.sparse import issparse
+from torch import nn
+from torch.utils.data import DataLoader, Dataset
 
-import wandb
+import myutils
 
 # ============================================================================ #
 # PATHS                                                                        #
 # ============================================================================ #
 
-workspace,experiment=utils.workspace()
-experiment = workspace / "experiment03-scGPT"
+workspace,experiment=myutils.workspace()
+experiment = workspace / "experiment04-annotation"
 
-model_dir = experiment / "scGPT/save/scGPT_human"
+data_dir = workspace/ "experiment02-PBMC/results/scanpy_workflow"
+model_dir = workspace / "experiment03-scGPT/scGPT/save/scGPT_human"
+
 model_file = model_dir/ 'best_model.pt'
 model_config_file = model_dir / "args.json"
 vocab_file = model_dir / "vocab.json"
-data_dir = workspace/ "experiment02-PBMC/results/scanpy_workflow"
-
 
 # ============================================================================ #
 # CONFIG                                                                       #
 # ============================================================================ #
 
-hyperparameter_defaults = dict(
-    seed=0,
-    dataset_name="pbmc3k",
-    do_train=True,
-    mask_ratio=0.0,
-    epochs=10,
-    n_bins=51,
-    MVC=False, # Masked value prediction for cell embedding
-    ecs_threshold=0.0, # Elastic cell similarity objective, 0.0 to 1.0, 0.0 to disable
-    dab_weight=0.0,
-    lr=1e-4,
-    batch_size=32, # ! SELINA
-    layer_size=128,
-    nlayers=4,  # number of nn.TransformerEncoderLayer in nn.TransformerEncoder
-    nhead=4,  # number of heads in nn.MultiheadAttention
-    dropout=0.2,  # dropout probability
-    schedule_ratio=0.9,  # ratio of epochs for learning rate schedule
-    save_eval_interval=5,
-    fast_transformer=True,
-    pre_norm=False,
-    amp=True,  # Automatic Mixed Precision
-    include_zero_gene = False,
-    freeze = False, #freeze
-    DSBN = False,  # Domain-spec batchnorm
-    load_model= experiment / "scGPT/save/scGPT_human", # ! SELINA 
+hyperparameter_defaults = {
+    'seed': 0,
+    'dataset_name': "pbmc3k",
+    'do_train': True,
+    'mask_ratio': 0.0,
+    'epochs': 10,
+    'n_bins': 51,
+    'MVC': False, # Masked value prediction for cell embedding
+    'ecs_threshold': 0.0, # Elastic cell similarity objective, 0.0 to 1.0, 0.0 to disable
+    'dab_weight': 0.0,
+    'lr': 1e-4,
+    'batch_size': 32, # ! SELINA
+    'layer_size': 128,
+    'nlayers': 4,  # number of nn.TransformerEncoderLayer in nn.TransformerEncoder
+    'nhead': 4,  # number of heads in nn.MultiheadAttention
+    'dropout': 0.2,  # dropout probability
+    'schedule_ratio': 0.9,  # ratio of epochs for learning rate schedule
+    'save_eval_interval': 5,
+    'fast_transformer': True,
+    'pre_norm': False,
+    'amp': True,  # Automatic Mixed Precision
+    'include_zero_gene': False,
+    'freeze': False, #freeze
+    'DSBN': False,  # Domain-spec batchnorm
+    'load_model': experiment / "scGPT/save/scGPT_human", # ! SELINA 
 
     # !SELINA -------------------------------------------------------------------- #
     # settings for input and preprocessing
-    pad_token = "<pad>",
-    special_tokens = ["<pad>", "<cls>", "<eoc>"],
-    data_is_raw = False,
-    filter_gene_by_counts = False,
-    filter_cell_by_counts = False,
-    max_seq_len = 3001,
+    'pad_token': "<pad>",
+    'special_tokens': ["<pad>", "<cls>", "<eoc>"],
+    'data_is_raw': False,
+    'filter_gene_by_counts': False,
+    'filter_cell_by_counts': False,
+    'max_seq_len': 3001,
     # input/output representation
-    input_style = 'binned',
+    'input_style': 'binned',
     # settings for training
-    input_emb_style = "continuous",
-    cell_emb_style = "cls",
-    mvc_decoder_style = "inner product",
-    INPUT_BATCH_LABELS = False,
-    CLS = True,
-    DAB = False, 
-    MLM = False,
+    'input_emb_style': "continuous",
+    'cell_emb_style': "cls",
+    'mvc_decoder_style': "inner product",
+    'INPUT_BATCH_LABELS': False,
+    'CLS': True,
+    'DAB': False, 
+    'MLM': False,
     # settings for optimizer
-    eval_batch_size=32, 
+    'eval_batch_size': 32, 
     # settings for the model
-    fast_transformer_backend = "flash",
+    'fast_transformer_backend': "flash",
     # !SELINA -------------------------------------------------------------------- #
-)
+}
 
 with open(model_config_file, "r") as f:
     model_configs = json.load(f)
@@ -126,7 +127,7 @@ else:
     pad_value = -2
     n_input_bins = n_bins
 
-save_dir = experiment/f"predictions/wo-fine-tuning/pred_{config.dataset_name}-{time.strftime('%b%d-%H-%M')}/"
+save_dir = experiment/f"results/pred-wo-fine-tuning/pred_{config.dataset_name}-{time.strftime('%b%d-%H-%M')}/"
 # ADDITIONAL ----------------------------------------------------------------- #
 
 set_seed(0)
@@ -155,7 +156,7 @@ for s in config.special_tokens:
 adata = sc.read(data_dir / "pbmc3k_scanpy_annotated_retro.h5ad")
 # edit categorie types and index
 adata.obs["celltype"] = adata.obs["celltype"].astype("category")
-adata.obs["batch_id"]  = adata.obs["str_batch"] = "1"          
+adata.obs["batch_id"] = adata.obs["str_batch"] = "0"          
 adata_raw = adata.copy()
 
 # batch ids to int
@@ -192,7 +193,11 @@ preprocessor = Preprocessor(
     result_binned_key="X_binned",  # the key in adata.layers to store the binned data
 )
 
+adata_test = adata[adata.obs["str_batch"] == "1"]
+adata = adata[adata.obs["str_batch"] == "0"]
+
 preprocessor(adata, batch_key=None)
+preprocessor(adata_test, batch_key=None)
 
 genes = adata.var["gene_name"].tolist() 
 gene_ids = np.array(vocab(genes), dtype=int) 
@@ -293,7 +298,7 @@ def evaluate(model: nn.Module, loader: DataLoader, config, return_raw: bool = Fa
         for batch_data in loader:
             input_gene_ids = batch_data["gene_ids"].to(device)
             input_values = batch_data["values"].to(device)
-            target_values = batch_data["target_values"].to(device)
+            # target_values = batch_data["target_values"].to(device)
             batch_labels = batch_data["batch_labels"].to(device)
             celltype_labels = batch_data["celltype_labels"].to(device)
 
@@ -398,7 +403,7 @@ def test(model: nn.Module, adata: DataLoader, config) -> float:
     )
 
     # compute accuracy, precision, recall, f1
-    from sklearn.metrics import accuracy_score, precision_score, recall_score, f1_score
+    from sklearn.metrics import accuracy_score, f1_score, precision_score, recall_score
 
     accuracy = accuracy_score(celltypes_labels, predictions)
     precision = precision_score(celltypes_labels, predictions, average="macro")
@@ -424,10 +429,10 @@ def test(model: nn.Module, adata: DataLoader, config) -> float:
 # PREDICTION                                                                   #
 # ============================================================================ #
 
-predictions, labels, results = test(model, adata_test, config)
+predictions, labels, results = test(model, adata, config)
 
-adata_test_raw.obs["predictions"] = [id2type[p] for p in predictions]
-adata_test_raw.write(save_dir / f"pred_{config.dataset_name}.h5ad")
+adata_raw.obs["predictions"] = [id2type[p] for p in predictions]
+adata_raw.write(save_dir / f"pred_{config.dataset_name}.h5ad")
 
 save_dict = {
     "predictions": predictions,
@@ -438,3 +443,45 @@ save_dict = {
 
 with open(save_dir / "results.pkl", "wb") as f:
     pickle.dump(save_dict, f)
+
+# plot
+palette_ = plt.rcParams["axes.prop_cycle"].by_key()["color"] 
+palette_ = plt.rcParams["axes.prop_cycle"].by_key()["color"] + plt.rcParams["axes.prop_cycle"].by_key()["color"] + plt.rcParams["axes.prop_cycle"].by_key()["color"]
+palette_ = {c: palette_[i] for i, c in enumerate(celltypes)}
+
+with plt.rc_context({"figure.figsize": (6, 4), "figure.dpi": (300)}):
+    sc.pl.umap(
+        adata_raw,
+        color=["celltype", "predictions"],
+        palette=palette_,
+        show=False,
+        ncols=1,
+    )
+    plt.savefig(save_dir / "results.png", dpi=300, bbox_inches="tight")
+
+results["test/cell_umap"] = wandb.Image(
+    str(save_dir / "results.png"),
+    caption=f"predictions macro f1 {results['test/macro_f1']:.3f}",
+)
+
+from sklearn.metrics import confusion_matrix
+
+celltypes = list(celltypes)
+for i in {id2type[p] for p in predictions}:
+    if i not in celltypes:
+        celltypes.remove(i)
+cm = confusion_matrix(labels, predictions)
+cm = cm.astype("float") / cm.sum(axis=1)[:, np.newaxis]
+cm = pd.DataFrame(cm, index=celltypes[:cm.shape[0]], columns=celltypes[:cm.shape[1]])
+plt.figure(figsize=(10, 10))
+plt.tight_layout()
+sns.heatmap(cm, annot=True, fmt=".1f", cmap="Blues")
+plt.tight_layout()
+plt.savefig(save_dir / "confusion_matrix.png", dpi=300, bbox_inches="tight")
+
+results["test/confusion_matrix"] = wandb.Image(
+    str(save_dir / "confusion_matrix.png"),
+    caption="confusion matrix",
+)
+
+wandb.log(results)

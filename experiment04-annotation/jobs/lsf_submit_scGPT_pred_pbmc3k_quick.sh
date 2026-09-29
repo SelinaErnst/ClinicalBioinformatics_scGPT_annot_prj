@@ -2,7 +2,7 @@
 #BSUB -J scGPT_pred_pbmc3k_quick
 #BSUB -q long
 #BSUB -n 20
-#BSUB -R "rusage[mem=10GB] span[hosts=1]"
+#BSUB -R "rusage[mem=100GB] span[hosts=1]"
 #BSUB -o /omics/odcf/analysis/OE0290_projects/heroes-aya_pools/AG_Thongjuea/Code/10x_multiomics/Selina/project/experiment04-annotation/jobs/logs/scGPT_pred_pbmc3k_quick.out
 #BSUB -e /omics/odcf/analysis/OE0290_projects/heroes-aya_pools/AG_Thongjuea/Code/10x_multiomics/Selina/project/experiment04-annotation/jobs/logs/scGPT_pred_pbmc3k_quick.err
 START_TIME=$(date +%s)

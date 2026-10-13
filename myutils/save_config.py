@@ -1,8 +1,10 @@
 
+import json
 from pathlib import Path
 from typing import Any
-import json
+
 import numpy as np
+
 
 def make_json_serializable(obj: Any):
     """Convert common Python/NumPy/PyTorch objects into JSON-safe values."""
@@ -43,9 +45,6 @@ def save_json(data: dict, path: Path):
         )
 
 
-# OS.ENVIRON ----------------------------------------------------------------- #
-# KMP_WARNINGS
-# WANDB_MODE
 # ---------------------------------------------------------------------------- #
 # ! ADV: script [bool]
 # ! adv_E_delay_epochs: script [int]
@@ -140,6 +139,7 @@ def save_json(data: dict, path: Path):
 # vocab_path: args [str]
 # warmup_ratio_or_step: args [float]
 # world_size: args [int]
+# ---------------------------------------------------------------------------- #
 
 def experiment_config(path : Path | None =None, **kwargs):
     if path!=None and path.parent.exists(): save_json(kwargs,path)

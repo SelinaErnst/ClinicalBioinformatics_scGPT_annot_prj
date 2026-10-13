@@ -278,7 +278,6 @@ preprocessor = Preprocessor(
     result_binned_key="X_binned",  # the key in adata.layers to store the binned data
 )
 
-
 adata_test = adata[adata.obs["str_batch"] == "1"]
 adata = adata[adata.obs["str_batch"] == "0"]
 
@@ -488,7 +487,6 @@ ntokens = len(vocab)  # size of vocabulary
 
 logger.info(f"CUDA: {torch.cuda.is_available()}")
 logger.info(f"TORCH DEVICE: {device}")
-logger.info(f"CONFIG: {config}")
 logger.info(f"PyTorch CPU threads: {torch.get_num_threads()}")
 logger.info(f"PyTorch interop threads: {torch.get_num_interop_threads()}")
 

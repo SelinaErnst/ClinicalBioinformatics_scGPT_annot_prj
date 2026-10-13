@@ -48,6 +48,7 @@ vocab_file = model_dir / "vocab.json"
 # CONFIG                                                                       #
 # ============================================================================ #
 
+# WORKFLOW CONFIG ------------------------------------------------------------ #
 hyperparameter_defaults = {
     'seed': 0,
     'dataset_name': "pbmc3k",
@@ -74,7 +75,6 @@ hyperparameter_defaults = {
     'DSBN': False,  # Domain-spec batchnorm
     'load_model': experiment / "scGPT/save/scGPT_human", # ! SELINA 
 
-    # !SELINA -------------------------------------------------------------------- #
     # settings for input and preprocessing
     'pad_token': "<pad>",
     'special_tokens': ["<pad>", "<cls>", "<eoc>"],
@@ -96,11 +96,7 @@ hyperparameter_defaults = {
     'eval_batch_size': 32, 
     # settings for the model
     'fast_transformer_backend': "flash",
-    # !SELINA -------------------------------------------------------------------- #
 }
-
-with open(model_config_file, "r") as f:
-    model_configs = json.load(f)
 os.environ["WANDB_MODE"] = "disabled" # ! Selina
 run = wandb.init(
     config=hyperparameter_defaults,
@@ -108,8 +104,9 @@ run = wandb.init(
     reinit=True,
 )
 config = wandb.config
+set_seed(config.seed)
 
-# ADDITIONAL ----------------------------------------------------------------- #
+# SCRIPT CONFIG -------------------------------------------------------------- #
 input_style = 'binned'
 input_layer_key = {  # the values of this map coorespond to the keys in preprocessing
     "normed_raw": "X_normed",
@@ -119,21 +116,24 @@ input_layer_key = {  # the values of this map coorespond to the keys in preproce
 
 n_bins = config.n_bins
 if config.input_emb_style == "category":
-    mask_value = n_bins + 1
-    pad_value = n_bins  # for padding gene expr values
-    n_input_bins = n_bins + 2
+    mask_value = config.n_bins + 1
+    pad_value = config.n_bins  # for padding gene expr values
+    n_input_bins = config.n_bins + 2
 else:
     mask_value = -1
     pad_value = -2
-    n_input_bins = n_bins
+    n_input_bins = config.n_bins
 
 save_dir = experiment/f"results/pred-wo-fine-tuning/pred_{config.dataset_name}-{time.strftime('%b%d-%H-%M')}/"
-# ADDITIONAL ----------------------------------------------------------------- #
-
-set_seed(0)
-
 save_dir.mkdir(parents=True, exist_ok=True)
 print(f"CONFIG: save to {save_dir}\n")
+
+
+# MODEL CONFIG --------------------------------------------------------------- #
+with open(model_config_file, "r") as f:
+    model_configs = json.load(f)
+
+# LOGGING -------------------------------------------------------------------- #
 logger = scg.logger
 scg.utils.add_file_handler(logger, save_dir / "run.log")
 
@@ -146,7 +146,7 @@ vocab = GeneVocab.from_file(vocab_file)
 for s in config.special_tokens:
     if s not in vocab:
         vocab.append_token(s)
-
+vocab.set_default_index(vocab["<pad>"])
 
 # ============================================================================ #
 # DATA PROCESSING                                                              #
@@ -199,14 +199,15 @@ adata = adata[adata.obs["str_batch"] == "0"]
 preprocessor(adata, batch_key=None)
 preprocessor(adata_test, batch_key=None)
 
+# ============================================================================ #
+# MODEL                                                                        #
+# ============================================================================ #
+
 genes = adata.var["gene_name"].tolist() 
 gene_ids = np.array(vocab(genes), dtype=int) 
 batch_ids = adata.obs["batch_id"].tolist() 
 num_batch_types = len(set(batch_ids))
 
-# ============================================================================ #
-# MODEL                                                                        #
-# ============================================================================ #
 
 device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
 
@@ -228,7 +229,7 @@ model = TransformerModel(
     n_input_bins=n_input_bins,
     use_fast_transformer=config.fast_transformer,
     fast_transformer_backend=config.fast_transformer_backend,
-    num_batch_labels=len(set(batch_ids)),
+    num_batch_labels=num_batch_types,
     use_batch_labels=config.INPUT_BATCH_LABELS,
     nlayers_cls=3,
     n_cls=num_types if config.CLS else 1,

@@ -1,0 +1,22 @@
+#!/bin/bash
+#BSUB -J test_env
+#BSUB -q verylong
+#BSUB -n 10
+#BSUB -R "rusage[mem=100GB] span[hosts=1]"
+#BSUB -o /omics/odcf/analysis/OE0290_projects/heroes-aya_pools/AG_Thongjuea/Code/10x_multiomics/Selina/project/experiment03-scGPT/jobs/logs/test_env.out
+#BSUB -e /omics/odcf/analysis/OE0290_projects/heroes-aya_pools/AG_Thongjuea/Code/10x_multiomics/Selina/project/experiment03-scGPT/jobs/logs/test_env.err
+
+START_TIME=$(date +%s)
+
+source ~/.bashrc
+cd /omics/odcf/analysis/OE0290_projects/heroes-aya_pools/AG_Thongjuea/Code/10x_multiomics/Selina/project/experiment03-scGPT/scripts
+module load GCC/14.1.0
+conda activate scgpt_old_env
+python 03_annotation.py
+
+END_TIME=$(date +%s)
+DURATION=$(($END_TIME - $START_TIME))
+
+printf "\n"; printf "%.0s#" {1..58}; printf "\n"
+printf "⏱️ Total Runtime: %02d:%02d:%02d\n" $(($DURATION/3600)) $(($DURATION%3600/60)) $(($DURATION%60))
+printf "%.0s#" {1..58}; printf "\n\n"

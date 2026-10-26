@@ -23,7 +23,7 @@ import scanpy as sc
 
 file='scvi_pools_2026_celltype_annotated.h5ad'
 print(file)
-data=workspace/"data"/file
+data=workspace/"data/scvi_pools"/file
 adata = ad.read_h5ad(data)
 print(adata)
 
@@ -37,7 +37,7 @@ np.random.seed(42)
 n_cells = int(adata.n_obs * 0.2)
 selected_idx = np.random.choice(adata.n_obs, n_cells, replace=False)
 adata_20per = adata[selected_idx].copy()
-adata_20per.write_h5ad(workspace/"data"/file)
+adata_20per.write_h5ad(workspace/"data/scvi_pools"/file)
 print(adata_20per)
 
 # ================================================================================================ #

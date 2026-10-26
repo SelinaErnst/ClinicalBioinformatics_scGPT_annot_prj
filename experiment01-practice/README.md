@@ -7,7 +7,7 @@
 |01_practice_anndata.ipynb| test out example adata file (SySa) |
 |02_practice_scanpy.ipynb| scanpy legacy workflow (processing and clustering 3k PBMCs) |
 |03_downsample.py| downsample the big adata file for easier use |
-|04_downsample.py| downsample the big adata file for easier use |
+|04_plot_umaps.py| umaps for scvi_pools datasets |
 
 ## adata files
 

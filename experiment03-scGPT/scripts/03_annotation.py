@@ -70,13 +70,13 @@ hyperparameter_defaults = dict(
     dataset_name="ms",
     do_train=True,
     mask_ratio=0.0,
-    epochs=10,
+    epochs=30,
     n_bins=51,
     MVC=False, # Masked value prediction for cell embedding
     ecs_thres=0.0, # Elastic cell similarity objective, 0.0 to 1.0, 0.0 to disable
     dab_weight=0.0,
     lr=1e-4,
-    batch_size=32, # ! SELINA
+    batch_size=32, # ! BATCH SIZE
     layer_size=128,
     nlayers=4,  # number of nn.TransformerEncoderLayer in nn.TransformerEncoder
     nhead=4,  # number of heads in nn.MultiheadAttention
@@ -89,7 +89,7 @@ hyperparameter_defaults = dict(
     include_zero_gene = False,
     freeze = False, #freeze
     DSBN = False,  # Domain-spec batchnorm
-    load_model= experiment / "scGPT/save/scGPT_human", # ! SELINA 
+    load_model= experiment / "scGPT/save/scGPT_human", # ! MODEL 
 )
 
 os.environ["WANDB_MODE"] = "disabled" # ! Selina
@@ -201,7 +201,7 @@ scg.utils.add_file_handler(logger, save_dir / "run.log")
 # ============================================================================ #
 
 if dataset_name == "ms":
-    data_dir = experiment/"scGPT/data/ms" # ! SELINA
+    data_dir = workspace/"data/ms" # ! DATA SET
     adata = sc.read(data_dir / "c_data.h5ad")
     adata_test = sc.read(data_dir / "filtered_ms_adata.h5ad")
     adata.obs["celltype"] = adata.obs["Factor Value[inferred cell type - authors labels]"].astype("category")
@@ -599,12 +599,12 @@ model = TransformerModel(
 
 if config.load_model is not None:
     try:
-        model.load_state_dict(torch.load(model_file, map_location="cpu")) # ! SELINA
+        model.load_state_dict(torch.load(model_file, map_location="cpu")) # ! CPU
         logger.info(f"Loading all model params from {model_file}")
     except:
         # only load params that are in the model and match the size
         model_dict = model.state_dict()
-        pretrained_dict = torch.load(model_file, map_location="cpu") # ! SELINA
+        pretrained_dict = torch.load(model_file, map_location="cpu") # ! CPU
         pretrained_dict = {
             k: v
             for k, v in pretrained_dict.items()

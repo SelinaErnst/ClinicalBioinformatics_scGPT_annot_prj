@@ -7,19 +7,20 @@
 
 # conda environments
 
-### simple scanpy methods
+The conda environments used for the analysis are found in `/omics/odcf/analysis/OE0290_projects/heroes-aya_pools/AG_Thongjuea/Code/10x_multiomics/Selina/env`.  
 
-The conda environment used for PBMC was `scanpy_env` as found in `/omics/odcf/analysis/OE0290_projects/heroes-aya_pools/AG_Thongjuea/Code/10x_multiomics/Selina/env`.  
+- simple scanpy methods: [scanpy_env](experiment02-PBMC/environment.yml)
+- scGPT analysis: scgpt_env or [scgpt_old_env](experiment03-scGPT/environment_old.yml)
+- annotation using scGPT: scgpt_env or [annot_env](experiment04-annotation/environment.yml)
 
 ```bash
-my_dir='/omics/odcf/analysis/OE0290_projects/heroes-aya_pools/AG_Thongjuea/Code/10x_multiomics/Selina'
-conda env update -f $my_dir/project/environment.yml --prune
+conda env update -f environment.yml --prune
 ```
 
-### scGPT analysis
-
-The conda environment used for scGPT analysis is called `scgpt_env` and is located at `/omics/odcf/analysis/OE0290_projects/heroes-aya_pools/AG_Thongjuea/Code/10x_multiomics/Selina/env`.  
-
-# adata
+# data
 
 I work with scRNA-seq data. 
+
+- `PBMC3k` : There is the dataset of 3k PBMCs from a Healthy Donor, used in a clustering tutorial on the [scanpy documentation](https://scanpy.readthedocs.io/en/stable/tutorials/basics/clustering-2017.html) referencing Seurat's [guided clustering tutorial](https://satijalab.org/seurat/articles/pbmc3k_tutorial.html).
+- `ms` : Multiple Sclerosis dataset provided by [scGPT](https://github.com/bowang-lab/scGPT/tree/main/data)
+- `scvi_pools` : dataset fusion-driven sarcoma

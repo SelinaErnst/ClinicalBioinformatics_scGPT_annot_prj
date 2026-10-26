@@ -1,7 +1,7 @@
 #!/bin/bash
 #BSUB -J scGPT_annotation_tutorial
 #BSUB -q verylong
-#BSUB -n 20
+#BSUB -n 30
 #BSUB -R "rusage[mem=200GB] span[hosts=1]"
 #BSUB -o /omics/odcf/analysis/OE0290_projects/heroes-aya_pools/AG_Thongjuea/Code/10x_multiomics/Selina/project/experiment03-scGPT/jobs/logs/scGPT_annotation_tutorial.out
 #BSUB -e /omics/odcf/analysis/OE0290_projects/heroes-aya_pools/AG_Thongjuea/Code/10x_multiomics/Selina/project/experiment03-scGPT/jobs/logs/scGPT_annotation_tutorial.err

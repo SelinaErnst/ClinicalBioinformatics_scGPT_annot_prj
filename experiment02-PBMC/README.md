@@ -39,7 +39,7 @@ With these metrics the goal is to filter low-quality cells. There are quite a lo
 ![](figures/qc_metrics/pbmc3k_count_metrics.png)
 ![](figures/qc_metrics/pbmc3k_mt_ribo_hb.png)
 
-A more reliable way to determine the outliers, is using metrics based on the log transformed counts:
+A more reliable way to determine the outliers, should be using metrics based on the log transformed counts:
 - `log1p_n_genes_by_counts`
 - `log1p_total_counts`
 

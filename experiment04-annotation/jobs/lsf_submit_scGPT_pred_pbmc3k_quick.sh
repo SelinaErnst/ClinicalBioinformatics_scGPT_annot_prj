@@ -10,7 +10,7 @@ source ~/.bashrc
 cd /omics/odcf/analysis/OE0290_projects/heroes-aya_pools/AG_Thongjuea/Code/10x_multiomics/Selina/project/experiment04-annotation/scripts
 module load GCC/14.1.0
 conda activate scgpt_env
-python 01_pbmc_annot_wo_fine_tuning.py
+python 01_annot_wo_fine_tuning.py
 END_TIME=$(date +%s)
 DURATION=$(($END_TIME - $START_TIME))
 printf "\n"; printf "%.0s#" {1..58}; printf "\n"

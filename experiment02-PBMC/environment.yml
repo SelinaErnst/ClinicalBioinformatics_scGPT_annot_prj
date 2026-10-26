@@ -9,7 +9,8 @@ dependencies:
   - ipywidgets 
   - typing_extensions>=4.14
   - anndata
-  - scanpyt
+  - scanpy
   - scikit-image
   - scikit-misc
   - leidenalg
+  - wandb

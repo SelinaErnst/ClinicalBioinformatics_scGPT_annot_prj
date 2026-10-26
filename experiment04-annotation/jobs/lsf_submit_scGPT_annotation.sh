@@ -1,8 +1,8 @@
 #!/bin/bash
-#BSUB -J scGPT_annotation
+#BSUB -J scGPT_annotation_heroes
 #BSUB -q verylong
-#BSUB -n 20
-#BSUB -R "rusage[mem=200GB] span[hosts=1]"
+#BSUB -n 5
+#BSUB -R "rusage[mem=250GB]"
 #BSUB -o /omics/odcf/analysis/OE0290_projects/heroes-aya_pools/AG_Thongjuea/Code/10x_multiomics/Selina/project/experiment04-annotation/jobs/logs/scGPT_annotation.out
 #BSUB -e /omics/odcf/analysis/OE0290_projects/heroes-aya_pools/AG_Thongjuea/Code/10x_multiomics/Selina/project/experiment04-annotation/jobs/logs/scGPT_annotation.err
 
@@ -12,7 +12,7 @@ source ~/.bashrc
 cd /omics/odcf/analysis/OE0290_projects/heroes-aya_pools/AG_Thongjuea/Code/10x_multiomics/Selina/project/experiment04-annotation/scripts
 module load GCC/14.1.0
 conda activate scgpt_env
-python 02_pbmc_annot_with_fine_tuning.py
+python 02_annot_with_fine_tuning.py
 
 END_TIME=$(date +%s)
 DURATION=$(($END_TIME - $START_TIME))

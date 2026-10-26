@@ -10,6 +10,7 @@ warnings.filterwarnings('ignore')
 
 import json
 import pickle
+import shutil
 import sys
 import time
 
@@ -44,12 +45,13 @@ import myutils
 # PATHS                                                                        #
 # ============================================================================ #
 
-dataset = "pbmc3k"
+dataset = "ms"
 model_name = "scGPT_human"
 
 avail_datasets = [
     "pbmc3k",
     "ms",
+    "heroes",
 ]
 avail_models = [
     "scGPT_human",
@@ -63,12 +65,17 @@ workspace,experiment=myutils.workspace()
 experiment = workspace / "experiment04-annotation"
 
 data_dir = experiment/ "data"
-result_dir = experiment/"results/pred-with-fine-tuning"
+result_dir = experiment/"results/model-fine-tuning"
 
 if (dataset == "pbmc3k"):
     data_file = data_dir / "pbmc3k_scanpy_annotated_batches.h5ad"  # ! Dataset
+    celltype_col = "celltype"
 if (dataset == "ms"):
     data_file = workspace / "data/ms/ms_batches.h5ad"  # ! Dataset
+    celltype_col = "celltype"
+if (dataset == "heroes"):
+    data_file = data_dir / "hereos_pool7_scRNA_batches.h5ad"  # ! Dataset
+    celltype_col = "consensus_celltype"
 
 if (model_name == "scGPT_human"):
     model_dir = workspace / "data/scGPT_human"
@@ -88,7 +95,7 @@ vocab_file = model_dir / "vocab.json"
 # WORKFLOW CONFIG ------------------------------------------------------------ #
 hyperparameter_defaults = { 
 
-    'seed': 0,
+    'seed': 1,
     'dataset_name': dataset, # ! Dataset
     'load_model': model_dir, 
     'do_train': True,
@@ -193,7 +200,7 @@ else:
     config.mask_value = -1
     config.pad_value = -2
     config.n_input_bins = config.n_bins
-save_dir = result_dir/f"pred_{config.dataset_name}-{time.strftime('%Y-%m-%d_%H%M%S')}/"
+save_dir = result_dir/f"model_{model_name}_WITH_{config.dataset_name}-{time.strftime('%Y-%m-%d_%H%M%S')}/"
 save_dir.mkdir(parents=True, exist_ok=True)
 print(f"CONFIG: save to {save_dir}\n")
 # SCRIPT CONFIG -------------------------------------------------------------- #
@@ -224,18 +231,20 @@ vocab.set_default_index(vocab["<pad>"])
 # DATA PROCESSING                                                              #
 # ============================================================================ #
 
+# ! adata should have obs columns: celltype (celltype_col), str_batch
+# ! adata var index should be gene names
 # READ ----------------------------------------------------------------------- #
 adata = sc.read(data_file)
 # edit categorie types and index
-adata.obs["celltype"] = adata.obs["celltype"].astype("category")
+adata.obs[celltype_col] = adata.obs[celltype_col].astype("category")
 # batch ids to int
 batch_id_labels = adata.obs["str_batch"].astype("category").cat.codes.values
 adata.obs["batch_id"] = batch_id_labels
 # cell types to int 
-celltype_id_labels = adata.obs["celltype"].astype("category").cat.codes.values
-celltypes = adata.obs["celltype"].unique()
+celltype_id_labels = adata.obs[celltype_col].astype("category").cat.codes.values
+celltypes = adata.obs[celltype_col].unique()
 num_types = len(np.unique(celltype_id_labels))
-id2type = dict(enumerate(adata.obs["celltype"].astype("category").cat.categories))
+id2type = dict(enumerate(adata.obs[celltype_col].astype("category").cat.categories))
 adata.obs["celltype_id"] = celltype_id_labels
 # gene names 
 adata.var["gene_name"] = adata.var.index.tolist()
@@ -245,9 +254,7 @@ adata.var["id_in_vocab"] = [
 ]
 gene_ids_in_vocab = np.array(adata.var["id_in_vocab"])
 adata = adata[:, adata.var["id_in_vocab"] >= 0]
-adata_test = adata[adata.obs["str_batch"] == "1"]
 adata = adata[adata.obs["str_batch"] == "0"]
-adata_test_raw = adata_test.copy()
 # READ ----------------------------------------------------------------------- #
 
 # LOGGING -------------------------------------------------------------------- #
@@ -272,7 +279,6 @@ preprocessor = Preprocessor(
     result_binned_key="X_binned",  # the key in adata.layers to store the binned data
 )
 preprocessor(adata, batch_key=None)
-preprocessor(adata_test, batch_key=None)
 # PROCESSING ----------------------------------------------------------------- #
 
 # ============================================================================ #
@@ -449,7 +455,6 @@ def define_wandb_metrcis():
     wandb.define_metric("valid/sum_mse_dab", summary="min", step_metric="epoch")
     wandb.define_metric("test/avg_bio", summary="max")
 
-# PREP ----------------------------------------------------------------------- #
 all_counts = (
     adata.layers[config.input_layer_key].toarray()
     if issparse(adata.layers[config.input_layer_key])
@@ -621,72 +626,10 @@ for epoch in range(1, config.epochs + 1):
 
 
 # ============================================================================ #
-# PREDICTION                                                                   #
+# SAVE MODEL                                                                   #
 # ============================================================================ #
 
-predictions, labels, results = myutils.annotation.test( 
-    model=model,
-    adata=adata_test, 
-    vocab=vocab, 
-    device=device,
-    gene_ids=gene_ids,
-    config=config,
-    logger=logger,
-    )
-
-adata_test_raw.obs["predictions"] = [id2type[p] for p in predictions]
-save_dict = {
-    "predictions": predictions,
-    "labels": labels,
-    "results": results,
-    "id_maps": id2type
-}
-
-# SAVE PKL ------------------------------------------------------------------- #
-adata_test_raw.write(save_dir / f"pred_{config.dataset_name}.h5ad")
-with open(save_dir / "results.pkl", "wb") as f:
-    pickle.dump(save_dict, f)
-# SAVE PKL ------------------------------------------------------------------- #
-
-# UMAP ----------------------------------------------------------------------- #
-palette_ = plt.rcParams["axes.prop_cycle"].by_key()["color"] 
-palette_ = plt.rcParams["axes.prop_cycle"].by_key()["color"] + plt.rcParams["axes.prop_cycle"].by_key()["color"] + plt.rcParams["axes.prop_cycle"].by_key()["color"]
-palette_ = {c: palette_[i] for i, c in enumerate(celltypes)}
-
-with plt.rc_context({"figure.figsize": (6, 4), "figure.dpi": (300)}):
-    sc.pl.umap(
-        adata_test_raw,
-        color=["celltype", "predictions"],
-        palette=palette_,
-        show=False,
-        ncols=1,
-    )
-    plt.savefig(save_dir / "results.png", dpi=300, bbox_inches="tight")
-
-results["test/cell_umap"] = wandb.Image(
-    str(save_dir / "results.png"),
-    caption=f"predictions macro f1 {results['test/macro_f1']:.3f}",
-)
-# UMAP ----------------------------------------------------------------------- #
-
-# CONFUSION MATRIX ----------------------------------------------------------- #
-celltypes = [id2type[i] for i in range(len(celltypes))]
-for i in {id2type[p] for p in predictions}:
-    if i not in celltypes:
-        celltypes.remove(i)
-cm = confusion_matrix(labels, predictions)
-cm = cm.astype("float") / cm.sum(axis=1)[:, np.newaxis]
-cm = pd.DataFrame(cm, index=celltypes[:cm.shape[0]], columns=celltypes[:cm.shape[1]])
-plt.figure(figsize=(10, 10))
-plt.tight_layout()
-sns.heatmap(cm, annot=True, fmt=".1f", cmap="Blues")
-plt.tight_layout()
-plt.savefig(save_dir / "confusion_matrix.png", dpi=300, bbox_inches="tight")
-
-results["test/confusion_matrix"] = wandb.Image(
-    str(save_dir / "confusion_matrix.png"),
-    caption="confusion matrix",
-)
-# CONFUSION MATRIX ----------------------------------------------------------- #
-
-wandb.log(results)
+# SAVE MODEL ----------------------------------------------------------------- #
+shutil.copy(vocab_file, save_dir / "vocab.json")
+torch.save(best_model.state_dict(), save_dir / "model.pt")
+# SAVE MODEL ----------------------------------------------------------------- #

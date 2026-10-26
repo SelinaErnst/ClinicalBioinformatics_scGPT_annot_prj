@@ -67,7 +67,7 @@ input_layer_key = {  # the values of this map coorespond to the keys in preproce
 set_seed(config.seed)
 
 save_dir = experiment/f"predictions/fine-tuned/{run}"
-result_file = save_dir/f"pred_{config.dataset_name}.h5ad"
+# result_file = save_dir/f"pred_{config.dataset_name}.h5ad"
 save_dir.mkdir(parents=True, exist_ok=True)
 print(f"CONFIG: save to {save_dir}\n")
 
@@ -373,4 +373,4 @@ def test(model: nn.Module, adata: DataLoader, config) -> float:
 predictions, labels, results = test(model, adata_test, config)
 
 adata_test_raw.obs["predictions"] = [id2type[p] for p in predictions]
-adata_test_raw.write(result_file)
+# adata_test_raw.write(result_file)

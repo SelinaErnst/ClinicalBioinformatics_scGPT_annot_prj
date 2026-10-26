@@ -1,0 +1,24 @@
+name: annot_env
+
+channels:
+  - conda-forge
+
+dependencies:
+  - python=3.12
+  - pip
+  - setuptools<81
+  - ipykernel
+  - ipywidgets 
+  
+  - pip:
+    - pandas
+    - numpy
+    - anndata
+    - scanpy
+    - leidenalg
+    - wandb
+    - torch==2.3.0
+    - torchtext==0.18.0
+    - scvi-tools==1.3.3
+    - datasets<3
+    # - scgpt==0.2.4 # ! Install without dependencies

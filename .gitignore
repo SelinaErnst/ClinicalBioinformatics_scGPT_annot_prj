@@ -3,11 +3,10 @@
 .devcontainer/*
 *.h5ad
 *.log
-*/results/*
+*.pt
 */logs/*
 *.out
 *.err
 **/.ipynb_checkpoints/*
 */*/.ipynb_checkpoints/*
 data/*
-experiment03-scGPT/save/*

@@ -10,8 +10,8 @@
 The conda environments used for the analysis are found in `/omics/odcf/analysis/OE0290_projects/heroes-aya_pools/AG_Thongjuea/Code/10x_multiomics/Selina/env`.  
 
 - simple scanpy methods: [scanpy_env](experiment02-PBMC/environment.yml)
-- scGPT analysis: scgpt_env or [scgpt_old_env](experiment03-scGPT/environment_old.yml)
-- annotation using scGPT: scgpt_env or [annot_env](experiment04-annotation/environment.yml)
+- scGPT analysis: scgpt_env
+- annotation using scGPT: scgpt_env
 
 ```bash
 conda env update -f environment.yml --prune

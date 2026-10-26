@@ -3,7 +3,8 @@
 .devcontainer/*
 *.h5ad
 *.log
-*.pt
+**/pred-with-fine-tuning/*/model.pt
+**/experiment03*/**/model.pt
 */logs/*
 *.out
 *.err

@@ -4,7 +4,7 @@ import matplotlib.pyplot as plt
 import scanpy as sc
 
 
-def inspect_prediction(adata, celltype: str, palette: dict, save_dir: Path | None = None, celltype_col="celltype", prediction_col="predictions"):
+def inspect_prediction(adata, celltype: str, palette: dict, save_dir: Path | None = None, celltype_col="celltype", prediction_col="predictions", show=True):
     adata_plot = adata.copy()
 
     if celltype_col not in adata_plot.obs.columns: return
@@ -60,7 +60,7 @@ def inspect_prediction(adata, celltype: str, palette: dict, save_dir: Path | Non
                 dpi=300,
                 bbox_inches="tight",
             )
-        plt.show()
+        if show: plt.show()
 
 
 def select_celltype(adata, celltype: str, palette: dict | None = None, save_dir: Path | None = None, celltype_col="celltype"):

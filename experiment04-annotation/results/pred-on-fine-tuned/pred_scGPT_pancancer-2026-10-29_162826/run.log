@@ -9,3 +9,4 @@ AnnData object with n_obs × n_vars = 8813 × 2075
     layers: 'counts', 'scvi_normalized', 'X_normed', 'X_binned'
     obsp: 'connectivities', 'distances'
 
+16:41:50-scGPT-INFO-test: Accuracy: 0.015, Precision: 0.019, Recall: 0.196, Macro F1: 0.033

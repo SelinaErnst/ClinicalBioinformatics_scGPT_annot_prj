@@ -1,0 +1,12 @@
+16:37:51-scGPT-INFO-<module>: match 2075/3000 genes in vocabulary of size 60697.
+16:37:52-scGPT-INFO-__call__: Normalizing total counts ...
+16:37:56-scGPT-INFO-__call__: Binning data ...
+16:37:58-scGPT-INFO-<module>: 
+AnnData object with n_obs × n_vars = 8813 × 2075
+    obs: 'pool', 'assignment', 'celltype', 'seurat_clusters', 'Cohort', 'Entity', 'Fusion', 'Episode', 'PID', 'Location', 'barcode_sample', 'n_genes', 'n_genes_by_counts', 'total_counts', 'total_counts_mt', 'pct_counts_mt', '_scvi_batch', '_scvi_labels', 'leiden', 'X', 'final', 'consensus_celltype', 'batch_id', 'str_batch', 'celltype_id'
+    var: 'n_cells', 'mt', 'n_cells_by_counts', 'mean_counts', 'pct_dropout_by_counts', 'total_counts', 'gene_name', 'id_in_vocab'
+    obsm: 'X_scVI', 'X_umap', '_scvi_extra_categorical_covs', 'bin_edges'
+    layers: 'counts', 'scvi_normalized', 'X_normed', 'X_binned'
+    obsp: 'connectivities', 'distances'
+
+16:48:35-scGPT-INFO-test: Accuracy: 0.908, Precision: 0.406, Recall: 0.411, Macro F1: 0.405

@@ -12,16 +12,10 @@ import pickle
 import sys
 import time
 
-import matplotlib.pyplot as plt
 import numpy as np
-import pandas as pd
 import scanpy as sc
-import seaborn as sns
 import torch
 import wandb
-from sklearn.metrics import (
-        confusion_matrix,
-)
 
 sys.path.insert(0, "../")
 import scgpt as scg
@@ -67,7 +61,6 @@ run = wandb.init(
 )
 config = wandb.config
 set_seed(config.seed)
-
 
 # SCRIPT CONFIG -------------------------------------------------------------- #
 config.eval_batch_size = config.batch_size

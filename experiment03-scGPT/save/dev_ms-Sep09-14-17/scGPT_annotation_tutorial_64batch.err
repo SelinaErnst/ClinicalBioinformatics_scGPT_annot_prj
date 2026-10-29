@@ -1,0 +1,2 @@
+wandb: WARNING `start_method` is deprecated and will be removed in a future version of wandb. This setting is currently non-functional and safely ignored.
+/opt/lsf-shared/lsbatch/s329t/1788956188.53470755.shell: line 14: 3492678 Killed                  python 03_annotation.py

@@ -1,0 +1,100 @@
+##########################################################
+                    PBS JOB METADATA                      
+##########################################################
+Job Name:        plot_umaps_pbs
+Job ID:          1362293.b06x-pbs01
+Python Script:   04_plot_umaps.py
+Conda Env:       scanpy_env
+Project Dir:     /omics/odcf/analysis/OE0290_projects/heroes-aya_pools/AG_Thongjuea/Code/10x_multiomics/Selina/project
+Experiment:      experiment01-practice
+Started At:      2026-09-10 16:54:20
+Allocated Cores: 10
+Requested Mem:   150g
+Requested Time:  01:00:00
+==========================================================
+
+
+scvi_pools_2026_downsampled_20per.h5ad
+AnnData object with n_obs × n_vars = 96282 × 35929
+    obs: 'pool', 'assignment', 'celltype', 'seurat_clusters', 'Cohort', 'Entity', 'Fusion', 'Episode', 'PID', 'Location', 'barcode_sample', 'n_genes', 'n_genes_by_counts', 'total_counts', 'total_counts_mt', 'pct_counts_mt', '_scvi_batch', '_scvi_labels', 'leiden', 'X', 'final'
+    var: 'n_cells', 'mt', 'n_cells_by_counts', 'mean_counts', 'pct_dropout_by_counts', 'total_counts'
+    uns: '_scvi_manager_uuid', '_scvi_uuid', 'celltype_colors', 'final_colors', 'leiden', 'log1p', 'neighbors', 'umap'
+    obsm: 'X_scVI', 'X_umap', '_scvi_extra_categorical_covs'
+    obsp: 'connectivities', 'distances'
+    layers: 'counts', 'scvi_normalized', None (.X)
+
+scvi_pools_2026_celltype_annotated.h5ad
+AnnData object with n_obs × n_vars = 481411 × 35929
+    obs: 'pool', 'assignment', 'celltype', 'seurat_clusters', 'Cohort', 'Entity', 'Fusion', 'Episode', 'PID', 'Location', 'barcode_sample', 'n_genes', 'n_genes_by_counts', 'total_counts', 'total_counts_mt', 'pct_counts_mt', '_scvi_batch', '_scvi_labels', 'leiden', 'X', 'final'
+    var: 'n_cells', 'mt', 'n_cells_by_counts', 'mean_counts', 'pct_dropout_by_counts', 'total_counts'
+    uns: '_scvi_manager_uuid', '_scvi_uuid', 'celltype_colors', 'final_colors', 'leiden', 'log1p', 'neighbors', 'umap'
+    obsm: 'X_scVI', 'X_umap', '_scvi_extra_categorical_covs'
+    obsp: 'connectivities', 'distances'
+    layers: 'counts', 'scvi_normalized', None (.X)
+
+scvi_sysa_feb26.h5ad
+AnnData object with n_obs × n_vars = 112903 × 34876
+    obs: 'pool', 'assignment', 'celltype', 'seurat_clusters', 'Cohort', 'Entity', 'Fusion', 'Episode', 'PID', 'Location', 'barcode_sample', 'n_genes', 'n_genes_by_counts', 'total_counts', 'total_counts_mt', 'pct_counts_mt', '_scvi_batch', '_scvi_labels', 'leiden', 'cytetype_annotation_leiden', 'cytetype_cellOntologyTerm_leiden', 'cytetype_cellOntologyTermID_leiden', 'cytetype_cellState_leiden'
+    var: 'n_cells', 'mt', 'n_cells_by_counts', 'mean_counts', 'pct_dropout_by_counts', 'total_counts', 'gene_symbols'
+    uns: '_scvi_manager_uuid', '_scvi_uuid', 'celltype_colors', 'cytetype_annotation_leiden_colors', 'cytetype_jobDetails', 'cytetype_results', 'leiden', 'log1p', 'neighbors', 'rank_genes_groups', 'rank_genes_leiden', 'umap'
+    obsm: 'X_scVI', 'X_umap', '_scvi_extra_categorical_covs'
+    obsp: 'connectivities', 'distances'
+    layers: 'counts', 'scvi_normalized', None (.X)
+
+==========================================================
+                   EXECUTION SUMMARY                      
+==========================================================
+Finished At:     2026-09-10 17:11:34
+Total Runtime:   0h 17m 14s
+Exit Status:     0 (SUCCESS)
+##########################################################
+##########################################################
+                    PBS JOB METADATA                      
+##########################################################
+Job Name:        plot_umaps_pbs
+Job ID:          1362299.b06x-pbs01
+Python Script:   04_plot_umaps.py
+Conda Env:       scanpy_env
+Project Dir:     /omics/odcf/analysis/OE0290_projects/heroes-aya_pools/AG_Thongjuea/Code/10x_multiomics/Selina/project
+Experiment:      experiment01-practice
+Started At:      2026-09-10 17:21:38
+Allocated Cores: 5
+Requested Mem:   150g
+Requested Time:  00:30:00
+==========================================================
+
+
+scvi_pools_2026_downsampled_20per.h5ad
+AnnData object with n_obs × n_vars = 96282 × 35929
+    obs: 'pool', 'assignment', 'celltype', 'seurat_clusters', 'Cohort', 'Entity', 'Fusion', 'Episode', 'PID', 'Location', 'barcode_sample', 'n_genes', 'n_genes_by_counts', 'total_counts', 'total_counts_mt', 'pct_counts_mt', '_scvi_batch', '_scvi_labels', 'leiden', 'X', 'final'
+    var: 'n_cells', 'mt', 'n_cells_by_counts', 'mean_counts', 'pct_dropout_by_counts', 'total_counts'
+    uns: '_scvi_manager_uuid', '_scvi_uuid', 'celltype_colors', 'final_colors', 'leiden', 'log1p', 'neighbors', 'umap'
+    obsm: 'X_scVI', 'X_umap', '_scvi_extra_categorical_covs'
+    obsp: 'connectivities', 'distances'
+    layers: 'counts', 'scvi_normalized', None (.X)
+
+scvi_pools_2026_celltype_annotated.h5ad
+AnnData object with n_obs × n_vars = 481411 × 35929
+    obs: 'pool', 'assignment', 'celltype', 'seurat_clusters', 'Cohort', 'Entity', 'Fusion', 'Episode', 'PID', 'Location', 'barcode_sample', 'n_genes', 'n_genes_by_counts', 'total_counts', 'total_counts_mt', 'pct_counts_mt', '_scvi_batch', '_scvi_labels', 'leiden', 'X', 'final'
+    var: 'n_cells', 'mt', 'n_cells_by_counts', 'mean_counts', 'pct_dropout_by_counts', 'total_counts'
+    uns: '_scvi_manager_uuid', '_scvi_uuid', 'celltype_colors', 'final_colors', 'leiden', 'log1p', 'neighbors', 'umap'
+    obsm: 'X_scVI', 'X_umap', '_scvi_extra_categorical_covs'
+    obsp: 'connectivities', 'distances'
+    layers: 'counts', 'scvi_normalized', None (.X)
+
+scvi_sysa_feb26.h5ad
+AnnData object with n_obs × n_vars = 112903 × 34876
+    obs: 'pool', 'assignment', 'celltype', 'seurat_clusters', 'Cohort', 'Entity', 'Fusion', 'Episode', 'PID', 'Location', 'barcode_sample', 'n_genes', 'n_genes_by_counts', 'total_counts', 'total_counts_mt', 'pct_counts_mt', '_scvi_batch', '_scvi_labels', 'leiden', 'cytetype_annotation_leiden', 'cytetype_cellOntologyTerm_leiden', 'cytetype_cellOntologyTermID_leiden', 'cytetype_cellState_leiden'
+    var: 'n_cells', 'mt', 'n_cells_by_counts', 'mean_counts', 'pct_dropout_by_counts', 'total_counts', 'gene_symbols'
+    uns: '_scvi_manager_uuid', '_scvi_uuid', 'celltype_colors', 'cytetype_annotation_leiden_colors', 'cytetype_jobDetails', 'cytetype_results', 'leiden', 'log1p', 'neighbors', 'rank_genes_groups', 'rank_genes_leiden', 'umap'
+    obsm: 'X_scVI', 'X_umap', '_scvi_extra_categorical_covs'
+    obsp: 'connectivities', 'distances'
+    layers: 'counts', 'scvi_normalized', None (.X)
+
+==========================================================
+                   EXECUTION SUMMARY                      
+==========================================================
+Finished At:     2026-09-10 17:31:28
+Total Runtime:   0h 9m 50s
+Exit Status:     0 (SUCCESS)
+##########################################################

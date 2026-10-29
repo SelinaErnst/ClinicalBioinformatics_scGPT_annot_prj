@@ -1,0 +1,26 @@
+Traceback (most recent call last):
+  File "/omics/odcf/analysis/OE0290_projects/heroes-aya_pools/AG_Thongjuea/Code/10x_multiomics/Selina/project/experiment04-annotation/scripts/02_annot_with_fine_tuning.py", line 285, in <module>
+    preprocessor(adata, batch_key=None)
+  File "/omics/odcf/analysis/OE0290_projects/heroes-aya_pools/AG_Thongjuea/Code/10x_multiomics/Selina/env/scgpt_env/lib/python3.10/site-packages/scgpt/preprocess.py", line 163, in __call__
+    sc.pp.highly_variable_genes(
+  File "/omics/odcf/analysis/OE0290_projects/heroes-aya_pools/AG_Thongjuea/Code/10x_multiomics/Selina/env/scgpt_env/lib/python3.10/site-packages/legacy_api_wrap/__init__.py", line 88, in fn_compatible
+    return fn(*args_all, **kw)
+  File "/omics/odcf/analysis/OE0290_projects/heroes-aya_pools/AG_Thongjuea/Code/10x_multiomics/Selina/env/scgpt_env/lib/python3.10/site-packages/scanpy/preprocessing/_highly_variable_genes.py", line 723, in highly_variable_genes
+    df = _highly_variable_genes_single_batch(
+  File "/omics/odcf/analysis/OE0290_projects/heroes-aya_pools/AG_Thongjuea/Code/10x_multiomics/Selina/env/scgpt_env/lib/python3.10/site-packages/scanpy/preprocessing/_highly_variable_genes.py", line 343, in _highly_variable_genes_single_batch
+    df["mean_bin"] = _get_mean_bins(df["means"], flavor, n_bins)
+  File "/omics/odcf/analysis/OE0290_projects/heroes-aya_pools/AG_Thongjuea/Code/10x_multiomics/Selina/env/scgpt_env/lib/python3.10/site-packages/scanpy/preprocessing/_highly_variable_genes.py", line 382, in _get_mean_bins
+    return pd.cut(means, bins=bins)
+  File "/omics/odcf/analysis/OE0290_projects/heroes-aya_pools/AG_Thongjuea/Code/10x_multiomics/Selina/env/scgpt_env/lib/python3.10/site-packages/pandas/core/reshape/tile.py", line 257, in cut
+    fac, bins = _bins_to_cuts(
+  File "/omics/odcf/analysis/OE0290_projects/heroes-aya_pools/AG_Thongjuea/Code/10x_multiomics/Selina/env/scgpt_env/lib/python3.10/site-packages/pandas/core/reshape/tile.py", line 443, in _bins_to_cuts
+    raise ValueError(
+ValueError: Bin edges must be unique: Index([                  -inf,                  1e-12,                  1e-12,
+        8.835983507841537e-05, 0.00020498248920278642,   0.001482296208805828,
+         0.020639666483638065,    0.04229903525663811,    0.06305082327170859,
+          0.08353503812466143,    0.10725100822385077,     0.1394306711933928,
+          0.16651598088967717,      0.207192636148335,    0.24723477896474735,
+           0.3123245187067581,    0.40045497409040914,     0.5061035462483332,
+           0.6582272640049674,     1.9062714793005036,                    inf],
+      dtype='float64').
+You can drop duplicate edges by setting the 'duplicates' kwarg

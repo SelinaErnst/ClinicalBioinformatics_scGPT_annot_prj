@@ -1,0 +1,84 @@
+Sender: LSF System <lsfadmin@abi-cn43u17.dkfz-heidelberg.de>
+Subject: Job 54789993: <scGPT_prediction_only> in cluster <DKFZ> Done
+
+Job <scGPT_prediction_only> was submitted from host <odcf-vm135.dkfz-heidelberg.de> by user <s329t> in cluster <DKFZ> at Thu Oct 29 12:44:22 2026
+Job was executed on host(s) <20*abi-cn43u17>, in queue <verylong>, as user <s329t> in cluster <DKFZ> at Thu Oct 29 12:44:24 2026
+</home/s329t> was used as the home directory.
+</omics/odcf/analysis/OE0290_projects/heroes-aya_pools/AG_Thongjuea/Code/10x_multiomics/Selina/project/experiment04-annotation/jobs> was used as the working directory.
+Started at Thu Oct 29 12:44:24 2026
+Terminated at Thu Oct 29 12:46:00 2026
+Results reported at Thu Oct 29 12:46:00 2026
+
+Your job looked like:
+
+------------------------------------------------------------
+# LSBATCH: User input
+#!/bin/bash
+#BSUB -J scGPT_prediction_only
+#BSUB -q verylong
+#BSUB -n 20
+#BSUB -R "rusage[mem=250GB]"
+#BSUB -o /omics/odcf/analysis/OE0290_projects/heroes-aya_pools/AG_Thongjuea/Code/10x_multiomics/Selina/project/experiment04-annotation/jobs/logs/scGPT_prediction_only.out
+#BSUB -e /omics/odcf/analysis/OE0290_projects/heroes-aya_pools/AG_Thongjuea/Code/10x_multiomics/Selina/project/experiment04-annotation/jobs/logs/scGPT_prediction_only.err
+
+START_TIME=$(date +%s)
+
+source ~/.bashrc
+cd /omics/odcf/analysis/OE0290_projects/heroes-aya_pools/AG_Thongjuea/Code/10x_multiomics/Selina/project/experiment04-annotation/scripts
+module load GCC/14.1.0
+conda activate scgpt_env
+python 03_annot_using_fine_tuned.py
+
+END_TIME=$(date +%s)
+DURATION=$(($END_TIME - $START_TIME))
+
+printf "\n"; printf "%.0s#" {1..58}; printf "\n"
+printf "⏱️ Total Runtime: %02d:%02d:%02d\n" $(($DURATION/3600)) $(($DURATION%3600/60)) $(($DURATION%60))
+printf "%.0s#" {1..58}; printf "\n\n"
+
+------------------------------------------------------------
+
+Successfully completed.
+
+Resource usage summary:
+
+    CPU time :                                   29.98 sec.
+    Max Memory :                                 3757 MB
+    Average Memory :                             1284.12 MB
+    Total Requested Memory :                     256000.00 MB
+    Delta Memory :                               252243.00 MB
+    Max Swap :                                   -
+    Max Processes :                              5
+    Max Threads :                                64
+    Run time :                                   96 sec.
+    Turnaround time :                            98 sec.
+
+The output (if any) follows:
+
+Loading GCC/14.1.0
+  Loading requirement: GCCcore/14.1.0 zlib/1.3.1-GCCcore-14.1.0
+    binutils/2.42-GCCcore-14.1.0
+CONFIG: save to /omics/odcf/analysis/OE0290_projects/heroes-aya_pools/AG_Thongjuea/Code/10x_multiomics/Selina/project/experiment04-annotation/results/pred-on-fine-tuned/pred_scGPT_pancancer-2026-10-29_124541
+
+scGPT - INFO - match 23811/35929 genes in vocabulary of size 60697.
+scGPT - INFO - Normalizing total counts ...
+scGPT - INFO - Binning data ...
+scGPT - INFO - 
+AnnData object with n_obs × n_vars = 8813 × 23811
+    obs: 'pool', 'assignment', 'celltype', 'seurat_clusters', 'Cohort', 'Entity', 'Fusion', 'Episode', 'PID', 'Location', 'barcode_sample', 'n_genes', 'n_genes_by_counts', 'total_counts', 'total_counts_mt', 'pct_counts_mt', '_scvi_batch', '_scvi_labels', 'leiden', 'X', 'final', 'consensus_celltype', 'celltype_id'
+    var: 'n_cells', 'mt', 'n_cells_by_counts', 'mean_counts', 'pct_dropout_by_counts', 'total_counts', 'gene_name', 'id_in_vocab'
+    obsm: 'X_scVI', 'X_umap', '_scvi_extra_categorical_covs', 'bin_edges'
+    layers: 'counts', 'scvi_normalized', 'X_normed', 'X_binned'
+    obsp: 'connectivities', 'distances'
+
+
+##########################################################
+⏱️ Total Runtime: 00:01:35
+##########################################################
+
+
+
+PS:
+
+Read file </omics/odcf/analysis/OE0290_projects/heroes-aya_pools/AG_Thongjuea/Code/10x_multiomics/Selina/project/experiment04-annotation/jobs/logs/scGPT_prediction_only.err> for stderr output of this job.
+

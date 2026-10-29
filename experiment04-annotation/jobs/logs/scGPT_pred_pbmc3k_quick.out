@@ -1,0 +1,154 @@
+Sender: LSF System <lsfadmin@odcf-cn44u23.dkfz-heidelberg.de>
+Subject: Job 53981958: <scGPT_pred_pbmc3k_quick> in cluster <DKFZ> Done
+
+Job <scGPT_pred_pbmc3k_quick> was submitted from host <odcf-vm135.dkfz-heidelberg.de> by user <s329t> in cluster <DKFZ> at Fri Sep 25 15:51:21 2026
+Job was executed on host(s) <20*odcf-cn44u23>, in queue <long>, as user <s329t> in cluster <DKFZ> at Fri Sep 25 15:51:21 2026
+</home/s329t> was used as the home directory.
+</omics/odcf/analysis/OE0290_projects/heroes-aya_pools/AG_Thongjuea/Code/10x_multiomics/Selina/project/experiment04-annotation/jobs> was used as the working directory.
+Started at Fri Sep 25 15:51:21 2026
+Terminated at Fri Sep 25 16:06:58 2026
+Results reported at Fri Sep 25 16:06:58 2026
+
+Your job looked like:
+
+------------------------------------------------------------
+# LSBATCH: User input
+#!/bin/bash
+#BSUB -J scGPT_pred_pbmc3k_quick
+#BSUB -q long
+#BSUB -n 20
+#BSUB -R "rusage[mem=100GB] span[hosts=1]"
+#BSUB -o /omics/odcf/analysis/OE0290_projects/heroes-aya_pools/AG_Thongjuea/Code/10x_multiomics/Selina/project/experiment04-annotation/jobs/logs/scGPT_pred_pbmc3k_quick.out
+#BSUB -e /omics/odcf/analysis/OE0290_projects/heroes-aya_pools/AG_Thongjuea/Code/10x_multiomics/Selina/project/experiment04-annotation/jobs/logs/scGPT_pred_pbmc3k_quick.err
+START_TIME=$(date +%s)
+source ~/.bashrc
+cd /omics/odcf/analysis/OE0290_projects/heroes-aya_pools/AG_Thongjuea/Code/10x_multiomics/Selina/project/experiment04-annotation/scripts
+module load GCC/14.1.0
+conda activate scgpt_env
+python 01_pbmc_annot_wo_fine_tuning.py
+END_TIME=$(date +%s)
+DURATION=$(($END_TIME - $START_TIME))
+printf "\n"; printf "%.0s#" {1..58}; printf "\n"
+printf "⏱️ Total Runtime: %02d:%02d:%02d\n" $(($DURATION/3600)) $(($DURATION%3600/60)) $(($DURATION%60))
+printf "%.0s#" {1..58}; printf "\n\n"
+
+------------------------------------------------------------
+
+Successfully completed.
+
+Resource usage summary:
+
+    CPU time :                                   15906.80 sec.
+    Max Memory :                                 10868 MB
+    Average Memory :                             6194.26 MB
+    Total Requested Memory :                     102400.00 MB
+    Delta Memory :                               91532.00 MB
+    Max Swap :                                   -
+    Max Processes :                              20
+    Max Threads :                                90
+    Run time :                                   937 sec.
+    Turnaround time :                            937 sec.
+
+The output (if any) follows:
+
+Loading GCC/14.1.0
+  Loading requirement: GCCcore/14.1.0 zlib/1.3.1-GCCcore-14.1.0
+    binutils/2.42-GCCcore-14.1.0
+CONFIG: save to /omics/odcf/analysis/OE0290_projects/heroes-aya_pools/AG_Thongjuea/Code/10x_multiomics/Selina/project/experiment04-annotation/results/pred-wo-fine-tuning/pred_pbmc3k-Sep25-15-52
+
+scGPT - INFO - Normalizing total counts ...
+scGPT - INFO - Binning data ...
+scGPT - INFO - CUDA: False
+scGPT - INFO - TORCH DEVICE: cpu
+scGPT - INFO - CONFIG: {'seed': 0, 'dataset_name': 'pbmc3k', 'do_train': True, 'mask_ratio': 0.0, 'epochs': 10, 'n_bins': 51, 'MVC': False, 'ecs_threshold': 0.0, 'dab_weight': 0.0, 'lr': 0.0001, 'batch_size': 32, 'layer_size': 128, 'nlayers': 4, 'nhead': 4, 'dropout': 0.2, 'schedule_ratio': 0.9, 'save_eval_interval': 5, 'fast_transformer': True, 'pre_norm': False, 'amp': True, 'include_zero_gene': False, 'freeze': False, 'DSBN': False, 'load_model': '/omics/odcf/analysis/OE0290_projects/heroes-aya_pools/AG_Thongjuea/Code/10x_multiomics/Selina/project/experiment04-annotation/scGPT/save/scGPT_human', 'pad_token': '<pad>', 'special_tokens': ['<pad>', '<cls>', '<eoc>'], 'data_is_raw': False, 'filter_gene_by_counts': False, 'filter_cell_by_counts': False, 'max_seq_len': 3001, 'input_style': 'binned', 'input_emb_style': 'continuous', 'cell_emb_style': 'cls', 'mvc_decoder_style': 'inner product', 'INPUT_BATCH_LABELS': False, 'CLS': True, 'DAB': False, 'MLM': False, 'eval_batch_size': 32, 'fast_transformer_backend': 'flash'}
+scGPT - INFO - PyTorch CPU threads: 20
+scGPT - INFO - PyTorch interop threads: 128
+scGPT - INFO - Accuracy: 0.005, Precision: 0.001, Recall: 0.125, Macro F1: 0.001
+
+##########################################################
+⏱️ Total Runtime: 00:15:36
+##########################################################
+
+
+
+PS:
+
+Read file </omics/odcf/analysis/OE0290_projects/heroes-aya_pools/AG_Thongjuea/Code/10x_multiomics/Selina/project/experiment04-annotation/jobs/logs/scGPT_pred_pbmc3k_quick.err> for stderr output of this job.
+
+Sender: LSF System <lsfadmin@odcf-cn44u17.dkfz-heidelberg.de>
+Subject: Job 54073386: <scGPT_pred_pbmc3k_quick> in cluster <DKFZ> Done
+
+Job <scGPT_pred_pbmc3k_quick> was submitted from host <odcf-vm135.dkfz-heidelberg.de> by user <s329t> in cluster <DKFZ> at Tue Sep 29 13:19:28 2026
+Job was executed on host(s) <20*odcf-cn44u17>, in queue <long>, as user <s329t> in cluster <DKFZ> at Tue Sep 29 13:19:29 2026
+</home/s329t> was used as the home directory.
+</omics/odcf/analysis/OE0290_projects/heroes-aya_pools/AG_Thongjuea/Code/10x_multiomics/Selina/project/experiment04-annotation/jobs> was used as the working directory.
+Started at Tue Sep 29 13:19:29 2026
+Terminated at Tue Sep 29 13:50:27 2026
+Results reported at Tue Sep 29 13:50:27 2026
+
+Your job looked like:
+
+------------------------------------------------------------
+# LSBATCH: User input
+#!/bin/bash
+#BSUB -J scGPT_pred_pbmc3k_quick
+#BSUB -q long
+#BSUB -n 20
+#BSUB -R "rusage[mem=100GB] span[hosts=1]"
+#BSUB -o /omics/odcf/analysis/OE0290_projects/heroes-aya_pools/AG_Thongjuea/Code/10x_multiomics/Selina/project/experiment04-annotation/jobs/logs/scGPT_pred_pbmc3k_quick.out
+#BSUB -e /omics/odcf/analysis/OE0290_projects/heroes-aya_pools/AG_Thongjuea/Code/10x_multiomics/Selina/project/experiment04-annotation/jobs/logs/scGPT_pred_pbmc3k_quick.err
+START_TIME=$(date +%s)
+source ~/.bashrc
+cd /omics/odcf/analysis/OE0290_projects/heroes-aya_pools/AG_Thongjuea/Code/10x_multiomics/Selina/project/experiment04-annotation/scripts
+module load GCC/14.1.0
+conda activate scgpt_env
+python 01_pbmc_annot_wo_fine_tuning.py
+END_TIME=$(date +%s)
+DURATION=$(($END_TIME - $START_TIME))
+printf "\n"; printf "%.0s#" {1..58}; printf "\n"
+printf "⏱️ Total Runtime: %02d:%02d:%02d\n" $(($DURATION/3600)) $(($DURATION%3600/60)) $(($DURATION%60))
+printf "%.0s#" {1..58}; printf "\n\n"
+
+------------------------------------------------------------
+
+Successfully completed.
+
+Resource usage summary:
+
+    CPU time :                                   33322.00 sec.
+    Max Memory :                                 13009 MB
+    Average Memory :                             6218.98 MB
+    Total Requested Memory :                     102400.00 MB
+    Delta Memory :                               89391.00 MB
+    Max Swap :                                   -
+    Max Processes :                              20
+    Max Threads :                                90
+    Run time :                                   1852 sec.
+    Turnaround time :                            1859 sec.
+
+The output (if any) follows:
+
+Loading GCC/14.1.0
+  Loading requirement: GCCcore/14.1.0 zlib/1.3.1-GCCcore-14.1.0
+    binutils/2.42-GCCcore-14.1.0
+CONFIG: save to /omics/odcf/analysis/OE0290_projects/heroes-aya_pools/AG_Thongjuea/Code/10x_multiomics/Selina/project/experiment04-annotation/results/pred-wo-fine-tuning/pred_pbmc3k-Sep29-13-20
+
+scGPT - INFO - Normalizing total counts ...
+scGPT - INFO - Binning data ...
+scGPT - INFO - CUDA: False
+scGPT - INFO - TORCH DEVICE: cpu
+scGPT - INFO - CONFIG: {'seed': 0, 'dataset_name': 'pbmc3k', 'do_train': True, 'mask_ratio': 0.0, 'epochs': 10, 'n_bins': 51, 'MVC': False, 'ecs_threshold': 0.0, 'dab_weight': 0.0, 'lr': 0.0001, 'batch_size': 32, 'layer_size': 128, 'nlayers': 4, 'nhead': 4, 'dropout': 0.2, 'schedule_ratio': 0.9, 'save_eval_interval': 5, 'fast_transformer': True, 'pre_norm': False, 'amp': True, 'include_zero_gene': False, 'freeze': False, 'DSBN': False, 'load_model': '/omics/odcf/analysis/OE0290_projects/heroes-aya_pools/AG_Thongjuea/Code/10x_multiomics/Selina/project/experiment04-annotation/scGPT/save/scGPT_human', 'pad_token': '<pad>', 'special_tokens': ['<pad>', '<cls>', '<eoc>'], 'data_is_raw': False, 'filter_gene_by_counts': False, 'filter_cell_by_counts': False, 'max_seq_len': 3001, 'input_style': 'binned', 'input_emb_style': 'continuous', 'cell_emb_style': 'cls', 'mvc_decoder_style': 'inner product', 'INPUT_BATCH_LABELS': False, 'CLS': True, 'DAB': False, 'MLM': False, 'eval_batch_size': 32, 'fast_transformer_backend': 'flash'}
+scGPT - INFO - PyTorch CPU threads: 20
+scGPT - INFO - PyTorch interop threads: 128
+scGPT - INFO - Accuracy: 0.005, Precision: 0.001, Recall: 0.125, Macro F1: 0.001
+
+##########################################################
+⏱️ Total Runtime: 00:30:52
+##########################################################
+
+
+
+PS:
+
+Read file </omics/odcf/analysis/OE0290_projects/heroes-aya_pools/AG_Thongjuea/Code/10x_multiomics/Selina/project/experiment04-annotation/jobs/logs/scGPT_pred_pbmc3k_quick.err> for stderr output of this job.
+

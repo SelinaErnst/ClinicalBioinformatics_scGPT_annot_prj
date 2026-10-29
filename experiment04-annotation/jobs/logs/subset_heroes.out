@@ -1,0 +1,192 @@
+Sender: LSF System <lsfadmin@odcf-cn42u13.dkfz-heidelberg.de>
+Subject: Job 54513329: <subset_heroes> in cluster <DKFZ> Done
+
+Job <subset_heroes> was submitted from host <odcf-vm135.dkfz-heidelberg.de> by user <s329t> in cluster <DKFZ> at Tue Oct 20 13:25:11 2026
+Job was executed on host(s) <10*odcf-cn42u13>, in queue <long>, as user <s329t> in cluster <DKFZ> at Tue Oct 20 13:25:13 2026
+</home/s329t> was used as the home directory.
+</home/s329t> was used as the working directory.
+Started at Tue Oct 20 13:25:13 2026
+Terminated at Tue Oct 20 13:31:02 2026
+Results reported at Tue Oct 20 13:31:02 2026
+
+Your job looked like:
+
+------------------------------------------------------------
+# LSBATCH: User input
+#!/bin/bash
+#BSUB -J subset_heroes
+#BSUB -q long
+#BSUB -n 10
+#BSUB -R "rusage[mem=100GB] span[hosts=1]"
+#BSUB -W 02:00
+#BSUB -o /omics/odcf/analysis/OE0290_projects/heroes-aya_pools/AG_Thongjuea/Code/10x_multiomics/Selina/project/experiment04-annotation/jobs/logs/subset_heroes.out
+#BSUB -e /omics/odcf/analysis/OE0290_projects/heroes-aya_pools/AG_Thongjuea/Code/10x_multiomics/Selina/project/experiment04-annotation/jobs/logs/subset_heroes.err
+START_TIME=$(date +%s)
+source ~/.bashrc
+cd /omics/odcf/analysis/OE0290_projects/heroes-aya_pools/AG_Thongjuea/Code/10x_multiomics/Selina/project/experiment04-annotation/scripts
+conda activate scanpy_env
+python 06_scvi_pools_dataset.py
+END_TIME=$(date +%s)
+DURATION=$(($END_TIME - $START_TIME))
+printf "\n"; printf "%.0s#" {1..58}; printf "\n"
+printf "⏱️ Total Runtime: %02d:%02d:%02d\n" $(($DURATION/3600)) $(($DURATION%3600/60)) $(($DURATION%60))
+printf "%.0s#" {1..58}; printf "\n\n"
+
+------------------------------------------------------------
+
+Successfully completed.
+
+Resource usage summary:
+
+    CPU time :                                   178.47 sec.
+    Max Memory :                                 99103 MB
+    Average Memory :                             37352.30 MB
+    Total Requested Memory :                     102400.00 MB
+    Delta Memory :                               3297.00 MB
+    Max Swap :                                   -
+    Max Processes :                              5
+    Max Threads :                                15
+    Run time :                                   347 sec.
+    Turnaround time :                            351 sec.
+
+The output (if any) follows:
+
+
+##########################################################
+⏱️ Total Runtime: 00:05:47
+##########################################################
+
+
+
+PS:
+
+Read file </omics/odcf/analysis/OE0290_projects/heroes-aya_pools/AG_Thongjuea/Code/10x_multiomics/Selina/project/experiment04-annotation/jobs/logs/subset_heroes.err> for stderr output of this job.
+
+Sender: LSF System <lsfadmin@odcf-cn12u19.dkfz-heidelberg.de>
+Subject: Job 54514671: <subset_heroes> in cluster <DKFZ> Done
+
+Job <subset_heroes> was submitted from host <odcf-vm135.dkfz-heidelberg.de> by user <s329t> in cluster <DKFZ> at Tue Oct 20 14:10:40 2026
+Job was executed on host(s) <10*odcf-cn12u19>, in queue <long>, as user <s329t> in cluster <DKFZ> at Tue Oct 20 14:10:42 2026
+</home/s329t> was used as the home directory.
+</home/s329t> was used as the working directory.
+Started at Tue Oct 20 14:10:42 2026
+Terminated at Tue Oct 20 14:17:22 2026
+Results reported at Tue Oct 20 14:17:22 2026
+
+Your job looked like:
+
+------------------------------------------------------------
+# LSBATCH: User input
+#!/bin/bash
+#BSUB -J subset_heroes
+#BSUB -q long
+#BSUB -n 10
+#BSUB -R "rusage[mem=100GB] span[hosts=1]"
+#BSUB -W 02:00
+#BSUB -o /omics/odcf/analysis/OE0290_projects/heroes-aya_pools/AG_Thongjuea/Code/10x_multiomics/Selina/project/experiment04-annotation/jobs/logs/subset_heroes.out
+#BSUB -e /omics/odcf/analysis/OE0290_projects/heroes-aya_pools/AG_Thongjuea/Code/10x_multiomics/Selina/project/experiment04-annotation/jobs/logs/subset_heroes.err
+START_TIME=$(date +%s)
+source ~/.bashrc
+cd /omics/odcf/analysis/OE0290_projects/heroes-aya_pools/AG_Thongjuea/Code/10x_multiomics/Selina/project/experiment04-annotation/scripts
+conda activate scanpy_env
+python 06_scvi_pools_dataset.py
+END_TIME=$(date +%s)
+DURATION=$(($END_TIME - $START_TIME))
+printf "\n"; printf "%.0s#" {1..58}; printf "\n"
+printf "⏱️ Total Runtime: %02d:%02d:%02d\n" $(($DURATION/3600)) $(($DURATION%3600/60)) $(($DURATION%60))
+printf "%.0s#" {1..58}; printf "\n\n"
+
+------------------------------------------------------------
+
+Successfully completed.
+
+Resource usage summary:
+
+    CPU time :                                   227.75 sec.
+    Max Memory :                                 101579 MB
+    Average Memory :                             31559.09 MB
+    Total Requested Memory :                     102400.00 MB
+    Delta Memory :                               821.00 MB
+    Max Swap :                                   -
+    Max Processes :                              5
+    Max Threads :                                15
+    Run time :                                   400 sec.
+    Turnaround time :                            402 sec.
+
+The output (if any) follows:
+
+
+##########################################################
+⏱️ Total Runtime: 00:06:39
+##########################################################
+
+
+
+PS:
+
+Read file </omics/odcf/analysis/OE0290_projects/heroes-aya_pools/AG_Thongjuea/Code/10x_multiomics/Selina/project/experiment04-annotation/jobs/logs/subset_heroes.err> for stderr output of this job.
+
+Sender: LSF System <lsfadmin@odcf-cn42u25.dkfz-heidelberg.de>
+Subject: Job 54789617: <subset_heroes> in cluster <DKFZ> Done
+
+Job <subset_heroes> was submitted from host <odcf-vm135.dkfz-heidelberg.de> by user <s329t> in cluster <DKFZ> at Thu Oct 29 11:59:13 2026
+Job was executed on host(s) <10*odcf-cn42u25>, in queue <long>, as user <s329t> in cluster <DKFZ> at Thu Oct 29 11:59:14 2026
+</home/s329t> was used as the home directory.
+</omics/odcf/analysis/OE0290_projects/heroes-aya_pools/AG_Thongjuea/Code/10x_multiomics/Selina/project> was used as the working directory.
+Started at Thu Oct 29 11:59:14 2026
+Terminated at Thu Oct 29 12:03:05 2026
+Results reported at Thu Oct 29 12:03:05 2026
+
+Your job looked like:
+
+------------------------------------------------------------
+# LSBATCH: User input
+#!/bin/bash
+#BSUB -J subset_heroes
+#BSUB -q long
+#BSUB -n 10
+#BSUB -R "rusage[mem=200GB] span[hosts=1]"
+#BSUB -W 02:00
+#BSUB -o /omics/odcf/analysis/OE0290_projects/heroes-aya_pools/AG_Thongjuea/Code/10x_multiomics/Selina/project/experiment04-annotation/jobs/logs/subset_heroes.out
+#BSUB -e /omics/odcf/analysis/OE0290_projects/heroes-aya_pools/AG_Thongjuea/Code/10x_multiomics/Selina/project/experiment04-annotation/jobs/logs/subset_heroes.err
+START_TIME=$(date +%s)
+source ~/.bashrc
+cd /omics/odcf/analysis/OE0290_projects/heroes-aya_pools/AG_Thongjuea/Code/10x_multiomics/Selina/project/experiment04-annotation/scripts
+conda activate scanpy_env
+python 06_scvi_pools_dataset.py
+END_TIME=$(date +%s)
+DURATION=$(($END_TIME - $START_TIME))
+printf "\n"; printf "%.0s#" {1..58}; printf "\n"
+printf "⏱️ Total Runtime: %02d:%02d:%02d\n" $(($DURATION/3600)) $(($DURATION%3600/60)) $(($DURATION%60))
+printf "%.0s#" {1..58}; printf "\n\n"
+
+------------------------------------------------------------
+
+Successfully completed.
+
+Resource usage summary:
+
+    CPU time :                                   76.97 sec.
+    Max Memory :                                 100102 MB
+    Average Memory :                             27754.42 MB
+    Total Requested Memory :                     204800.00 MB
+    Delta Memory :                               104698.00 MB
+    Max Swap :                                   -
+    Max Processes :                              5
+    Max Threads :                                15
+    Run time :                                   230 sec.
+    Turnaround time :                            232 sec.
+
+The output (if any) follows:
+
+
+##########################################################
+⏱️ Total Runtime: 00:03:50
+##########################################################
+
+
+
+PS:
+
+Read file </omics/odcf/analysis/OE0290_projects/heroes-aya_pools/AG_Thongjuea/Code/10x_multiomics/Selina/project/experiment04-annotation/jobs/logs/subset_heroes.err> for stderr output of this job.
+

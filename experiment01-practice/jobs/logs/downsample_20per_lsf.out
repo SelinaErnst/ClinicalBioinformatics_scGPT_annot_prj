@@ -1,0 +1,456 @@
+Sender: LSF System <lsfadmin@odcf-cn44u13.dkfz-heidelberg.de>
+Subject: Job 52791274: <downsample_20per_lsf> in cluster <DKFZ> Done
+
+Job <downsample_20per_lsf> was submitted from host <odcf-vm135.dkfz-heidelberg.de> by user <s329t> in cluster <DKFZ> at Fri Aug  7 00:54:18 2026
+Job was executed on host(s) <5*odcf-cn44u13>, in queue <long>, as user <s329t> in cluster <DKFZ> at Fri Aug  7 00:54:20 2026
+</home/s329t> was used as the home directory.
+</omics/odcf/analysis/OE0290_projects/heroes-aya_pools/AG_Thongjuea/Code/10x_multiomics/Selina/project/job-submission> was used as the working directory.
+Started at Fri Aug  7 00:54:20 2026
+Terminated at Fri Aug  7 01:01:06 2026
+Results reported at Fri Aug  7 01:01:06 2026
+
+Your job looked like:
+
+------------------------------------------------------------
+# LSBATCH: User input
+#!/bin/bash
+#BSUB -J downsample_20per_lsf
+#BSUB -q long
+#BSUB -n 5
+#BSUB -R "rusage[mem=150GB] span[hosts=1]"
+#BSUB -W 02:00
+#BSUB -o /omics/odcf/analysis/OE0290_projects/heroes-aya_pools/AG_Thongjuea/Code/10x_multiomics/Selina/project/experiment01-practice/logs/downsample_20per_lsf.out
+START_TIME=$(date +%s)
+source ~/.bashrc
+cd /omics/odcf/analysis/OE0290_projects/heroes-aya_pools/AG_Thongjuea/Code/10x_multiomics/Selina/project/experiment01-practice/scripts
+conda activate scanpy_env
+python 04_downsample.py
+rm -f /omics/odcf/analysis/OE0290_projects/heroes-aya_pools/AG_Thongjuea/Code/10x_multiomics/Selina/project/job-submission/job_submission_lsf_tmp.sh
+END_TIME=$(date +%s)
+DURATION=$(($END_TIME - $START_TIME))
+printf "%.0s#" {1..58}; printf "\n"
+printf "⏱️ Total Runtime: %02d:%02d:%02d\n" $(($DURATION/3600)) $(($DURATION%3600/60)) $(($DURATION%60))
+printf "%.0s#" {1..58}; printf "\n"
+
+------------------------------------------------------------
+
+Successfully completed.
+
+Resource usage summary:
+
+    CPU time :                                   318.02 sec.
+    Max Memory :                                 125967 MB
+    Average Memory :                             61083.95 MB
+    Total Requested Memory :                     153600.00 MB
+    Delta Memory :                               27633.00 MB
+    Max Swap :                                   -
+    Max Processes :                              5
+    Max Threads :                                9
+    Run time :                                   413 sec.
+    Turnaround time :                            408 sec.
+
+The output (if any) follows:
+
+scvi_pools_2026_celltype_annotated.h5ad
+AnnData object with n_obs × n_vars = 481411 × 35929
+    obs: 'pool', 'assignment', 'celltype', 'seurat_clusters', 'Cohort', 'Entity', 'Fusion', 'Episode', 'PID', 'Location', 'barcode_sample', 'n_genes', 'n_genes_by_counts', 'total_counts', 'total_counts_mt', 'pct_counts_mt', '_scvi_batch', '_scvi_labels', 'leiden', 'X', 'final'
+    var: 'n_cells', 'mt', 'n_cells_by_counts', 'mean_counts', 'pct_dropout_by_counts', 'total_counts'
+    uns: '_scvi_manager_uuid', '_scvi_uuid', 'celltype_colors', 'final_colors', 'leiden', 'log1p', 'neighbors', 'umap'
+    obsm: 'X_scVI', 'X_umap', '_scvi_extra_categorical_covs'
+    obsp: 'connectivities', 'distances'
+    layers: 'counts', 'scvi_normalized', None (.X)
+scvi_pools_2026_downsampled_20per.h5ad
+AnnData object with n_obs × n_vars = 96282 × 35929
+    obs: 'pool', 'assignment', 'celltype', 'seurat_clusters', 'Cohort', 'Entity', 'Fusion', 'Episode', 'PID', 'Location', 'barcode_sample', 'n_genes', 'n_genes_by_counts', 'total_counts', 'total_counts_mt', 'pct_counts_mt', '_scvi_batch', '_scvi_labels', 'leiden', 'X', 'final'
+    var: 'n_cells', 'mt', 'n_cells_by_counts', 'mean_counts', 'pct_dropout_by_counts', 'total_counts'
+    uns: '_scvi_manager_uuid', '_scvi_uuid', 'celltype_colors', 'final_colors', 'leiden', 'log1p', 'neighbors', 'umap'
+    obsm: 'X_scVI', 'X_umap', '_scvi_extra_categorical_covs'
+    obsp: 'connectivities', 'distances'
+    layers: 'counts', 'scvi_normalized', None (.X)
+
+##########################################################
+⏱️ Total Runtime: 00:06:45
+##########################################################
+
+Sender: LSF System <lsfadmin@odcf-cn44u27.dkfz-heidelberg.de>
+Subject: Job 52791281: <downsample_20per_lsf> in cluster <DKFZ> Done
+
+Job <downsample_20per_lsf> was submitted from host <odcf-vm135.dkfz-heidelberg.de> by user <s329t> in cluster <DKFZ> at Fri Aug  7 01:02:17 2026
+Job was executed on host(s) <10*odcf-cn44u27>, in queue <long>, as user <s329t> in cluster <DKFZ> at Fri Aug  7 01:02:19 2026
+</home/s329t> was used as the home directory.
+</omics/odcf/analysis/OE0290_projects/heroes-aya_pools/AG_Thongjuea/Code/10x_multiomics/Selina/project/job-submission> was used as the working directory.
+Started at Fri Aug  7 01:02:19 2026
+Terminated at Fri Aug  7 01:17:30 2026
+Results reported at Fri Aug  7 01:17:30 2026
+
+Your job looked like:
+
+------------------------------------------------------------
+# LSBATCH: User input
+#!/bin/bash
+#BSUB -J downsample_20per_lsf
+#BSUB -q long
+#BSUB -n 10
+#BSUB -R "rusage[mem=150GB] span[hosts=1]"
+#BSUB -W 02:00
+#BSUB -o /omics/odcf/analysis/OE0290_projects/heroes-aya_pools/AG_Thongjuea/Code/10x_multiomics/Selina/project/experiment01-practice/logs/downsample_20per_lsf.out
+START_TIME=$(date +%s)
+source ~/.bashrc
+cd /omics/odcf/analysis/OE0290_projects/heroes-aya_pools/AG_Thongjuea/Code/10x_multiomics/Selina/project/experiment01-practice/scripts
+conda activate scanpy_env
+python 04_downsample.py
+rm -f /omics/odcf/analysis/OE0290_projects/heroes-aya_pools/AG_Thongjuea/Code/10x_multiomics/Selina/project/job-submission/job_submission_lsf_tmp.sh
+END_TIME=$(date +%s)
+DURATION=$(($END_TIME - $START_TIME))
+printf "%.0s#" {1..58}; printf "\n"
+printf "\n⏱️ Total Runtime: %02d:%02d:%02d\n" $(($DURATION/3600)) $(($DURATION%3600/60)) $(($DURATION%60))
+printf "%.0s#" {1..58}; printf "\n"
+
+------------------------------------------------------------
+
+Successfully completed.
+
+Resource usage summary:
+
+    CPU time :                                   834.13 sec.
+    Max Memory :                                 131172 MB
+    Average Memory :                             87179.33 MB
+    Total Requested Memory :                     153600.00 MB
+    Delta Memory :                               22428.00 MB
+    Max Swap :                                   -
+    Max Processes :                              5
+    Max Threads :                                14
+    Run time :                                   911 sec.
+    Turnaround time :                            913 sec.
+
+The output (if any) follows:
+
+scvi_pools_2026_celltype_annotated.h5ad
+AnnData object with n_obs × n_vars = 481411 × 35929
+    obs: 'pool', 'assignment', 'celltype', 'seurat_clusters', 'Cohort', 'Entity', 'Fusion', 'Episode', 'PID', 'Location', 'barcode_sample', 'n_genes', 'n_genes_by_counts', 'total_counts', 'total_counts_mt', 'pct_counts_mt', '_scvi_batch', '_scvi_labels', 'leiden', 'X', 'final'
+    var: 'n_cells', 'mt', 'n_cells_by_counts', 'mean_counts', 'pct_dropout_by_counts', 'total_counts'
+    uns: '_scvi_manager_uuid', '_scvi_uuid', 'celltype_colors', 'final_colors', 'leiden', 'log1p', 'neighbors', 'umap'
+    obsm: 'X_scVI', 'X_umap', '_scvi_extra_categorical_covs'
+    obsp: 'connectivities', 'distances'
+    layers: 'counts', 'scvi_normalized', None (.X)
+scvi_pools_2026_downsampled_20per.h5ad
+AnnData object with n_obs × n_vars = 96282 × 35929
+    obs: 'pool', 'assignment', 'celltype', 'seurat_clusters', 'Cohort', 'Entity', 'Fusion', 'Episode', 'PID', 'Location', 'barcode_sample', 'n_genes', 'n_genes_by_counts', 'total_counts', 'total_counts_mt', 'pct_counts_mt', '_scvi_batch', '_scvi_labels', 'leiden', 'X', 'final'
+    var: 'n_cells', 'mt', 'n_cells_by_counts', 'mean_counts', 'pct_dropout_by_counts', 'total_counts'
+    uns: '_scvi_manager_uuid', '_scvi_uuid', 'celltype_colors', 'final_colors', 'leiden', 'log1p', 'neighbors', 'umap'
+    obsm: 'X_scVI', 'X_umap', '_scvi_extra_categorical_covs'
+    obsp: 'connectivities', 'distances'
+    layers: 'counts', 'scvi_normalized', None (.X)
+
+##########################################################
+⏱️ Total Runtime: 00:15:10
+##########################################################
+
+Sender: LSF System <lsfadmin@odcf-cn44u27.dkfz-heidelberg.de>
+Subject: Job 52791354: <downsample_20per_lsf> in cluster <DKFZ> Done
+
+Job <downsample_20per_lsf> was submitted from host <odcf-vm135.dkfz-heidelberg.de> by user <s329t> in cluster <DKFZ> at Fri Aug  7 01:28:06 2026
+Job was executed on host(s) <3*odcf-cn44u27>, in queue <long>, as user <s329t> in cluster <DKFZ> at Fri Aug  7 01:28:06 2026
+</home/s329t> was used as the home directory.
+</omics/odcf/analysis/OE0290_projects/heroes-aya_pools/AG_Thongjuea/Code/10x_multiomics/Selina/project/job-submission> was used as the working directory.
+Started at Fri Aug  7 01:28:06 2026
+Terminated at Fri Aug  7 01:40:22 2026
+Results reported at Fri Aug  7 01:40:22 2026
+
+Your job looked like:
+
+------------------------------------------------------------
+# LSBATCH: User input
+#!/bin/bash
+#BSUB -J downsample_20per_lsf
+#BSUB -q long
+#BSUB -n 3
+#BSUB -R "rusage[mem=150GB] span[hosts=1]"
+#BSUB -W 02:00
+#BSUB -o /omics/odcf/analysis/OE0290_projects/heroes-aya_pools/AG_Thongjuea/Code/10x_multiomics/Selina/project/experiment01-practice/logs/downsample_20per_lsf.out
+START_TIME=$(date +%s)
+source ~/.bashrc
+cd /omics/odcf/analysis/OE0290_projects/heroes-aya_pools/AG_Thongjuea/Code/10x_multiomics/Selina/project/experiment01-practice/scripts
+conda activate scanpy_env
+python 04_downsample.py
+rm -f /omics/odcf/analysis/OE0290_projects/heroes-aya_pools/AG_Thongjuea/Code/10x_multiomics/Selina/project/job-submission/job_submission_lsf_tmp.sh
+END_TIME=$(date +%s)
+DURATION=$(($END_TIME - $START_TIME))
+printf "\n"; printf "%.0s#" {1..58}; printf "\n"
+printf "⏱️ Total Runtime: %02d:%02d:%02d\n" $(($DURATION/3600)) $(($DURATION%3600/60)) $(($DURATION%60))
+printf "%.0s#" {1..58}; printf "\n"
+
+------------------------------------------------------------
+
+Successfully completed.
+
+Resource usage summary:
+
+    CPU time :                                   654.41 sec.
+    Max Memory :                                 129521 MB
+    Average Memory :                             91281.70 MB
+    Total Requested Memory :                     153600.00 MB
+    Delta Memory :                               24079.00 MB
+    Max Swap :                                   -
+    Max Processes :                              5
+    Max Threads :                                7
+    Run time :                                   734 sec.
+    Turnaround time :                            736 sec.
+
+The output (if any) follows:
+
+scvi_pools_2026_celltype_annotated.h5ad
+AnnData object with n_obs × n_vars = 481411 × 35929
+    obs: 'pool', 'assignment', 'celltype', 'seurat_clusters', 'Cohort', 'Entity', 'Fusion', 'Episode', 'PID', 'Location', 'barcode_sample', 'n_genes', 'n_genes_by_counts', 'total_counts', 'total_counts_mt', 'pct_counts_mt', '_scvi_batch', '_scvi_labels', 'leiden', 'X', 'final'
+    var: 'n_cells', 'mt', 'n_cells_by_counts', 'mean_counts', 'pct_dropout_by_counts', 'total_counts'
+    uns: '_scvi_manager_uuid', '_scvi_uuid', 'celltype_colors', 'final_colors', 'leiden', 'log1p', 'neighbors', 'umap'
+    obsm: 'X_scVI', 'X_umap', '_scvi_extra_categorical_covs'
+    obsp: 'connectivities', 'distances'
+    layers: 'counts', 'scvi_normalized', None (.X)
+scvi_pools_2026_downsampled_20per.h5ad
+AnnData object with n_obs × n_vars = 96282 × 35929
+    obs: 'pool', 'assignment', 'celltype', 'seurat_clusters', 'Cohort', 'Entity', 'Fusion', 'Episode', 'PID', 'Location', 'barcode_sample', 'n_genes', 'n_genes_by_counts', 'total_counts', 'total_counts_mt', 'pct_counts_mt', '_scvi_batch', '_scvi_labels', 'leiden', 'X', 'final'
+    var: 'n_cells', 'mt', 'n_cells_by_counts', 'mean_counts', 'pct_dropout_by_counts', 'total_counts'
+    uns: '_scvi_manager_uuid', '_scvi_uuid', 'celltype_colors', 'final_colors', 'leiden', 'log1p', 'neighbors', 'umap'
+    obsm: 'X_scVI', 'X_umap', '_scvi_extra_categorical_covs'
+    obsp: 'connectivities', 'distances'
+    layers: 'counts', 'scvi_normalized', None (.X)
+
+##########################################################
+⏱️ Total Runtime: 00:12:13
+##########################################################
+
+Sender: LSF System <lsfadmin@odcf-cn44u25.dkfz-heidelberg.de>
+Subject: Job 52792655: <downsample_20per_lsf> in cluster <DKFZ> Done
+
+Job <downsample_20per_lsf> was submitted from host <odcf-vm135.dkfz-heidelberg.de> by user <s329t> in cluster <DKFZ> at Fri Aug  7 09:20:29 2026
+Job was executed on host(s) <5*odcf-cn44u25>, in queue <long>, as user <s329t> in cluster <DKFZ> at Fri Aug  7 09:20:30 2026
+</home/s329t> was used as the home directory.
+</home/s329t> was used as the working directory.
+Started at Fri Aug  7 09:20:30 2026
+Terminated at Fri Aug  7 09:29:47 2026
+Results reported at Fri Aug  7 09:29:47 2026
+
+Your job looked like:
+
+------------------------------------------------------------
+# LSBATCH: User input
+#!/bin/bash
+#BSUB -J downsample_20per_lsf
+#BSUB -q long
+#BSUB -n 5
+#BSUB -R "rusage[mem=150GB] span[hosts=1]"
+#BSUB -W 02:00
+#BSUB -o /omics/odcf/analysis/OE0290_projects/heroes-aya_pools/AG_Thongjuea/Code/10x_multiomics/Selina/project/experiment01-practice/logs/downsample_20per_lsf.out
+START_TIME=$(date +%s)
+source ~/.bashrc
+cd /omics/odcf/analysis/OE0290_projects/heroes-aya_pools/AG_Thongjuea/Code/10x_multiomics/Selina/project/experiment01-practice/scripts
+conda activate scanpy_env
+python 04_downsample.py
+rm -f /omics/odcf/analysis/OE0290_projects/heroes-aya_pools/AG_Thongjuea/Code/10x_multiomics/Selina/project/job-submission/job_submission_lsf_tmp.sh
+END_TIME=$(date +%s)
+DURATION=$(($END_TIME - $START_TIME))
+printf "\n"; printf "%.0s#" {1..58}; printf "\n"
+printf "⏱️ Total Runtime: %02d:%02d:%02d\n" $(($DURATION/3600)) $(($DURATION%3600/60)) $(($DURATION%60))
+printf "%.0s#" {1..58}; printf "\n\n"
+
+------------------------------------------------------------
+
+Successfully completed.
+
+Resource usage summary:
+
+    CPU time :                                   471.91 sec.
+    Max Memory :                                 131464 MB
+    Average Memory :                             84000.94 MB
+    Total Requested Memory :                     153600.00 MB
+    Delta Memory :                               22136.00 MB
+    Max Swap :                                   -
+    Max Processes :                              5
+    Max Threads :                                9
+    Run time :                                   560 sec.
+    Turnaround time :                            558 sec.
+
+The output (if any) follows:
+
+scvi_pools_2026_celltype_annotated.h5ad
+AnnData object with n_obs × n_vars = 481411 × 35929
+    obs: 'pool', 'assignment', 'celltype', 'seurat_clusters', 'Cohort', 'Entity', 'Fusion', 'Episode', 'PID', 'Location', 'barcode_sample', 'n_genes', 'n_genes_by_counts', 'total_counts', 'total_counts_mt', 'pct_counts_mt', '_scvi_batch', '_scvi_labels', 'leiden', 'X', 'final'
+    var: 'n_cells', 'mt', 'n_cells_by_counts', 'mean_counts', 'pct_dropout_by_counts', 'total_counts'
+    uns: '_scvi_manager_uuid', '_scvi_uuid', 'celltype_colors', 'final_colors', 'leiden', 'log1p', 'neighbors', 'umap'
+    obsm: 'X_scVI', 'X_umap', '_scvi_extra_categorical_covs'
+    obsp: 'connectivities', 'distances'
+    layers: 'counts', 'scvi_normalized', None (.X)
+scvi_pools_2026_downsampled_20per.h5ad
+AnnData object with n_obs × n_vars = 96282 × 35929
+    obs: 'pool', 'assignment', 'celltype', 'seurat_clusters', 'Cohort', 'Entity', 'Fusion', 'Episode', 'PID', 'Location', 'barcode_sample', 'n_genes', 'n_genes_by_counts', 'total_counts', 'total_counts_mt', 'pct_counts_mt', '_scvi_batch', '_scvi_labels', 'leiden', 'X', 'final'
+    var: 'n_cells', 'mt', 'n_cells_by_counts', 'mean_counts', 'pct_dropout_by_counts', 'total_counts'
+    uns: '_scvi_manager_uuid', '_scvi_uuid', 'celltype_colors', 'final_colors', 'leiden', 'log1p', 'neighbors', 'umap'
+    obsm: 'X_scVI', 'X_umap', '_scvi_extra_categorical_covs'
+    obsp: 'connectivities', 'distances'
+    layers: 'counts', 'scvi_normalized', None (.X)
+
+##########################################################
+⏱️ Total Runtime: 00:09:16
+##########################################################
+
+Sender: LSF System <lsfadmin@hitron-cn45u19.dkfz-heidelberg.de>
+Subject: Job 53501326: <downsample_20per_lsf> in cluster <DKFZ> Done
+
+Job <downsample_20per_lsf> was submitted from host <odcf-vm135.dkfz-heidelberg.de> by user <s329t> in cluster <DKFZ> at Thu Sep 10 16:16:08 2026
+Job was executed on host(s) <5*hitron-cn45u19>, in queue <long>, as user <s329t> in cluster <DKFZ> at Thu Sep 10 16:16:09 2026
+</home/s329t> was used as the home directory.
+</omics/odcf/analysis/OE0290_projects/heroes-aya_pools/AG_Thongjuea/Code/10x_multiomics/Selina/project/experiment03-scGPT> was used as the working directory.
+Started at Thu Sep 10 16:16:09 2026
+Terminated at Thu Sep 10 16:20:13 2026
+Results reported at Thu Sep 10 16:20:13 2026
+
+Your job looked like:
+
+------------------------------------------------------------
+# LSBATCH: User input
+#!/bin/bash
+#BSUB -J downsample_20per_lsf
+#BSUB -q long
+#BSUB -n 5
+#BSUB -R "rusage[mem=150GB] span[hosts=1]"
+#BSUB -W 01:00
+#BSUB -o /omics/odcf/analysis/OE0290_projects/heroes-aya_pools/AG_Thongjuea/Code/10x_multiomics/Selina/project/experiment01-practice/jobs/logs/downsample_20per_lsf.out
+#BSUB -e /omics/odcf/analysis/OE0290_projects/heroes-aya_pools/AG_Thongjuea/Code/10x_multiomics/Selina/project/experiment01-practice/jobs/logs/downsample_20per_lsf.err
+START_TIME=$(date +%s)
+source ~/.bashrc
+cd /omics/odcf/analysis/OE0290_projects/heroes-aya_pools/AG_Thongjuea/Code/10x_multiomics/Selina/project/experiment01-practice/scripts
+conda activate scanpy_env
+python 03_downsample.py
+END_TIME=$(date +%s)
+DURATION=$(($END_TIME - $START_TIME))
+printf "\n"; printf "%.0s#" {1..58}; printf "\n"
+printf "⏱️ Total Runtime: %02d:%02d:%02d\n" $(($DURATION/3600)) $(($DURATION%3600/60)) $(($DURATION%60))
+printf "%.0s#" {1..58}; printf "\n\n"
+
+------------------------------------------------------------
+
+Successfully completed.
+
+Resource usage summary:
+
+    CPU time :                                   123.11 sec.
+    Max Memory :                                 127478 MB
+    Average Memory :                             58029.87 MB
+    Total Requested Memory :                     153600.00 MB
+    Delta Memory :                               26122.00 MB
+    Max Swap :                                   -
+    Max Processes :                              5
+    Max Threads :                                10
+    Run time :                                   242 sec.
+    Turnaround time :                            245 sec.
+
+The output (if any) follows:
+
+scvi_pools_2026_celltype_annotated.h5ad
+AnnData object with n_obs × n_vars = 481411 × 35929
+    obs: 'pool', 'assignment', 'celltype', 'seurat_clusters', 'Cohort', 'Entity', 'Fusion', 'Episode', 'PID', 'Location', 'barcode_sample', 'n_genes', 'n_genes_by_counts', 'total_counts', 'total_counts_mt', 'pct_counts_mt', '_scvi_batch', '_scvi_labels', 'leiden', 'X', 'final'
+    var: 'n_cells', 'mt', 'n_cells_by_counts', 'mean_counts', 'pct_dropout_by_counts', 'total_counts'
+    uns: '_scvi_manager_uuid', '_scvi_uuid', 'celltype_colors', 'final_colors', 'leiden', 'log1p', 'neighbors', 'umap'
+    obsm: 'X_scVI', 'X_umap', '_scvi_extra_categorical_covs'
+    obsp: 'connectivities', 'distances'
+    layers: 'counts', 'scvi_normalized', None (.X)
+scvi_pools_2026_downsampled_20per.h5ad
+AnnData object with n_obs × n_vars = 96282 × 35929
+    obs: 'pool', 'assignment', 'celltype', 'seurat_clusters', 'Cohort', 'Entity', 'Fusion', 'Episode', 'PID', 'Location', 'barcode_sample', 'n_genes', 'n_genes_by_counts', 'total_counts', 'total_counts_mt', 'pct_counts_mt', '_scvi_batch', '_scvi_labels', 'leiden', 'X', 'final'
+    var: 'n_cells', 'mt', 'n_cells_by_counts', 'mean_counts', 'pct_dropout_by_counts', 'total_counts'
+    uns: '_scvi_manager_uuid', '_scvi_uuid', 'celltype_colors', 'final_colors', 'leiden', 'log1p', 'neighbors', 'umap'
+    obsm: 'X_scVI', 'X_umap', '_scvi_extra_categorical_covs'
+    obsp: 'connectivities', 'distances'
+    layers: 'counts', 'scvi_normalized', None (.X)
+
+##########################################################
+⏱️ Total Runtime: 00:04:02
+##########################################################
+
+
+
+PS:
+
+Read file </omics/odcf/analysis/OE0290_projects/heroes-aya_pools/AG_Thongjuea/Code/10x_multiomics/Selina/project/experiment01-practice/jobs/logs/downsample_20per_lsf.err> for stderr output of this job.
+
+Sender: LSF System <lsfadmin@odcf-cn42u13.dkfz-heidelberg.de>
+Subject: Job 53502030: <downsample_20per_lsf> in cluster <DKFZ> Done
+
+Job <downsample_20per_lsf> was submitted from host <odcf-vm135.dkfz-heidelberg.de> by user <s329t> in cluster <DKFZ> at Thu Sep 10 16:23:35 2026
+Job was executed on host(s) <odcf-cn42u13.dkfz-heidelberg.de>, in queue <long>, as user <s329t> in cluster <DKFZ> at Thu Sep 10 16:23:37 2026
+</home/s329t> was used as the home directory.
+</omics/odcf/analysis/OE0290_projects/heroes-aya_pools/AG_Thongjuea/Code/10x_multiomics/Selina/project/experiment01-practice/jobs> was used as the working directory.
+Started at Thu Sep 10 16:23:37 2026
+Terminated at Thu Sep 10 16:32:14 2026
+Results reported at Thu Sep 10 16:32:14 2026
+
+Your job looked like:
+
+------------------------------------------------------------
+# LSBATCH: User input
+#!/bin/bash
+#BSUB -J downsample_20per_lsf
+#BSUB -q long
+#BSUB -n 1
+#BSUB -R "rusage[mem=150GB] span[hosts=1]"
+#BSUB -W 01:00
+#BSUB -o /omics/odcf/analysis/OE0290_projects/heroes-aya_pools/AG_Thongjuea/Code/10x_multiomics/Selina/project/experiment01-practice/jobs/logs/downsample_20per_lsf.out
+#BSUB -e /omics/odcf/analysis/OE0290_projects/heroes-aya_pools/AG_Thongjuea/Code/10x_multiomics/Selina/project/experiment01-practice/jobs/logs/downsample_20per_lsf.err
+START_TIME=$(date +%s)
+source ~/.bashrc
+cd /omics/odcf/analysis/OE0290_projects/heroes-aya_pools/AG_Thongjuea/Code/10x_multiomics/Selina/project/experiment01-practice/scripts
+conda activate scanpy_env
+python 03_downsample.py
+END_TIME=$(date +%s)
+DURATION=$(($END_TIME - $START_TIME))
+printf "\n"; printf "%.0s#" {1..58}; printf "\n"
+printf "⏱️ Total Runtime: %02d:%02d:%02d\n" $(($DURATION/3600)) $(($DURATION%3600/60)) $(($DURATION%60))
+printf "%.0s#" {1..58}; printf "\n\n"
+
+------------------------------------------------------------
+
+Successfully completed.
+
+Resource usage summary:
+
+    CPU time :                                   416.49 sec.
+    Max Memory :                                 128481 MB
+    Average Memory :                             56099.68 MB
+    Total Requested Memory :                     153600.00 MB
+    Delta Memory :                               25119.00 MB
+    Max Swap :                                   -
+    Max Processes :                              5
+    Max Threads :                                6
+    Run time :                                   516 sec.
+    Turnaround time :                            519 sec.
+
+The output (if any) follows:
+
+scvi_pools_2026_celltype_annotated.h5ad
+AnnData object with n_obs × n_vars = 481411 × 35929
+    obs: 'pool', 'assignment', 'celltype', 'seurat_clusters', 'Cohort', 'Entity', 'Fusion', 'Episode', 'PID', 'Location', 'barcode_sample', 'n_genes', 'n_genes_by_counts', 'total_counts', 'total_counts_mt', 'pct_counts_mt', '_scvi_batch', '_scvi_labels', 'leiden', 'X', 'final'
+    var: 'n_cells', 'mt', 'n_cells_by_counts', 'mean_counts', 'pct_dropout_by_counts', 'total_counts'
+    uns: '_scvi_manager_uuid', '_scvi_uuid', 'celltype_colors', 'final_colors', 'leiden', 'log1p', 'neighbors', 'umap'
+    obsm: 'X_scVI', 'X_umap', '_scvi_extra_categorical_covs'
+    obsp: 'connectivities', 'distances'
+    layers: 'counts', 'scvi_normalized', None (.X)
+scvi_pools_2026_downsampled_20per.h5ad
+AnnData object with n_obs × n_vars = 96282 × 35929
+    obs: 'pool', 'assignment', 'celltype', 'seurat_clusters', 'Cohort', 'Entity', 'Fusion', 'Episode', 'PID', 'Location', 'barcode_sample', 'n_genes', 'n_genes_by_counts', 'total_counts', 'total_counts_mt', 'pct_counts_mt', '_scvi_batch', '_scvi_labels', 'leiden', 'X', 'final'
+    var: 'n_cells', 'mt', 'n_cells_by_counts', 'mean_counts', 'pct_dropout_by_counts', 'total_counts'
+    uns: '_scvi_manager_uuid', '_scvi_uuid', 'celltype_colors', 'final_colors', 'leiden', 'log1p', 'neighbors', 'umap'
+    obsm: 'X_scVI', 'X_umap', '_scvi_extra_categorical_covs'
+    obsp: 'connectivities', 'distances'
+    layers: 'counts', 'scvi_normalized', None (.X)
+
+##########################################################
+⏱️ Total Runtime: 00:08:35
+##########################################################
+
+
+
+PS:
+
+Read file </omics/odcf/analysis/OE0290_projects/heroes-aya_pools/AG_Thongjuea/Code/10x_multiomics/Selina/project/experiment01-practice/jobs/logs/downsample_20per_lsf.err> for stderr output of this job.
+

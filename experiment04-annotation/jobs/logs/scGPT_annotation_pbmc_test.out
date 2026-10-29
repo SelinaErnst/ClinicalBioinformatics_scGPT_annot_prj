@@ -1,0 +1,385 @@
+Sender: LSF System <lsfadmin@odcf-cn34u03s03.dkfz-heidelberg.de>
+Subject: Job 54107759: <scGPT_annotation_pbmc> in cluster <DKFZ> Done
+
+Job <scGPT_annotation_pbmc> was submitted from host <odcf-vm135.dkfz-heidelberg.de> by user <s329t> in cluster <DKFZ> at Thu Oct  1 14:36:30 2026
+Job was executed on host(s) <20*odcf-cn34u03s03>, in queue <verylong>, as user <s329t> in cluster <DKFZ> at Thu Oct  1 14:36:31 2026
+</home/s329t> was used as the home directory.
+</omics/odcf/analysis/OE0290_projects/heroes-aya_pools/AG_Thongjuea/Code/10x_multiomics/Selina/project/experiment04-annotation/jobs> was used as the working directory.
+Started at Thu Oct  1 14:36:31 2026
+Terminated at Thu Oct  1 14:38:09 2026
+Results reported at Thu Oct  1 14:38:09 2026
+
+Your job looked like:
+
+------------------------------------------------------------
+# LSBATCH: User input
+#!/bin/bash
+#BSUB -J scGPT_annotation_pbmc
+#BSUB -q verylong
+#BSUB -n 20
+#BSUB -R "rusage[mem=200GB] span[hosts=1]"
+#BSUB -o /omics/odcf/analysis/OE0290_projects/heroes-aya_pools/AG_Thongjuea/Code/10x_multiomics/Selina/project/experiment04-annotation/jobs/logs/scGPT_annotation_pbmc_test.out
+#BSUB -e /omics/odcf/analysis/OE0290_projects/heroes-aya_pools/AG_Thongjuea/Code/10x_multiomics/Selina/project/experiment04-annotation/jobs/logs/scGPT_annotation_pbmc.err
+
+START_TIME=$(date +%s)
+
+source ~/.bashrc
+cd /omics/odcf/analysis/OE0290_projects/heroes-aya_pools/AG_Thongjuea/Code/10x_multiomics/Selina/project/experiment04-annotation/scripts
+module load GCC/14.1.0
+conda activate scgpt_env
+python 02_pbmc_annot_with_fine_tuning.py
+
+END_TIME=$(date +%s)
+DURATION=$(($END_TIME - $START_TIME))
+
+printf "\n"; printf "%.0s#" {1..58}; printf "\n"
+printf "⏱️ Total Runtime: %02d:%02d:%02d\n" $(($DURATION/3600)) $(($DURATION%3600/60)) $(($DURATION%60))
+printf "%.0s#" {1..58}; printf "\n\n"
+
+------------------------------------------------------------
+
+Successfully completed.
+
+Resource usage summary:
+
+    CPU time :                                   25.66 sec.
+    Max Memory :                                 942 MB
+    Average Memory :                             360.44 MB
+    Total Requested Memory :                     204800.00 MB
+    Delta Memory :                               203858.00 MB
+    Max Swap :                                   -
+    Max Processes :                              5
+    Max Threads :                                45
+    Run time :                                   96 sec.
+    Turnaround time :                            99 sec.
+
+The output (if any) follows:
+
+Loading GCC/14.1.0
+  Loading requirement: GCCcore/14.1.0 zlib/1.3.1-GCCcore-14.1.0
+    binutils/2.42-GCCcore-14.1.0
+CONFIG: save to /omics/odcf/analysis/OE0290_projects/heroes-aya_pools/AG_Thongjuea/Code/10x_multiomics/Selina/project/experiment04-annotation/results/pred-with-fine-tuning/pred_pbmc3k-Oct01-14-37
+
+scGPT - INFO - Normalizing total counts ...
+scGPT - INFO - Binning data ...
+scGPT - INFO - Normalizing total counts ...
+scGPT - INFO - Binning data ...
+
+##########################################################
+⏱️ Total Runtime: 00:01:36
+##########################################################
+
+
+
+PS:
+
+Read file </omics/odcf/analysis/OE0290_projects/heroes-aya_pools/AG_Thongjuea/Code/10x_multiomics/Selina/project/experiment04-annotation/jobs/logs/scGPT_annotation_pbmc.err> for stderr output of this job.
+
+Sender: LSF System <lsfadmin@odcf-cn34u03s03.dkfz-heidelberg.de>
+Subject: Job 54107939: <scGPT_annotation_pbmc> in cluster <DKFZ> Done
+
+Job <scGPT_annotation_pbmc> was submitted from host <odcf-vm135.dkfz-heidelberg.de> by user <s329t> in cluster <DKFZ> at Thu Oct  1 14:42:10 2026
+Job was executed on host(s) <20*odcf-cn34u03s03>, in queue <verylong>, as user <s329t> in cluster <DKFZ> at Thu Oct  1 14:42:11 2026
+</home/s329t> was used as the home directory.
+</omics/odcf/analysis/OE0290_projects/heroes-aya_pools/AG_Thongjuea/Code/10x_multiomics/Selina/project/experiment04-annotation/jobs> was used as the working directory.
+Started at Thu Oct  1 14:42:11 2026
+Terminated at Thu Oct  1 14:43:14 2026
+Results reported at Thu Oct  1 14:43:14 2026
+
+Your job looked like:
+
+------------------------------------------------------------
+# LSBATCH: User input
+#!/bin/bash
+#BSUB -J scGPT_annotation_pbmc
+#BSUB -q verylong
+#BSUB -n 20
+#BSUB -R "rusage[mem=200GB] span[hosts=1]"
+#BSUB -o /omics/odcf/analysis/OE0290_projects/heroes-aya_pools/AG_Thongjuea/Code/10x_multiomics/Selina/project/experiment04-annotation/jobs/logs/scGPT_annotation_pbmc_test.out
+#BSUB -e /omics/odcf/analysis/OE0290_projects/heroes-aya_pools/AG_Thongjuea/Code/10x_multiomics/Selina/project/experiment04-annotation/jobs/logs/scGPT_annotation_pbmc.err
+
+START_TIME=$(date +%s)
+
+source ~/.bashrc
+cd /omics/odcf/analysis/OE0290_projects/heroes-aya_pools/AG_Thongjuea/Code/10x_multiomics/Selina/project/experiment04-annotation/scripts
+module load GCC/14.1.0
+conda activate scgpt_env
+python 02_pbmc_annot_with_fine_tuning.py
+
+END_TIME=$(date +%s)
+DURATION=$(($END_TIME - $START_TIME))
+
+printf "\n"; printf "%.0s#" {1..58}; printf "\n"
+printf "⏱️ Total Runtime: %02d:%02d:%02d\n" $(($DURATION/3600)) $(($DURATION%3600/60)) $(($DURATION%60))
+printf "%.0s#" {1..58}; printf "\n\n"
+
+------------------------------------------------------------
+
+Successfully completed.
+
+Resource usage summary:
+
+    CPU time :                                   233.10 sec.
+    Max Memory :                                 1797 MB
+    Average Memory :                             1004.18 MB
+    Total Requested Memory :                     204800.00 MB
+    Delta Memory :                               203003.00 MB
+    Max Swap :                                   -
+    Max Processes :                              5
+    Max Threads :                                64
+    Run time :                                   62 sec.
+    Turnaround time :                            64 sec.
+
+The output (if any) follows:
+
+Loading GCC/14.1.0
+  Loading requirement: GCCcore/14.1.0 zlib/1.3.1-GCCcore-14.1.0
+    binutils/2.42-GCCcore-14.1.0
+CONFIG: save to /omics/odcf/analysis/OE0290_projects/heroes-aya_pools/AG_Thongjuea/Code/10x_multiomics/Selina/project/experiment04-annotation/results/pred-with-fine-tuning/pred_pbmc3k-Oct01-14-42
+
+scGPT - INFO - Normalizing total counts ...
+scGPT - INFO - Binning data ...
+scGPT - INFO - Normalizing total counts ...
+scGPT - INFO - Binning data ...
+
+##########################################################
+⏱️ Total Runtime: 00:01:02
+##########################################################
+
+
+
+PS:
+
+Read file </omics/odcf/analysis/OE0290_projects/heroes-aya_pools/AG_Thongjuea/Code/10x_multiomics/Selina/project/experiment04-annotation/jobs/logs/scGPT_annotation_pbmc.err> for stderr output of this job.
+
+Sender: LSF System <lsfadmin@odcf-cn34u03s03.dkfz-heidelberg.de>
+Subject: Job 54107960: <scGPT_annotation_pbmc> in cluster <DKFZ> Done
+
+Job <scGPT_annotation_pbmc> was submitted from host <odcf-vm135.dkfz-heidelberg.de> by user <s329t> in cluster <DKFZ> at Thu Oct  1 14:51:18 2026
+Job was executed on host(s) <20*odcf-cn34u03s03>, in queue <verylong>, as user <s329t> in cluster <DKFZ> at Thu Oct  1 14:51:18 2026
+</home/s329t> was used as the home directory.
+</omics/odcf/analysis/OE0290_projects/heroes-aya_pools/AG_Thongjuea/Code/10x_multiomics/Selina/project/experiment04-annotation/jobs> was used as the working directory.
+Started at Thu Oct  1 14:51:18 2026
+Terminated at Thu Oct  1 15:23:33 2026
+Results reported at Thu Oct  1 15:23:33 2026
+
+Your job looked like:
+
+------------------------------------------------------------
+# LSBATCH: User input
+#!/bin/bash
+#BSUB -J scGPT_annotation_pbmc
+#BSUB -q verylong
+#BSUB -n 20
+#BSUB -R "rusage[mem=200GB] span[hosts=1]"
+#BSUB -o /omics/odcf/analysis/OE0290_projects/heroes-aya_pools/AG_Thongjuea/Code/10x_multiomics/Selina/project/experiment04-annotation/jobs/logs/scGPT_annotation_pbmc_test.out
+#BSUB -e /omics/odcf/analysis/OE0290_projects/heroes-aya_pools/AG_Thongjuea/Code/10x_multiomics/Selina/project/experiment04-annotation/jobs/logs/scGPT_annotation_pbmc.err
+
+START_TIME=$(date +%s)
+
+source ~/.bashrc
+cd /omics/odcf/analysis/OE0290_projects/heroes-aya_pools/AG_Thongjuea/Code/10x_multiomics/Selina/project/experiment04-annotation/scripts
+module load GCC/14.1.0
+conda activate scgpt_env
+python 02_pbmc_annot_with_fine_tuning.py
+
+END_TIME=$(date +%s)
+DURATION=$(($END_TIME - $START_TIME))
+
+printf "\n"; printf "%.0s#" {1..58}; printf "\n"
+printf "⏱️ Total Runtime: %02d:%02d:%02d\n" $(($DURATION/3600)) $(($DURATION%3600/60)) $(($DURATION%60))
+printf "%.0s#" {1..58}; printf "\n\n"
+
+------------------------------------------------------------
+
+Successfully completed.
+
+Resource usage summary:
+
+    CPU time :                                   29834.71 sec.
+    Max Memory :                                 146954 MB
+    Average Memory :                             79942.72 MB
+    Total Requested Memory :                     204800.00 MB
+    Delta Memory :                               57846.00 MB
+    Max Swap :                                   -
+    Max Processes :                              20
+    Max Threads :                                90
+    Run time :                                   1934 sec.
+    Turnaround time :                            1935 sec.
+
+The output (if any) follows:
+
+Loading GCC/14.1.0
+  Loading requirement: GCCcore/14.1.0 zlib/1.3.1-GCCcore-14.1.0
+    binutils/2.42-GCCcore-14.1.0
+CONFIG: save to /omics/odcf/analysis/OE0290_projects/heroes-aya_pools/AG_Thongjuea/Code/10x_multiomics/Selina/project/experiment04-annotation/results/pred-with-fine-tuning/pred_pbmc3k-Oct01-14-51
+
+scGPT - INFO - Normalizing total counts ...
+scGPT - INFO - Binning data ...
+scGPT - INFO - Normalizing total counts ...
+scGPT - INFO - Binning data ...
+
+##########################################################
+⏱️ Total Runtime: 00:32:13
+##########################################################
+
+
+
+PS:
+
+Read file </omics/odcf/analysis/OE0290_projects/heroes-aya_pools/AG_Thongjuea/Code/10x_multiomics/Selina/project/experiment04-annotation/jobs/logs/scGPT_annotation_pbmc.err> for stderr output of this job.
+
+Sender: LSF System <lsfadmin@odcf-cn34u03s07.dkfz-heidelberg.de>
+Subject: Job 54108623: <scGPT_annotation_pbmc> in cluster <DKFZ> Done
+
+Job <scGPT_annotation_pbmc> was submitted from host <odcf-vm135.dkfz-heidelberg.de> by user <s329t> in cluster <DKFZ> at Thu Oct  1 15:50:21 2026
+Job was executed on host(s) <20*odcf-cn34u03s07>, in queue <verylong>, as user <s329t> in cluster <DKFZ> at Thu Oct  1 15:50:21 2026
+</home/s329t> was used as the home directory.
+</omics/odcf/analysis/OE0290_projects/heroes-aya_pools/AG_Thongjuea/Code/10x_multiomics/Selina/project/experiment04-annotation/jobs> was used as the working directory.
+Started at Thu Oct  1 15:50:21 2026
+Terminated at Thu Oct  1 20:22:44 2026
+Results reported at Thu Oct  1 20:22:44 2026
+
+Your job looked like:
+
+------------------------------------------------------------
+# LSBATCH: User input
+#!/bin/bash
+#BSUB -J scGPT_annotation_pbmc
+#BSUB -q verylong
+#BSUB -n 20
+#BSUB -R "rusage[mem=200GB] span[hosts=1]"
+#BSUB -o /omics/odcf/analysis/OE0290_projects/heroes-aya_pools/AG_Thongjuea/Code/10x_multiomics/Selina/project/experiment04-annotation/jobs/logs/scGPT_annotation_pbmc_test.out
+#BSUB -e /omics/odcf/analysis/OE0290_projects/heroes-aya_pools/AG_Thongjuea/Code/10x_multiomics/Selina/project/experiment04-annotation/jobs/logs/scGPT_annotation_pbmc.err
+
+START_TIME=$(date +%s)
+
+source ~/.bashrc
+cd /omics/odcf/analysis/OE0290_projects/heroes-aya_pools/AG_Thongjuea/Code/10x_multiomics/Selina/project/experiment04-annotation/scripts
+module load GCC/14.1.0
+conda activate scgpt_env
+python 02_pbmc_annot_with_fine_tuning.py
+
+END_TIME=$(date +%s)
+DURATION=$(($END_TIME - $START_TIME))
+
+printf "\n"; printf "%.0s#" {1..58}; printf "\n"
+printf "⏱️ Total Runtime: %02d:%02d:%02d\n" $(($DURATION/3600)) $(($DURATION%3600/60)) $(($DURATION%60))
+printf "%.0s#" {1..58}; printf "\n\n"
+
+------------------------------------------------------------
+
+Successfully completed.
+
+Resource usage summary:
+
+    CPU time :                                   308982.19 sec.
+    Max Memory :                                 164568 MB
+    Average Memory :                             89433.20 MB
+    Total Requested Memory :                     204800.00 MB
+    Delta Memory :                               40232.00 MB
+    Max Swap :                                   -
+    Max Processes :                              20
+    Max Threads :                                90
+    Run time :                                   16340 sec.
+    Turnaround time :                            16343 sec.
+
+The output (if any) follows:
+
+Loading GCC/14.1.0
+  Loading requirement: GCCcore/14.1.0 zlib/1.3.1-GCCcore-14.1.0
+    binutils/2.42-GCCcore-14.1.0
+CONFIG: save to /omics/odcf/analysis/OE0290_projects/heroes-aya_pools/AG_Thongjuea/Code/10x_multiomics/Selina/project/experiment04-annotation/results/pred-with-fine-tuning/pred_pbmc3k-Oct01-15-51
+
+scGPT - INFO - Normalizing total counts ...
+scGPT - INFO - Binning data ...
+scGPT - INFO - Normalizing total counts ...
+scGPT - INFO - Binning data ...
+
+##########################################################
+⏱️ Total Runtime: 04:32:20
+##########################################################
+
+
+
+PS:
+
+Read file </omics/odcf/analysis/OE0290_projects/heroes-aya_pools/AG_Thongjuea/Code/10x_multiomics/Selina/project/experiment04-annotation/jobs/logs/scGPT_annotation_pbmc.err> for stderr output of this job.
+
+Sender: LSF System <lsfadmin@odcf-cn32u07.dkfz-heidelberg.de>
+Subject: Job 54122400: <scGPT_annotation_pbmc> in cluster <DKFZ> Done
+
+Job <scGPT_annotation_pbmc> was submitted from host <odcf-vm135.dkfz-heidelberg.de> by user <s329t> in cluster <DKFZ> at Fri Oct  2 13:40:05 2026
+Job was executed on host(s) <20*odcf-cn32u07>, in queue <verylong>, as user <s329t> in cluster <DKFZ> at Fri Oct  2 13:40:05 2026
+</home/s329t> was used as the home directory.
+</omics/odcf/analysis/OE0290_projects/heroes-aya_pools/AG_Thongjuea/Code/10x_multiomics/Selina/project/experiment04-annotation/jobs> was used as the working directory.
+Started at Fri Oct  2 13:40:05 2026
+Terminated at Fri Oct  2 16:24:28 2026
+Results reported at Fri Oct  2 16:24:28 2026
+
+Your job looked like:
+
+------------------------------------------------------------
+# LSBATCH: User input
+#!/bin/bash
+#BSUB -J scGPT_annotation_pbmc
+#BSUB -q verylong
+#BSUB -n 20
+#BSUB -R "rusage[mem=200GB] span[hosts=1]"
+#BSUB -o /omics/odcf/analysis/OE0290_projects/heroes-aya_pools/AG_Thongjuea/Code/10x_multiomics/Selina/project/experiment04-annotation/jobs/logs/scGPT_annotation_pbmc_test.out
+#BSUB -e /omics/odcf/analysis/OE0290_projects/heroes-aya_pools/AG_Thongjuea/Code/10x_multiomics/Selina/project/experiment04-annotation/jobs/logs/scGPT_annotation_pbmc.err
+
+START_TIME=$(date +%s)
+
+source ~/.bashrc
+cd /omics/odcf/analysis/OE0290_projects/heroes-aya_pools/AG_Thongjuea/Code/10x_multiomics/Selina/project/experiment04-annotation/scripts
+module load GCC/14.1.0
+conda activate scgpt_env
+python 02_pbmc_annot_with_fine_tuning.py
+
+END_TIME=$(date +%s)
+DURATION=$(($END_TIME - $START_TIME))
+
+printf "\n"; printf "%.0s#" {1..58}; printf "\n"
+printf "⏱️ Total Runtime: %02d:%02d:%02d\n" $(($DURATION/3600)) $(($DURATION%3600/60)) $(($DURATION%60))
+printf "%.0s#" {1..58}; printf "\n\n"
+
+------------------------------------------------------------
+
+Successfully completed.
+
+Resource usage summary:
+
+    CPU time :                                   157923.48 sec.
+    Max Memory :                                 165267 MB
+    Average Memory :                             86393.87 MB
+    Total Requested Memory :                     204800.00 MB
+    Delta Memory :                               39533.00 MB
+    Max Swap :                                   -
+    Max Processes :                              20
+    Max Threads :                                90
+    Run time :                                   9863 sec.
+    Turnaround time :                            9863 sec.
+
+The output (if any) follows:
+
+Loading GCC/14.1.0
+  Loading requirement: GCCcore/14.1.0 zlib/1.3.1-GCCcore-14.1.0
+    binutils/2.42-GCCcore-14.1.0
+CONFIG: save to /omics/odcf/analysis/OE0290_projects/heroes-aya_pools/AG_Thongjuea/Code/10x_multiomics/Selina/project/experiment04-annotation/results/pred-with-fine-tuning/pred_pbmc3k-Oct02-13-41
+
+scGPT - INFO - Normalizing total counts ...
+scGPT - INFO - Binning data ...
+scGPT - INFO - Normalizing total counts ...
+scGPT - INFO - Binning data ...
+
+##########################################################
+⏱️ Total Runtime: 02:44:22
+##########################################################
+
+
+
+PS:
+
+Read file </omics/odcf/analysis/OE0290_projects/heroes-aya_pools/AG_Thongjuea/Code/10x_multiomics/Selina/project/experiment04-annotation/jobs/logs/scGPT_annotation_pbmc.err> for stderr output of this job.
+

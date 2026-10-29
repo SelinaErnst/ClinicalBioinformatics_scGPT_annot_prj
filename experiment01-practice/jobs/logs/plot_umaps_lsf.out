@@ -1,0 +1,172 @@
+Sender: LSF System <lsfadmin@odcf-cn44u19.dkfz-heidelberg.de>
+Subject: Job 53494716: <plot_umaps> in cluster <DKFZ> Done
+
+Job <plot_umaps> was submitted from host <odcf-vm135.dkfz-heidelberg.de> by user <s329t> in cluster <DKFZ> at Thu Sep 10 14:51:33 2026
+Job was executed on host(s) <10*odcf-cn44u19>, in queue <long>, as user <s329t> in cluster <DKFZ> at Thu Sep 10 14:51:33 2026
+</home/s329t> was used as the home directory.
+</omics/odcf/analysis/OE0290_projects/heroes-aya_pools/AG_Thongjuea/Code/10x_multiomics/Selina/project/experiment01-practice/logs> was used as the working directory.
+Started at Thu Sep 10 14:51:33 2026
+Terminated at Thu Sep 10 14:59:28 2026
+Results reported at Thu Sep 10 14:59:28 2026
+
+Your job looked like:
+
+------------------------------------------------------------
+# LSBATCH: User input
+#!/bin/bash
+#BSUB -J plot_umaps
+#BSUB -q long
+#BSUB -n 10
+#BSUB -R "rusage[mem=150GB] span[hosts=1]"
+#BSUB -W 03:00
+#BSUB -o /omics/odcf/analysis/OE0290_projects/heroes-aya_pools/AG_Thongjuea/Code/10x_multiomics/Selina/project/experiment01-practice/logs/plot_umaps.out
+START_TIME=$(date +%s)
+source ~/.bashrc
+cd /omics/odcf/analysis/OE0290_projects/heroes-aya_pools/AG_Thongjuea/Code/10x_multiomics/Selina/project/experiment01-practice/scripts
+conda activate scanpy_env
+python 04_plot_downsample.py
+END_TIME=$(date +%s)
+DURATION=$(($END_TIME - $START_TIME))
+printf "\n"; printf "%.0s#" {1..58}; printf "\n"
+printf "⏱️ Total Runtime: %02d:%02d:%02d\n" $(($DURATION/3600)) $(($DURATION%3600/60)) $(($DURATION%60))
+printf "%.0s#" {1..58}; printf "\n\n"
+
+------------------------------------------------------------
+
+Successfully completed.
+
+Resource usage summary:
+
+    CPU time :                                   312.52 sec.
+    Max Memory :                                 141797 MB
+    Average Memory :                             75818.64 MB
+    Total Requested Memory :                     153600.00 MB
+    Delta Memory :                               11803.00 MB
+    Max Swap :                                   -
+    Max Processes :                              5
+    Max Threads :                                15
+    Run time :                                   471 sec.
+    Turnaround time :                            475 sec.
+
+The output (if any) follows:
+
+scvi_pools_2026_downsampled_20per.h5ad
+AnnData object with n_obs × n_vars = 96282 × 35929
+    obs: 'pool', 'assignment', 'celltype', 'seurat_clusters', 'Cohort', 'Entity', 'Fusion', 'Episode', 'PID', 'Location', 'barcode_sample', 'n_genes', 'n_genes_by_counts', 'total_counts', 'total_counts_mt', 'pct_counts_mt', '_scvi_batch', '_scvi_labels', 'leiden', 'X', 'final'
+    var: 'n_cells', 'mt', 'n_cells_by_counts', 'mean_counts', 'pct_dropout_by_counts', 'total_counts'
+    uns: '_scvi_manager_uuid', '_scvi_uuid', 'celltype_colors', 'final_colors', 'leiden', 'log1p', 'neighbors', 'umap'
+    obsm: 'X_scVI', 'X_umap', '_scvi_extra_categorical_covs'
+    obsp: 'connectivities', 'distances'
+    layers: 'counts', 'scvi_normalized', None (.X)
+scvi_pools_2026_celltype_annotated.h5ad
+AnnData object with n_obs × n_vars = 481411 × 35929
+    obs: 'pool', 'assignment', 'celltype', 'seurat_clusters', 'Cohort', 'Entity', 'Fusion', 'Episode', 'PID', 'Location', 'barcode_sample', 'n_genes', 'n_genes_by_counts', 'total_counts', 'total_counts_mt', 'pct_counts_mt', '_scvi_batch', '_scvi_labels', 'leiden', 'X', 'final'
+    var: 'n_cells', 'mt', 'n_cells_by_counts', 'mean_counts', 'pct_dropout_by_counts', 'total_counts'
+    uns: '_scvi_manager_uuid', '_scvi_uuid', 'celltype_colors', 'final_colors', 'leiden', 'log1p', 'neighbors', 'umap'
+    obsm: 'X_scVI', 'X_umap', '_scvi_extra_categorical_covs'
+    obsp: 'connectivities', 'distances'
+    layers: 'counts', 'scvi_normalized', None (.X)
+scvi_sysa_feb26.h5ad
+AnnData object with n_obs × n_vars = 112903 × 34876
+    obs: 'pool', 'assignment', 'celltype', 'seurat_clusters', 'Cohort', 'Entity', 'Fusion', 'Episode', 'PID', 'Location', 'barcode_sample', 'n_genes', 'n_genes_by_counts', 'total_counts', 'total_counts_mt', 'pct_counts_mt', '_scvi_batch', '_scvi_labels', 'leiden', 'cytetype_annotation_leiden', 'cytetype_cellOntologyTerm_leiden', 'cytetype_cellOntologyTermID_leiden', 'cytetype_cellState_leiden'
+    var: 'n_cells', 'mt', 'n_cells_by_counts', 'mean_counts', 'pct_dropout_by_counts', 'total_counts', 'gene_symbols'
+    uns: '_scvi_manager_uuid', '_scvi_uuid', 'celltype_colors', 'cytetype_annotation_leiden_colors', 'cytetype_jobDetails', 'cytetype_results', 'leiden', 'log1p', 'neighbors', 'rank_genes_groups', 'rank_genes_leiden', 'umap'
+    obsm: 'X_scVI', 'X_umap', '_scvi_extra_categorical_covs'
+    obsp: 'connectivities', 'distances'
+    layers: 'counts', 'scvi_normalized', None (.X)
+
+##########################################################
+⏱️ Total Runtime: 00:07:51
+##########################################################
+
+Sender: LSF System <lsfadmin@odcf-cn44u21.dkfz-heidelberg.de>
+Subject: Job 53498025: <plot_umaps> in cluster <DKFZ> Done
+
+Job <plot_umaps> was submitted from host <odcf-vm135.dkfz-heidelberg.de> by user <s329t> in cluster <DKFZ> at Thu Sep 10 15:36:35 2026
+Job was executed on host(s) <10*odcf-cn44u21>, in queue <long>, as user <s329t> in cluster <DKFZ> at Thu Sep 10 15:36:36 2026
+</home/s329t> was used as the home directory.
+</omics/odcf/analysis/OE0290_projects/heroes-aya_pools/AG_Thongjuea/Code/10x_multiomics/Selina/project/experiment03-scGPT/logs> was used as the working directory.
+Started at Thu Sep 10 15:36:36 2026
+Terminated at Thu Sep 10 15:41:17 2026
+Results reported at Thu Sep 10 15:41:17 2026
+
+Your job looked like:
+
+------------------------------------------------------------
+# LSBATCH: User input
+#!/bin/bash
+#BSUB -J plot_umaps
+#BSUB -q long
+#BSUB -n 10
+#BSUB -R "rusage[mem=150GB] span[hosts=1]"
+#BSUB -W 01:00
+#BSUB -o /omics/odcf/analysis/OE0290_projects/heroes-aya_pools/AG_Thongjuea/Code/10x_multiomics/Selina/project/experiment01-practice/jobs/logs/plot_umaps.out
+#BSUB -e /omics/odcf/analysis/OE0290_projects/heroes-aya_pools/AG_Thongjuea/Code/10x_multiomics/Selina/project/experiment01-practice/jobs/logs/plot_umaps.err
+START_TIME=$(date +%s)
+source ~/.bashrc
+cd /omics/odcf/analysis/OE0290_projects/heroes-aya_pools/AG_Thongjuea/Code/10x_multiomics/Selina/project/experiment01-practice/scripts
+conda activate scanpy_env
+python 04_plot_umaps.py
+END_TIME=$(date +%s)
+DURATION=$(($END_TIME - $START_TIME))
+printf "\n"; printf "%.0s#" {1..58}; printf "\n"
+printf "⏱️ Total Runtime: %02d:%02d:%02d\n" $(($DURATION/3600)) $(($DURATION%3600/60)) $(($DURATION%60))
+printf "%.0s#" {1..58}; printf "\n\n"
+
+------------------------------------------------------------
+
+Successfully completed.
+
+Resource usage summary:
+
+    CPU time :                                   122.56 sec.
+    Max Memory :                                 121316 MB
+    Average Memory :                             57587.76 MB
+    Total Requested Memory :                     153600.00 MB
+    Delta Memory :                               32284.00 MB
+    Max Swap :                                   -
+    Max Processes :                              5
+    Max Threads :                                15
+    Run time :                                   279 sec.
+    Turnaround time :                            282 sec.
+
+The output (if any) follows:
+
+
+scvi_pools_2026_downsampled_20per.h5ad
+AnnData object with n_obs × n_vars = 96282 × 35929
+    obs: 'pool', 'assignment', 'celltype', 'seurat_clusters', 'Cohort', 'Entity', 'Fusion', 'Episode', 'PID', 'Location', 'barcode_sample', 'n_genes', 'n_genes_by_counts', 'total_counts', 'total_counts_mt', 'pct_counts_mt', '_scvi_batch', '_scvi_labels', 'leiden', 'X', 'final'
+    var: 'n_cells', 'mt', 'n_cells_by_counts', 'mean_counts', 'pct_dropout_by_counts', 'total_counts'
+    uns: '_scvi_manager_uuid', '_scvi_uuid', 'celltype_colors', 'final_colors', 'leiden', 'log1p', 'neighbors', 'umap'
+    obsm: 'X_scVI', 'X_umap', '_scvi_extra_categorical_covs'
+    obsp: 'connectivities', 'distances'
+    layers: 'counts', 'scvi_normalized', None (.X)
+
+scvi_pools_2026_celltype_annotated.h5ad
+AnnData object with n_obs × n_vars = 481411 × 35929
+    obs: 'pool', 'assignment', 'celltype', 'seurat_clusters', 'Cohort', 'Entity', 'Fusion', 'Episode', 'PID', 'Location', 'barcode_sample', 'n_genes', 'n_genes_by_counts', 'total_counts', 'total_counts_mt', 'pct_counts_mt', '_scvi_batch', '_scvi_labels', 'leiden', 'X', 'final'
+    var: 'n_cells', 'mt', 'n_cells_by_counts', 'mean_counts', 'pct_dropout_by_counts', 'total_counts'
+    uns: '_scvi_manager_uuid', '_scvi_uuid', 'celltype_colors', 'final_colors', 'leiden', 'log1p', 'neighbors', 'umap'
+    obsm: 'X_scVI', 'X_umap', '_scvi_extra_categorical_covs'
+    obsp: 'connectivities', 'distances'
+    layers: 'counts', 'scvi_normalized', None (.X)
+
+scvi_sysa_feb26.h5ad
+AnnData object with n_obs × n_vars = 112903 × 34876
+    obs: 'pool', 'assignment', 'celltype', 'seurat_clusters', 'Cohort', 'Entity', 'Fusion', 'Episode', 'PID', 'Location', 'barcode_sample', 'n_genes', 'n_genes_by_counts', 'total_counts', 'total_counts_mt', 'pct_counts_mt', '_scvi_batch', '_scvi_labels', 'leiden', 'cytetype_annotation_leiden', 'cytetype_cellOntologyTerm_leiden', 'cytetype_cellOntologyTermID_leiden', 'cytetype_cellState_leiden'
+    var: 'n_cells', 'mt', 'n_cells_by_counts', 'mean_counts', 'pct_dropout_by_counts', 'total_counts', 'gene_symbols'
+    uns: '_scvi_manager_uuid', '_scvi_uuid', 'celltype_colors', 'cytetype_annotation_leiden_colors', 'cytetype_jobDetails', 'cytetype_results', 'leiden', 'log1p', 'neighbors', 'rank_genes_groups', 'rank_genes_leiden', 'umap'
+    obsm: 'X_scVI', 'X_umap', '_scvi_extra_categorical_covs'
+    obsp: 'connectivities', 'distances'
+    layers: 'counts', 'scvi_normalized', None (.X)
+
+##########################################################
+⏱️ Total Runtime: 00:04:39
+##########################################################
+
+
+
+PS:
+
+Read file </omics/odcf/analysis/OE0290_projects/heroes-aya_pools/AG_Thongjuea/Code/10x_multiomics/Selina/project/experiment01-practice/jobs/logs/plot_umaps.err> for stderr output of this job.
+

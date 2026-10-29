@@ -5,9 +5,9 @@
 *.log
 **/pred-with-fine-tuning/*/model.pt
 **/experiment03*/**/model.pt
-*/logs/*
-*.out
-*.err
+# */logs/*
+# *.out
+# *.err
 **/.ipynb_checkpoints/*
 */*/.ipynb_checkpoints/*
-data/*
+# data/*

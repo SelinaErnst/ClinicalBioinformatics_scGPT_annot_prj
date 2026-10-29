@@ -48,7 +48,7 @@ data_dir = experiment/ "scGPT/data/ms"
 
 with open(model_config_file, "r") as f:
     model_configs = json.load(f)
-model_configs
+
 os.environ["WANDB_MODE"] = "disabled" # ! Selina
 run = wandb.init(
     config=model_configs,

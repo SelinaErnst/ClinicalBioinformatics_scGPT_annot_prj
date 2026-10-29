@@ -26,3 +26,7 @@ adata_subset = ad.read_h5ad(data_file)
 
 adata_subset_log1p = adata[adata.obs.index.isin(adata_subset.obs.index)]
 adata_subset_log1p.write_h5ad(workspace/'data/scvi_pools/heroes_pool7_scRNA_positive.h5ad')
+
+adata_pool8 = adata[adata.obs.query('pool == "pool8"').index].copy()
+adata_pool8.obs['consensus_celltype'] = adata_pool8.obs['final']
+adata_pool8.write_h5ad(workspace/'data/scvi_pools/heroes_pool8_scRNA_positive.h5ad')

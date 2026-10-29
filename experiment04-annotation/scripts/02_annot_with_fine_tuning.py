@@ -46,7 +46,7 @@ import myutils
 # ============================================================================ #
 
 dataset = "heroes"
-model_name = "scGPT_pancancer"
+model_name = "scGPT_human"
 
 avail_datasets = [
     "pbmc3k",
@@ -74,10 +74,8 @@ if (dataset == "ms"):
     data_file = workspace / "data/ms/ms_batches.h5ad"  # ! Dataset
     celltype_col = "celltype"
 if (dataset == "heroes"):
-    data_file = data_dir / "hereos_pool7_scRNA_batches.h5ad" # ! Dataset
-    # data_file = data_dir / "hereos_pool7_scRNA_batches_hvg.h5ad"  # ! Dataset
-    # data_file = data_dir / "hereos_pool7_scRNA_batches_small.h5ad" 
-    # data_file = data_dir / "hereos_pool7_scRNA_batches_small_tumor.h5ad"
+    # data_file = data_dir / "hereos_pool7_scRNA_batches.h5ad" # ! Dataset
+    data_file = data_dir / "hereos_pool7_scRNA_batches_hvg.h5ad"  # ! Dataset
     celltype_col = "consensus_celltype"
 
 if (model_name == "scGPT_human"):
@@ -120,7 +118,6 @@ hyperparameter_defaults = {
     'data_is_raw': False,
     'filter_gene_by_counts': False,
     'filter_cell_by_counts': False,
-    'subset_hvg': 3000, # ! HVG
     'include_zero_gene': False,
     'max_seq_len': 3001,
 
@@ -280,7 +277,7 @@ preprocessor = Preprocessor(
     result_normed_key="X_normed",  # the key in adata.layers to store the normalized data
     log1p=config.data_is_raw,  # 4. whether to log1p the normalized data
     result_log1p_key="X_log1p",
-    subset_hvg=config.subset_hvg,  # 5. whether to subset the raw data to highly variable genes
+    subset_hvg=False,  # 5. whether to subset the raw data to highly variable genes
     hvg_flavor=config.hvg_flavor,
     binning=config.n_bins,  # 6. whether to bin the raw data and to what number of bins
     result_binned_key="X_binned",  # the key in adata.layers to store the binned data
@@ -315,13 +312,13 @@ myutils.experiment_config(
     dataset_name=config.dataset_name,
     do_train=config.do_train,
     load_model=config.load_model,
+    data_file=data_file,
     device=f"{device}",
 
     # settings for input and preprocessing
     data_is_raw=config.data_is_raw,
     filter_cell_by_counts=config.filter_cell_by_counts,
     filter_gene_by_counts=config.filter_gene_by_counts,
-    subset_hvg=config.subset_hvg, 
     hvg_flavor=config.hvg_flavor,
     pad_token=config.pad_token,
     pad_value=config.pad_value,

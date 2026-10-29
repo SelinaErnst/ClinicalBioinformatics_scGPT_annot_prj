@@ -1,0 +1,8 @@
+13:41:30-scGPT-INFO-__call__: Normalizing total counts ...
+13:41:31-scGPT-INFO-__call__: Binning data ...
+13:41:34-scGPT-INFO-<module>: CUDA: False
+13:41:34-scGPT-INFO-<module>: TORCH DEVICE: cpu
+13:41:34-scGPT-INFO-<module>: CONFIG: {'ADV': False, 'CCE': False, 'CLS': True, 'DAB': False, 'DSBN': False, 'ECS': False, 'INPUT_BATCH_LABELS': False, 'MLM': False, 'MVC': False, 'adv_D_delay_epochs': 0, 'adv_E_delay_epochs': 0, 'amp': True, 'batch_size': 32, 'cell_emb_style': 'cls', 'd_hid': 512, 'dab_weight': 0.0, 'data_is_raw': False, 'dataset_name': 'ms', 'device': 'cpu', 'do_train': True, 'dropout': 0.2, 'ecs_threshold': 0.0, 'embsize': 512, 'epochs': 10, 'eval_batch_size': 32, 'fast_transformer': True, 'fast_transformer_backend': 'flash', 'filter_cell_by_counts': False, 'filter_gene_by_counts': False, 'freeze': False, 'hvg_flavor': 'cell_ranger', 'include_zero_gene': False, 'input_emb_style': 'continuous', 'input_style': 'binned', 'layer_size': 128, 'load_model': '/omics/odcf/analysis/OE0290_projects/heroes-aya_pools/AG_Thongjuea/Code/10x_multiomics/Selina/project/experiment03-scGPT/scGPT/save/scGPT_human', 'log_interval': 100, 'lr': 0.0001, 'lr_ADV': 0.001, 'mask_ratio': 0.0, 'mask_value': -1, 'max_seq_len': 3001, 'mvc_decoder_style': 'inner product', 'n_bins': 51, 'n_layers_cls': 3, 'nheads': 8, 'nlayers': 12, 'ntokens': 60697, 'output_style': 'binned', 'pad_token': '<pad>', 'pad_value': -2, 'per_seq_batch_sample': False, 'pre_norm': False, 'schedule_interval': 1, 'schedule_ratio': 0.9, 'seed': 0, 'special_tokens': ['<pad>', '<cls>', '<eoc>']}
+13:41:34-scGPT-INFO-<module>: PyTorch CPU threads: 10
+13:41:34-scGPT-INFO-<module>: PyTorch interop threads: 128
+14:11:11-scGPT-INFO-test: Accuracy: 0.824, Precision: 0.714, Recall: 0.711, Macro F1: 0.684

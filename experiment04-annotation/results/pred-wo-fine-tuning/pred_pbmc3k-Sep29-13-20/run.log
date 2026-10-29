@@ -1,0 +1,8 @@
+13:20:03-scGPT-INFO-__call__: Normalizing total counts ...
+13:20:03-scGPT-INFO-__call__: Binning data ...
+13:20:04-scGPT-INFO-<module>: CUDA: False
+13:20:04-scGPT-INFO-<module>: TORCH DEVICE: cpu
+13:20:04-scGPT-INFO-<module>: CONFIG: {'seed': 0, 'dataset_name': 'pbmc3k', 'do_train': True, 'mask_ratio': 0.0, 'epochs': 10, 'n_bins': 51, 'MVC': False, 'ecs_threshold': 0.0, 'dab_weight': 0.0, 'lr': 0.0001, 'batch_size': 32, 'layer_size': 128, 'nlayers': 4, 'nhead': 4, 'dropout': 0.2, 'schedule_ratio': 0.9, 'save_eval_interval': 5, 'fast_transformer': True, 'pre_norm': False, 'amp': True, 'include_zero_gene': False, 'freeze': False, 'DSBN': False, 'load_model': '/omics/odcf/analysis/OE0290_projects/heroes-aya_pools/AG_Thongjuea/Code/10x_multiomics/Selina/project/experiment04-annotation/scGPT/save/scGPT_human', 'pad_token': '<pad>', 'special_tokens': ['<pad>', '<cls>', '<eoc>'], 'data_is_raw': False, 'filter_gene_by_counts': False, 'filter_cell_by_counts': False, 'max_seq_len': 3001, 'input_style': 'binned', 'input_emb_style': 'continuous', 'cell_emb_style': 'cls', 'mvc_decoder_style': 'inner product', 'INPUT_BATCH_LABELS': False, 'CLS': True, 'DAB': False, 'MLM': False, 'eval_batch_size': 32, 'fast_transformer_backend': 'flash'}
+13:20:04-scGPT-INFO-<module>: PyTorch CPU threads: 20
+13:20:04-scGPT-INFO-<module>: PyTorch interop threads: 128
+13:50:22-scGPT-INFO-test: Accuracy: 0.005, Precision: 0.001, Recall: 0.125, Macro F1: 0.001

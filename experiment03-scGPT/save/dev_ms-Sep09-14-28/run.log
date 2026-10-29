@@ -1,0 +1,226 @@
+14:28:16-scGPT-INFO-<module>: match 2808/3000 genes in vocabulary of size 60697.
+14:28:16-scGPT-INFO-<module>: Resume model from /omics/odcf/analysis/OE0290_projects/heroes-aya_pools/AG_Thongjuea/Code/10x_multiomics/Selina/project/experiment03-scGPT/scGPT/save/scGPT_human/best_model.pt, the model args will override the config /omics/odcf/analysis/OE0290_projects/heroes-aya_pools/AG_Thongjuea/Code/10x_multiomics/Selina/project/experiment03-scGPT/scGPT/save/scGPT_human/args.json.
+14:28:16-scGPT-INFO-__call__: Normalizing total counts ...
+14:28:17-scGPT-INFO-__call__: Binning data ...
+14:28:20-scGPT-INFO-__call__: Normalizing total counts ...
+14:28:20-scGPT-INFO-__call__: Binning data ...
+14:28:26-scGPT-INFO-<module>: train set number of samples: 7059, 
+	 feature length: 1309
+14:28:26-scGPT-INFO-<module>: valid set number of samples: 785, 
+	 feature length: 1338
+14:28:26-scGPT-INFO-<module>: CUDA: False
+14:28:26-scGPT-INFO-<module>: TORCH DEVICE: cpu
+14:28:29-scGPT-INFO-<module>: Loading params encoder.embedding.weight with shape torch.Size([60697, 512])
+14:28:29-scGPT-INFO-<module>: Loading params encoder.enc_norm.weight with shape torch.Size([512])
+14:28:29-scGPT-INFO-<module>: Loading params encoder.enc_norm.bias with shape torch.Size([512])
+14:28:29-scGPT-INFO-<module>: Loading params value_encoder.linear1.weight with shape torch.Size([512, 1])
+14:28:29-scGPT-INFO-<module>: Loading params value_encoder.linear1.bias with shape torch.Size([512])
+14:28:29-scGPT-INFO-<module>: Loading params value_encoder.linear2.weight with shape torch.Size([512, 512])
+14:28:29-scGPT-INFO-<module>: Loading params value_encoder.linear2.bias with shape torch.Size([512])
+14:28:29-scGPT-INFO-<module>: Loading params value_encoder.norm.weight with shape torch.Size([512])
+14:28:29-scGPT-INFO-<module>: Loading params value_encoder.norm.bias with shape torch.Size([512])
+14:28:29-scGPT-INFO-<module>: Loading params transformer_encoder.layers.0.self_attn.out_proj.weight with shape torch.Size([512, 512])
+14:28:29-scGPT-INFO-<module>: Loading params transformer_encoder.layers.0.self_attn.out_proj.bias with shape torch.Size([512])
+14:28:29-scGPT-INFO-<module>: Loading params transformer_encoder.layers.0.linear1.weight with shape torch.Size([512, 512])
+14:28:29-scGPT-INFO-<module>: Loading params transformer_encoder.layers.0.linear1.bias with shape torch.Size([512])
+14:28:29-scGPT-INFO-<module>: Loading params transformer_encoder.layers.0.linear2.weight with shape torch.Size([512, 512])
+14:28:29-scGPT-INFO-<module>: Loading params transformer_encoder.layers.0.linear2.bias with shape torch.Size([512])
+14:28:29-scGPT-INFO-<module>: Loading params transformer_encoder.layers.0.norm1.weight with shape torch.Size([512])
+14:28:29-scGPT-INFO-<module>: Loading params transformer_encoder.layers.0.norm1.bias with shape torch.Size([512])
+14:28:29-scGPT-INFO-<module>: Loading params transformer_encoder.layers.0.norm2.weight with shape torch.Size([512])
+14:28:29-scGPT-INFO-<module>: Loading params transformer_encoder.layers.0.norm2.bias with shape torch.Size([512])
+14:28:29-scGPT-INFO-<module>: Loading params transformer_encoder.layers.1.self_attn.out_proj.weight with shape torch.Size([512, 512])
+14:28:29-scGPT-INFO-<module>: Loading params transformer_encoder.layers.1.self_attn.out_proj.bias with shape torch.Size([512])
+14:28:29-scGPT-INFO-<module>: Loading params transformer_encoder.layers.1.linear1.weight with shape torch.Size([512, 512])
+14:28:29-scGPT-INFO-<module>: Loading params transformer_encoder.layers.1.linear1.bias with shape torch.Size([512])
+14:28:29-scGPT-INFO-<module>: Loading params transformer_encoder.layers.1.linear2.weight with shape torch.Size([512, 512])
+14:28:29-scGPT-INFO-<module>: Loading params transformer_encoder.layers.1.linear2.bias with shape torch.Size([512])
+14:28:29-scGPT-INFO-<module>: Loading params transformer_encoder.layers.1.norm1.weight with shape torch.Size([512])
+14:28:29-scGPT-INFO-<module>: Loading params transformer_encoder.layers.1.norm1.bias with shape torch.Size([512])
+14:28:29-scGPT-INFO-<module>: Loading params transformer_encoder.layers.1.norm2.weight with shape torch.Size([512])
+14:28:29-scGPT-INFO-<module>: Loading params transformer_encoder.layers.1.norm2.bias with shape torch.Size([512])
+14:28:29-scGPT-INFO-<module>: Loading params transformer_encoder.layers.2.self_attn.out_proj.weight with shape torch.Size([512, 512])
+14:28:29-scGPT-INFO-<module>: Loading params transformer_encoder.layers.2.self_attn.out_proj.bias with shape torch.Size([512])
+14:28:29-scGPT-INFO-<module>: Loading params transformer_encoder.layers.2.linear1.weight with shape torch.Size([512, 512])
+14:28:29-scGPT-INFO-<module>: Loading params transformer_encoder.layers.2.linear1.bias with shape torch.Size([512])
+14:28:29-scGPT-INFO-<module>: Loading params transformer_encoder.layers.2.linear2.weight with shape torch.Size([512, 512])
+14:28:29-scGPT-INFO-<module>: Loading params transformer_encoder.layers.2.linear2.bias with shape torch.Size([512])
+14:28:29-scGPT-INFO-<module>: Loading params transformer_encoder.layers.2.norm1.weight with shape torch.Size([512])
+14:28:29-scGPT-INFO-<module>: Loading params transformer_encoder.layers.2.norm1.bias with shape torch.Size([512])
+14:28:29-scGPT-INFO-<module>: Loading params transformer_encoder.layers.2.norm2.weight with shape torch.Size([512])
+14:28:29-scGPT-INFO-<module>: Loading params transformer_encoder.layers.2.norm2.bias with shape torch.Size([512])
+14:28:29-scGPT-INFO-<module>: Loading params transformer_encoder.layers.3.self_attn.out_proj.weight with shape torch.Size([512, 512])
+14:28:29-scGPT-INFO-<module>: Loading params transformer_encoder.layers.3.self_attn.out_proj.bias with shape torch.Size([512])
+14:28:29-scGPT-INFO-<module>: Loading params transformer_encoder.layers.3.linear1.weight with shape torch.Size([512, 512])
+14:28:29-scGPT-INFO-<module>: Loading params transformer_encoder.layers.3.linear1.bias with shape torch.Size([512])
+14:28:29-scGPT-INFO-<module>: Loading params transformer_encoder.layers.3.linear2.weight with shape torch.Size([512, 512])
+14:28:29-scGPT-INFO-<module>: Loading params transformer_encoder.layers.3.linear2.bias with shape torch.Size([512])
+14:28:29-scGPT-INFO-<module>: Loading params transformer_encoder.layers.3.norm1.weight with shape torch.Size([512])
+14:28:29-scGPT-INFO-<module>: Loading params transformer_encoder.layers.3.norm1.bias with shape torch.Size([512])
+14:28:29-scGPT-INFO-<module>: Loading params transformer_encoder.layers.3.norm2.weight with shape torch.Size([512])
+14:28:29-scGPT-INFO-<module>: Loading params transformer_encoder.layers.3.norm2.bias with shape torch.Size([512])
+14:28:29-scGPT-INFO-<module>: Loading params transformer_encoder.layers.4.self_attn.out_proj.weight with shape torch.Size([512, 512])
+14:28:29-scGPT-INFO-<module>: Loading params transformer_encoder.layers.4.self_attn.out_proj.bias with shape torch.Size([512])
+14:28:29-scGPT-INFO-<module>: Loading params transformer_encoder.layers.4.linear1.weight with shape torch.Size([512, 512])
+14:28:29-scGPT-INFO-<module>: Loading params transformer_encoder.layers.4.linear1.bias with shape torch.Size([512])
+14:28:29-scGPT-INFO-<module>: Loading params transformer_encoder.layers.4.linear2.weight with shape torch.Size([512, 512])
+14:28:29-scGPT-INFO-<module>: Loading params transformer_encoder.layers.4.linear2.bias with shape torch.Size([512])
+14:28:29-scGPT-INFO-<module>: Loading params transformer_encoder.layers.4.norm1.weight with shape torch.Size([512])
+14:28:29-scGPT-INFO-<module>: Loading params transformer_encoder.layers.4.norm1.bias with shape torch.Size([512])
+14:28:29-scGPT-INFO-<module>: Loading params transformer_encoder.layers.4.norm2.weight with shape torch.Size([512])
+14:28:29-scGPT-INFO-<module>: Loading params transformer_encoder.layers.4.norm2.bias with shape torch.Size([512])
+14:28:29-scGPT-INFO-<module>: Loading params transformer_encoder.layers.5.self_attn.out_proj.weight with shape torch.Size([512, 512])
+14:28:29-scGPT-INFO-<module>: Loading params transformer_encoder.layers.5.self_attn.out_proj.bias with shape torch.Size([512])
+14:28:29-scGPT-INFO-<module>: Loading params transformer_encoder.layers.5.linear1.weight with shape torch.Size([512, 512])
+14:28:29-scGPT-INFO-<module>: Loading params transformer_encoder.layers.5.linear1.bias with shape torch.Size([512])
+14:28:29-scGPT-INFO-<module>: Loading params transformer_encoder.layers.5.linear2.weight with shape torch.Size([512, 512])
+14:28:29-scGPT-INFO-<module>: Loading params transformer_encoder.layers.5.linear2.bias with shape torch.Size([512])
+14:28:29-scGPT-INFO-<module>: Loading params transformer_encoder.layers.5.norm1.weight with shape torch.Size([512])
+14:28:29-scGPT-INFO-<module>: Loading params transformer_encoder.layers.5.norm1.bias with shape torch.Size([512])
+14:28:29-scGPT-INFO-<module>: Loading params transformer_encoder.layers.5.norm2.weight with shape torch.Size([512])
+14:28:29-scGPT-INFO-<module>: Loading params transformer_encoder.layers.5.norm2.bias with shape torch.Size([512])
+14:28:29-scGPT-INFO-<module>: Loading params transformer_encoder.layers.6.self_attn.out_proj.weight with shape torch.Size([512, 512])
+14:28:29-scGPT-INFO-<module>: Loading params transformer_encoder.layers.6.self_attn.out_proj.bias with shape torch.Size([512])
+14:28:29-scGPT-INFO-<module>: Loading params transformer_encoder.layers.6.linear1.weight with shape torch.Size([512, 512])
+14:28:29-scGPT-INFO-<module>: Loading params transformer_encoder.layers.6.linear1.bias with shape torch.Size([512])
+14:28:29-scGPT-INFO-<module>: Loading params transformer_encoder.layers.6.linear2.weight with shape torch.Size([512, 512])
+14:28:29-scGPT-INFO-<module>: Loading params transformer_encoder.layers.6.linear2.bias with shape torch.Size([512])
+14:28:29-scGPT-INFO-<module>: Loading params transformer_encoder.layers.6.norm1.weight with shape torch.Size([512])
+14:28:29-scGPT-INFO-<module>: Loading params transformer_encoder.layers.6.norm1.bias with shape torch.Size([512])
+14:28:29-scGPT-INFO-<module>: Loading params transformer_encoder.layers.6.norm2.weight with shape torch.Size([512])
+14:28:29-scGPT-INFO-<module>: Loading params transformer_encoder.layers.6.norm2.bias with shape torch.Size([512])
+14:28:29-scGPT-INFO-<module>: Loading params transformer_encoder.layers.7.self_attn.out_proj.weight with shape torch.Size([512, 512])
+14:28:29-scGPT-INFO-<module>: Loading params transformer_encoder.layers.7.self_attn.out_proj.bias with shape torch.Size([512])
+14:28:29-scGPT-INFO-<module>: Loading params transformer_encoder.layers.7.linear1.weight with shape torch.Size([512, 512])
+14:28:29-scGPT-INFO-<module>: Loading params transformer_encoder.layers.7.linear1.bias with shape torch.Size([512])
+14:28:29-scGPT-INFO-<module>: Loading params transformer_encoder.layers.7.linear2.weight with shape torch.Size([512, 512])
+14:28:29-scGPT-INFO-<module>: Loading params transformer_encoder.layers.7.linear2.bias with shape torch.Size([512])
+14:28:29-scGPT-INFO-<module>: Loading params transformer_encoder.layers.7.norm1.weight with shape torch.Size([512])
+14:28:29-scGPT-INFO-<module>: Loading params transformer_encoder.layers.7.norm1.bias with shape torch.Size([512])
+14:28:29-scGPT-INFO-<module>: Loading params transformer_encoder.layers.7.norm2.weight with shape torch.Size([512])
+14:28:29-scGPT-INFO-<module>: Loading params transformer_encoder.layers.7.norm2.bias with shape torch.Size([512])
+14:28:29-scGPT-INFO-<module>: Loading params transformer_encoder.layers.8.self_attn.out_proj.weight with shape torch.Size([512, 512])
+14:28:29-scGPT-INFO-<module>: Loading params transformer_encoder.layers.8.self_attn.out_proj.bias with shape torch.Size([512])
+14:28:29-scGPT-INFO-<module>: Loading params transformer_encoder.layers.8.linear1.weight with shape torch.Size([512, 512])
+14:28:29-scGPT-INFO-<module>: Loading params transformer_encoder.layers.8.linear1.bias with shape torch.Size([512])
+14:28:29-scGPT-INFO-<module>: Loading params transformer_encoder.layers.8.linear2.weight with shape torch.Size([512, 512])
+14:28:29-scGPT-INFO-<module>: Loading params transformer_encoder.layers.8.linear2.bias with shape torch.Size([512])
+14:28:29-scGPT-INFO-<module>: Loading params transformer_encoder.layers.8.norm1.weight with shape torch.Size([512])
+14:28:29-scGPT-INFO-<module>: Loading params transformer_encoder.layers.8.norm1.bias with shape torch.Size([512])
+14:28:29-scGPT-INFO-<module>: Loading params transformer_encoder.layers.8.norm2.weight with shape torch.Size([512])
+14:28:29-scGPT-INFO-<module>: Loading params transformer_encoder.layers.8.norm2.bias with shape torch.Size([512])
+14:28:29-scGPT-INFO-<module>: Loading params transformer_encoder.layers.9.self_attn.out_proj.weight with shape torch.Size([512, 512])
+14:28:29-scGPT-INFO-<module>: Loading params transformer_encoder.layers.9.self_attn.out_proj.bias with shape torch.Size([512])
+14:28:29-scGPT-INFO-<module>: Loading params transformer_encoder.layers.9.linear1.weight with shape torch.Size([512, 512])
+14:28:29-scGPT-INFO-<module>: Loading params transformer_encoder.layers.9.linear1.bias with shape torch.Size([512])
+14:28:29-scGPT-INFO-<module>: Loading params transformer_encoder.layers.9.linear2.weight with shape torch.Size([512, 512])
+14:28:29-scGPT-INFO-<module>: Loading params transformer_encoder.layers.9.linear2.bias with shape torch.Size([512])
+14:28:29-scGPT-INFO-<module>: Loading params transformer_encoder.layers.9.norm1.weight with shape torch.Size([512])
+14:28:29-scGPT-INFO-<module>: Loading params transformer_encoder.layers.9.norm1.bias with shape torch.Size([512])
+14:28:29-scGPT-INFO-<module>: Loading params transformer_encoder.layers.9.norm2.weight with shape torch.Size([512])
+14:28:29-scGPT-INFO-<module>: Loading params transformer_encoder.layers.9.norm2.bias with shape torch.Size([512])
+14:28:29-scGPT-INFO-<module>: Loading params transformer_encoder.layers.10.self_attn.out_proj.weight with shape torch.Size([512, 512])
+14:28:29-scGPT-INFO-<module>: Loading params transformer_encoder.layers.10.self_attn.out_proj.bias with shape torch.Size([512])
+14:28:29-scGPT-INFO-<module>: Loading params transformer_encoder.layers.10.linear1.weight with shape torch.Size([512, 512])
+14:28:29-scGPT-INFO-<module>: Loading params transformer_encoder.layers.10.linear1.bias with shape torch.Size([512])
+14:28:29-scGPT-INFO-<module>: Loading params transformer_encoder.layers.10.linear2.weight with shape torch.Size([512, 512])
+14:28:29-scGPT-INFO-<module>: Loading params transformer_encoder.layers.10.linear2.bias with shape torch.Size([512])
+14:28:29-scGPT-INFO-<module>: Loading params transformer_encoder.layers.10.norm1.weight with shape torch.Size([512])
+14:28:29-scGPT-INFO-<module>: Loading params transformer_encoder.layers.10.norm1.bias with shape torch.Size([512])
+14:28:29-scGPT-INFO-<module>: Loading params transformer_encoder.layers.10.norm2.weight with shape torch.Size([512])
+14:28:29-scGPT-INFO-<module>: Loading params transformer_encoder.layers.10.norm2.bias with shape torch.Size([512])
+14:28:29-scGPT-INFO-<module>: Loading params transformer_encoder.layers.11.self_attn.out_proj.weight with shape torch.Size([512, 512])
+14:28:29-scGPT-INFO-<module>: Loading params transformer_encoder.layers.11.self_attn.out_proj.bias with shape torch.Size([512])
+14:28:29-scGPT-INFO-<module>: Loading params transformer_encoder.layers.11.linear1.weight with shape torch.Size([512, 512])
+14:28:29-scGPT-INFO-<module>: Loading params transformer_encoder.layers.11.linear1.bias with shape torch.Size([512])
+14:28:29-scGPT-INFO-<module>: Loading params transformer_encoder.layers.11.linear2.weight with shape torch.Size([512, 512])
+14:28:29-scGPT-INFO-<module>: Loading params transformer_encoder.layers.11.linear2.bias with shape torch.Size([512])
+14:28:29-scGPT-INFO-<module>: Loading params transformer_encoder.layers.11.norm1.weight with shape torch.Size([512])
+14:28:29-scGPT-INFO-<module>: Loading params transformer_encoder.layers.11.norm1.bias with shape torch.Size([512])
+14:28:29-scGPT-INFO-<module>: Loading params transformer_encoder.layers.11.norm2.weight with shape torch.Size([512])
+14:28:29-scGPT-INFO-<module>: Loading params transformer_encoder.layers.11.norm2.bias with shape torch.Size([512])
+14:28:29-scGPT-INFO-<module>: Loading params decoder.fc.0.weight with shape torch.Size([512, 512])
+14:28:29-scGPT-INFO-<module>: Loading params decoder.fc.0.bias with shape torch.Size([512])
+14:28:29-scGPT-INFO-<module>: Loading params decoder.fc.2.weight with shape torch.Size([512, 512])
+14:28:29-scGPT-INFO-<module>: Loading params decoder.fc.2.bias with shape torch.Size([512])
+14:28:29-scGPT-INFO-<module>: Loading params decoder.fc.4.weight with shape torch.Size([1, 512])
+14:28:29-scGPT-INFO-<module>: Loading params decoder.fc.4.bias with shape torch.Size([1])
+14:28:29-scGPT-INFO-<module>: Total Pre freeze Params 51340819
+14:28:29-scGPT-INFO-<module>: Total Post freeze Params 51340819
+15:21:22-scGPT-INFO-train: | epoch   1 | 100/442 batches | lr 0.0001 | ms/batch 31729.51 | loss  2.33 | cls  2.33 | err  0.79 | 
+16:11:32-scGPT-INFO-train: | epoch   1 | 200/442 batches | lr 0.0001 | ms/batch 30097.48 | loss  2.06 | cls  2.06 | err  0.72 | 
+17:01:07-scGPT-INFO-train: | epoch   1 | 300/442 batches | lr 0.0001 | ms/batch 29747.39 | loss  1.74 | cls  1.74 | err  0.69 | 
+17:50:42-scGPT-INFO-train: | epoch   1 | 400/442 batches | lr 0.0001 | ms/batch 29753.41 | loss  1.43 | cls  1.43 | err  0.53 | 
+18:12:49-scGPT-INFO-<module>: -----------------------------------------------------------------------------------------
+18:12:49-scGPT-INFO-<module>: | end of epoch   1 | time: 13460.20s | valid loss/mse 1.1787 | err 0.4484
+18:12:49-scGPT-INFO-<module>: -----------------------------------------------------------------------------------------
+18:12:49-scGPT-INFO-<module>: Best model with score 1.1787
+19:02:02-scGPT-INFO-train: | epoch   2 | 100/442 batches | lr 0.0001 | ms/batch 29527.19 | loss  1.21 | cls  1.21 | err  0.47 | 
+19:50:42-scGPT-INFO-train: | epoch   2 | 200/442 batches | lr 0.0001 | ms/batch 29198.73 | loss  1.01 | cls  1.01 | err  0.37 | 
+20:39:22-scGPT-INFO-train: | epoch   2 | 300/442 batches | lr 0.0001 | ms/batch 29198.94 | loss  0.92 | cls  0.92 | err  0.33 | 
+21:28:33-scGPT-INFO-train: | epoch   2 | 400/442 batches | lr 0.0001 | ms/batch 29511.24 | loss  0.78 | cls  0.78 | err  0.27 | 
+21:50:16-scGPT-INFO-<module>: -----------------------------------------------------------------------------------------
+21:50:16-scGPT-INFO-<module>: | end of epoch   2 | time: 13047.13s | valid loss/mse 0.6975 | err 0.2471
+21:50:16-scGPT-INFO-<module>: -----------------------------------------------------------------------------------------
+21:50:16-scGPT-INFO-<module>: Best model with score 0.6975
+22:39:27-scGPT-INFO-train: | epoch   3 | 100/442 batches | lr 0.0001 | ms/batch 29501.25 | loss  0.66 | cls  0.66 | err  0.22 | 
+23:28:08-scGPT-INFO-train: | epoch   3 | 200/442 batches | lr 0.0001 | ms/batch 29209.29 | loss  0.61 | cls  0.61 | err  0.18 | 
+00:16:46-scGPT-INFO-train: | epoch   3 | 300/442 batches | lr 0.0001 | ms/batch 29179.32 | loss  0.62 | cls  0.62 | err  0.19 | 
+01:05:25-scGPT-INFO-train: | epoch   3 | 400/442 batches | lr 0.0001 | ms/batch 29193.04 | loss  0.49 | cls  0.49 | err  0.16 | 
+01:27:07-scGPT-INFO-<module>: -----------------------------------------------------------------------------------------
+01:27:07-scGPT-INFO-<module>: | end of epoch   3 | time: 13010.14s | valid loss/mse 0.5520 | err 0.1796
+01:27:07-scGPT-INFO-<module>: -----------------------------------------------------------------------------------------
+01:27:07-scGPT-INFO-<module>: Best model with score 0.5520
+02:16:12-scGPT-INFO-train: | epoch   4 | 100/442 batches | lr 0.0001 | ms/batch 29455.48 | loss  0.50 | cls  0.50 | err  0.16 | 
+03:05:06-scGPT-INFO-train: | epoch   4 | 200/442 batches | lr 0.0001 | ms/batch 29339.33 | loss  0.48 | cls  0.48 | err  0.15 | 
+03:53:49-scGPT-INFO-train: | epoch   4 | 300/442 batches | lr 0.0001 | ms/batch 29227.65 | loss  0.49 | cls  0.49 | err  0.14 | 
+04:42:30-scGPT-INFO-train: | epoch   4 | 400/442 batches | lr 0.0001 | ms/batch 29212.97 | loss  0.47 | cls  0.47 | err  0.15 | 
+05:04:11-scGPT-INFO-<module>: -----------------------------------------------------------------------------------------
+05:04:11-scGPT-INFO-<module>: | end of epoch   4 | time: 13024.13s | valid loss/mse 0.5003 | err 0.1580
+05:04:11-scGPT-INFO-<module>: -----------------------------------------------------------------------------------------
+05:04:11-scGPT-INFO-<module>: Best model with score 0.5003
+05:53:25-scGPT-INFO-train: | epoch   5 | 100/442 batches | lr 0.0001 | ms/batch 29543.98 | loss  0.44 | cls  0.44 | err  0.13 | 
+06:42:08-scGPT-INFO-train: | epoch   5 | 200/442 batches | lr 0.0001 | ms/batch 29222.40 | loss  0.39 | cls  0.39 | err  0.12 | 
+07:30:48-scGPT-INFO-train: | epoch   5 | 300/442 batches | lr 0.0001 | ms/batch 29206.59 | loss  0.43 | cls  0.43 | err  0.12 | 
+08:19:29-scGPT-INFO-train: | epoch   5 | 400/442 batches | lr 0.0001 | ms/batch 29211.26 | loss  0.42 | cls  0.42 | err  0.13 | 
+08:41:08-scGPT-INFO-<module>: -----------------------------------------------------------------------------------------
+08:41:08-scGPT-INFO-<module>: | end of epoch   5 | time: 13016.97s | valid loss/mse 0.4226 | err 0.1338
+08:41:08-scGPT-INFO-<module>: -----------------------------------------------------------------------------------------
+08:41:08-scGPT-INFO-<module>: Best model with score 0.4226
+09:30:16-scGPT-INFO-train: | epoch   6 | 100/442 batches | lr 0.0001 | ms/batch 29475.70 | loss  0.37 | cls  0.37 | err  0.11 | 
+10:18:53-scGPT-INFO-train: | epoch   6 | 200/442 batches | lr 0.0001 | ms/batch 29170.91 | loss  0.33 | cls  0.33 | err  0.10 | 
+11:09:14-scGPT-INFO-train: | epoch   6 | 300/442 batches | lr 0.0001 | ms/batch 30216.08 | loss  0.40 | cls  0.40 | err  0.11 | 
+11:57:53-scGPT-INFO-train: | epoch   6 | 400/442 batches | lr 0.0001 | ms/batch 29188.45 | loss  0.34 | cls  0.34 | err  0.12 | 
+12:19:43-scGPT-INFO-<module>: -----------------------------------------------------------------------------------------
+12:19:43-scGPT-INFO-<module>: | end of epoch   6 | time: 13115.51s | valid loss/mse 0.4212 | err 0.1274
+12:19:43-scGPT-INFO-<module>: -----------------------------------------------------------------------------------------
+12:19:43-scGPT-INFO-<module>: Best model with score 0.4212
+13:11:01-scGPT-INFO-train: | epoch   7 | 100/442 batches | lr 0.0001 | ms/batch 30771.99 | loss  0.35 | cls  0.35 | err  0.09 | 
+13:59:43-scGPT-INFO-train: | epoch   7 | 200/442 batches | lr 0.0001 | ms/batch 29220.37 | loss  0.32 | cls  0.32 | err  0.10 | 
+14:50:51-scGPT-INFO-train: | epoch   7 | 300/442 batches | lr 0.0001 | ms/batch 30676.82 | loss  0.32 | cls  0.32 | err  0.10 | 
+15:40:34-scGPT-INFO-train: | epoch   7 | 400/442 batches | lr 0.0001 | ms/batch 29838.47 | loss  0.28 | cls  0.28 | err  0.10 | 
+16:02:22-scGPT-INFO-<module>: -----------------------------------------------------------------------------------------
+16:02:22-scGPT-INFO-<module>: | end of epoch   7 | time: 13358.26s | valid loss/mse 0.4944 | err 0.1363
+16:02:22-scGPT-INFO-<module>: -----------------------------------------------------------------------------------------
+16:51:34-scGPT-INFO-train: | epoch   8 | 100/442 batches | lr 0.0000 | ms/batch 29524.10 | loss  0.35 | cls  0.35 | err  0.09 | 
+17:41:53-scGPT-INFO-train: | epoch   8 | 200/442 batches | lr 0.0000 | ms/batch 30188.54 | loss  0.28 | cls  0.28 | err  0.08 | 
+18:31:11-scGPT-INFO-train: | epoch   8 | 300/442 batches | lr 0.0000 | ms/batch 29575.53 | loss  0.30 | cls  0.30 | err  0.09 | 
+19:19:53-scGPT-INFO-train: | epoch   8 | 400/442 batches | lr 0.0000 | ms/batch 29222.36 | loss  0.27 | cls  0.27 | err  0.08 | 
+19:41:38-scGPT-INFO-<module>: -----------------------------------------------------------------------------------------
+19:41:38-scGPT-INFO-<module>: | end of epoch   8 | time: 13156.01s | valid loss/mse 0.5157 | err 0.1299
+19:41:38-scGPT-INFO-<module>: -----------------------------------------------------------------------------------------
+20:30:49-scGPT-INFO-train: | epoch   9 | 100/442 batches | lr 0.0000 | ms/batch 29507.97 | loss  0.29 | cls  0.29 | err  0.08 | 
+21:19:29-scGPT-INFO-train: | epoch   9 | 200/442 batches | lr 0.0000 | ms/batch 29205.96 | loss  0.25 | cls  0.25 | err  0.08 | 
+22:08:09-scGPT-INFO-train: | epoch   9 | 300/442 batches | lr 0.0000 | ms/batch 29198.09 | loss  0.25 | cls  0.25 | err  0.07 | 
+22:56:47-scGPT-INFO-train: | epoch   9 | 400/442 batches | lr 0.0000 | ms/batch 29177.61 | loss  0.23 | cls  0.23 | err  0.07 | 
+23:18:30-scGPT-INFO-<module>: -----------------------------------------------------------------------------------------
+23:18:30-scGPT-INFO-<module>: | end of epoch   9 | time: 13012.54s | valid loss/mse 0.5549 | err 0.1338
+23:18:30-scGPT-INFO-<module>: -----------------------------------------------------------------------------------------
+00:07:35-scGPT-INFO-train: | epoch  10 | 100/442 batches | lr 0.0000 | ms/batch 29448.74 | loss  0.26 | cls  0.26 | err  0.07 | 
+00:56:12-scGPT-INFO-train: | epoch  10 | 200/442 batches | lr 0.0000 | ms/batch 29163.99 | loss  0.22 | cls  0.22 | err  0.06 | 
+01:44:46-scGPT-INFO-train: | epoch  10 | 300/442 batches | lr 0.0000 | ms/batch 29141.58 | loss  0.22 | cls  0.22 | err  0.06 | 
+02:33:21-scGPT-INFO-train: | epoch  10 | 400/442 batches | lr 0.0000 | ms/batch 29153.30 | loss  0.20 | cls  0.20 | err  0.06 | 
+02:55:03-scGPT-INFO-<module>: -----------------------------------------------------------------------------------------
+02:55:03-scGPT-INFO-<module>: | end of epoch  10 | time: 12992.42s | valid loss/mse 0.7347 | err 0.1592
+02:55:03-scGPT-INFO-<module>: -----------------------------------------------------------------------------------------
+03:32:29-scGPT-INFO-test: Accuracy: 0.827, Precision: 0.657, Recall: 0.667, Macro F1: 0.650

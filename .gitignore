@@ -1,13 +1,8 @@
 *.pyc
-
 .devcontainer/*
 *.h5ad
-*.log
 **/pred-with-fine-tuning/*/model.pt
 **/experiment03*/**/model.pt
-# */logs/*
-# *.out
-# *.err
 **/.ipynb_checkpoints/*
 */*/.ipynb_checkpoints/*
-# data/*
+data/*/best_model.pt

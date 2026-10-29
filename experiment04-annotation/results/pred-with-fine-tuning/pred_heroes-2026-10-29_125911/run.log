@@ -164,3 +164,19 @@ AnnData object with n_obs × n_vars = 3296 × 2075
 13:28:05-scGPT-INFO-<module>: | end of epoch   1 | time: 1719.78s | valid loss/mse 0.4255 | err 0.1909
 13:28:05-scGPT-INFO-<module>: -----------------------------------------------------------------------------------------
 13:28:06-scGPT-INFO-<module>: Best model with score 0.4255
+13:56:08-scGPT-INFO-<module>: -----------------------------------------------------------------------------------------
+13:56:08-scGPT-INFO-<module>: | end of epoch   2 | time: 1682.45s | valid loss/mse 0.0995 | err 0.0333
+13:56:08-scGPT-INFO-<module>: -----------------------------------------------------------------------------------------
+13:56:08-scGPT-INFO-<module>: Best model with score 0.0995
+14:23:49-scGPT-INFO-<module>: -----------------------------------------------------------------------------------------
+14:23:49-scGPT-INFO-<module>: | end of epoch   3 | time: 1660.88s | valid loss/mse 0.0685 | err 0.0303
+14:23:49-scGPT-INFO-<module>: -----------------------------------------------------------------------------------------
+14:23:49-scGPT-INFO-<module>: Best model with score 0.0685
+14:53:01-scGPT-INFO-<module>: -----------------------------------------------------------------------------------------
+14:53:01-scGPT-INFO-<module>: | end of epoch   4 | time: 1751.16s | valid loss/mse 0.0301 | err 0.0061
+14:53:01-scGPT-INFO-<module>: -----------------------------------------------------------------------------------------
+14:53:01-scGPT-INFO-<module>: Best model with score 0.0301
+15:18:53-scGPT-INFO-<module>: -----------------------------------------------------------------------------------------
+15:18:53-scGPT-INFO-<module>: | end of epoch   5 | time: 1552.13s | valid loss/mse 0.0143 | err 0.0030
+15:18:53-scGPT-INFO-<module>: -----------------------------------------------------------------------------------------
+15:18:54-scGPT-INFO-<module>: Best model with score 0.0143

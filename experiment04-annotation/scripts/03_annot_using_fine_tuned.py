@@ -41,7 +41,8 @@ experiment = workspace / "experiment04-annotation"
 
 result_dir = experiment/"results/pred-on-fine-tuned"
 
-data_file =  experiment/ "data" / "heroes_pool8_scRNA_positive.h5ad"  # ! Dataset
+data_file =  experiment/ "data" / "heroes_pool8_scRNA_hvg.h5ad"  # ! Dataset
+# data_file =  experiment/ "data" / "heroes_pool8_scRNA_positive.h5ad"  # ! Dataset
 celltype_col = "celltype"
 
 model_dir = experiment / "results/pred-with-fine-tuning" / 'pred_heroes-2026-10-25_172348' 
@@ -126,7 +127,8 @@ adata.obs["batch_id"] = batch_id_labels
 celltype_id_labels = adata.obs[celltype_col].astype("category").cat.codes.values
 celltypes = adata.obs[celltype_col].unique()
 num_types = len(np.unique(celltype_id_labels))
-id2type = dict(enumerate(adata.obs[celltype_col].astype("category").cat.categories))
+
+
 adata.obs["celltype_id"] = celltype_id_labels
 # gene names 
 adata.var["gene_name"] = adata.var.index.tolist()
@@ -136,6 +138,7 @@ adata.var["id_in_vocab"] = [
 ]
 gene_ids_in_vocab = np.array(adata.var["id_in_vocab"])
 adata = adata[:, adata.var["id_in_vocab"] >= 0]
+
 # READ ----------------------------------------------------------------------- #
 
 # LOGGING -------------------------------------------------------------------- #
@@ -226,6 +229,11 @@ wandb.watch(model)
 # LOAD MODEL ----------------------------------------------------------------- #
 
 
+id_map_file = model_dir / "results.pkl"
+with open(id_map_file, 'rb') as f:
+    model_results = pickle.load(f)
+id2type = model_results['id_maps']
+
 # ============================================================================ #
 # PREDICTION                                                                   #
 # ============================================================================ #
@@ -240,10 +248,8 @@ predictions, labels, results = myutils.annotation.test(
     logger=logger,
     )
 
-adata.obs["predictions"] = [id2type[p] for p in predictions]
 save_dict = {
     "predictions": predictions,
-    "labels": labels,
     "results": results,
     "id_maps": id2type
 }
@@ -252,49 +258,4 @@ save_dict = {
 with open(save_dir / "results.pkl", "wb") as f:
     pickle.dump(save_dict, f)
 # SAVE PKL ------------------------------------------------------------------- #
-
-# UMAP ----------------------------------------------------------------------- #
-palette_ = plt.rcParams["axes.prop_cycle"].by_key()["color"] 
-palette_ = plt.rcParams["axes.prop_cycle"].by_key()["color"] + plt.rcParams["axes.prop_cycle"].by_key()["color"] + plt.rcParams["axes.prop_cycle"].by_key()["color"]
-palette_ = {c: palette_[i] for i, c in enumerate(celltypes)}
-
-if 'X_umap' in adata.obsm or 'umap' in adata.obsm:
-
-    with plt.rc_context({"figure.figsize": (6, 4), "figure.dpi": (300)}):
-        sc.pl.umap(
-            adata,
-            color=[celltype_col, "predictions"],
-            palette=palette_,
-            show=False,
-            ncols=1,
-        )
-        plt.savefig(save_dir / "results.png", dpi=300, bbox_inches="tight")
-
-    results["test/cell_umap"] = wandb.Image(
-        str(save_dir / "results.png"),
-        caption=f"predictions macro f1 {results['test/macro_f1']:.3f}",
-    )
-# UMAP ----------------------------------------------------------------------- #
-
-# CONFUSION MATRIX ----------------------------------------------------------- #
-celltypes = [id2type[i] for i in range(len(celltypes))]
-for i in {id2type[p] for p in predictions}:
-    if i not in celltypes:
-        celltypes.remove(i)
-cm = confusion_matrix(labels, predictions)
-cm = cm.astype("float") / cm.sum(axis=1)[:, np.newaxis]
-cm = pd.DataFrame(cm, index=celltypes[:cm.shape[0]], columns=celltypes[:cm.shape[1]])
-plt.figure(figsize=(10, 10))
-plt.tight_layout()
-sns.heatmap(cm, annot=True, fmt=".1f", cmap="Blues")
-plt.tight_layout()
-plt.savefig(save_dir / "confusion_matrix.png", dpi=300, bbox_inches="tight")
-
-results["test/confusion_matrix"] = wandb.Image(
-    str(save_dir / "confusion_matrix.png"),
-    caption="confusion matrix",
-)
-# CONFUSION MATRIX ----------------------------------------------------------- #
-
-wandb.log(results)
 

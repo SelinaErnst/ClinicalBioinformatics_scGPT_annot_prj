@@ -1,0 +1,103 @@
+{\rtf1\ansi\ansicpg1252\cocoartf2870
+\cocoatextscaling0\cocoaplatform0{\fonttbl\f0\fswiss\fcharset0 Helvetica;}
+{\colortbl;\red255\green255\blue255;}
+{\*\expandedcolortbl;;}
+\paperw11900\paperh16840\margl1440\margr1440\vieww29700\viewh15140\viewkind0
+\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\pardirnatural\partightenfactor0
+
+\f0\fs36 \cf0 CNN\
+- convolution\
+- kernel (filter for features)\
+- pooling: loose details in positioning of feature\
+- hierarchical feature extraction\
+- dimension reduction\
+- tensor: high dimensional input (RGB images = 3D)\
+\
+RNN\
+\
+\
+Neural Networks\
+- Nodes, Connection to nodes\
+- hidden layers\
+- parameters: weights, biases\
+	- weights: pick up patterns\
+	- bias: at which point is neuron meaningfully active (like a threshold) \
+- activation functions: activation of nodes based on input\
+	- take in weighted sum of activations from one layer + bias\
+	- ReLU: Rectified Linear Unit: max(0,x) \
+		- its like only when certain value is reached, do I consider the node / feature as relevant \
+	- softplus\
+- backpropagation\
+	- loss function\
+		- SSR: sum of squared residuals\
+	- gradient descent\
+		- derivative\
+			- chain rule\
+		- step size: slope + learning rate\
+		- stochastic gradient descent\
+			- random point per small subset/mini-batch (group of samples)\
+	- initialize weights and biases\
+		- bias = 0\
+		- weights = random\
+			- standard normal distribution \
+\
+- ArgMax and SoftMax\
+	- find class with highest predicted probability \
+	- ArgMax NOT an activation function -> not for backpropagation (no derivative)\\		- output: 0 or 1\
+	- SoftMax used for training (backpropagation, has derivative)\
+		- takes all values of output vector in consideration (could be negative even)\
+		- preserve ranking, output between 0 to 1 (probability)\
+		- normalization\
+		- calculates probability of each value to be correct value???\
+	- Temperature\
+		- large T value -> give more weight to lower values\
+\
+LLM\
+- predicts what word comes next for any piece of text (probability of all possible next words)\
+- vast training data sets\
+- chat bot training: \
+	- pretraining : learn how to predict next word\
+	- RLHF (Reinforcement Learning with Human Feedback): flag problems\
+\
+\
+Transformer:\
+- new: don\'92t just take each word in text input at a time but take all of the text at once (CONTEXT)\
+- words encoded as tokens (vectors) -> represent meaning, position of that word (gain more context as they move through the NN)\
+	- encoding / embedding: tale column from the embedding matrix\
+- architecture:\
+	- goal: refine embeddings so that more information / context is represented by embedding vector\
+	- layers of Feedforward + Attention\
+	- Feedforward / Multilayer Perceptron\
+	- Attention mechanism:\
+		- multi-headed attention consists of multiple heads of attention \
+		- every head uses one key, query, value map / matrix -> result is proposed CHANGE to original embedding vector (like new direction)\
+		- new / refined embedding = old embedding + (result entire multi-headed attention block)\
+- embedding\
+	- encode tokens as vector (size n), take column from embedding matrix\
+	- embedding matrix (n x m)\
+ 		- columns: all tokens (number m)\
+		- rows: features (number n)\
+		- matrix consists of weights / parameters\
+	- unembedding matrix (m x n)\
+		- decode (feature) vector to vector of probabilities for tokens (size m)\
+		- matrix consists of weights / parameters\
+- self-attention head\
+	- GOAL: each embedding vector later encodes context / meaning / features taken from other embeddings (earlier ones)\
+	- attention pattern\
+		- key\
+			- query matrix (k x n) of parameters\
+		- query\
+			- query matrix (k x n) of parameters\
+		- masking\
+			- later tokens do not influence earlier ones\
+		- softmax\
+	- value\
+		- value matrix (n x n) of parameters: in practice its 2 matrices (k x n, n x k )\
+		- low rank transformation\
+	- output matrix\
+		\
+- cross-attention \
+\
+		\
+		\
+			}

@@ -13,7 +13,7 @@ Based on the provided tutorial, scGPT was then used to predict cell type annotat
 # Contact
 
 Author: Selina Ernst sernst2001@gmail.com
-GitHub Repo: https://github.com/SelinaErnst/ClinicalBioinformatics_Project 
+GitHub Repo: https://github.com/SelinaErnst/ClinicalBioinformatics_scGPT_annot_prj
 
 # conda environments
 

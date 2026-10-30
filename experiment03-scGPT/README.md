@@ -12,17 +12,6 @@
 |07_prediction_on_human_model.py| annotation without fine-tuning |
 |08_compare_predictions.ipynb| comparison of confusion matrices |
 
-
-
-### pretrained base models
-- scGPT_human
-
-
-## scGPT workflows
-
-### annotation
-
-
 ## Issues
 
 ### Environment setup: Dependency conflict
